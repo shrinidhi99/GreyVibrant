@@ -14,4 +14,18 @@
    If no conflicts then generate a pull request
 ```
 ---
+```java
+To configure phpmyadmin into your android project, follow these steps:
+1. sudo apt update
+2. sudo apt-get install phpmyadmin php-mbstring php-gettext -y (choose apache as your server and create a password)
+3. sudo mysql
+4. grant all on *.* to 'phpmyadmin'@'localhost';
+5. flush privileges;
+6. sudo service apache2 start
+7. systemctl start apache2.service
+8. type localhost/phpmyadmin as url in your web browser
+9. username would be phpmyadmin and password would be what was set during installation
+```
+
+---
 ![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "LCO")
