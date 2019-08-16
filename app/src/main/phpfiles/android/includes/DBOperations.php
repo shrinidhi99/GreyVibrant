@@ -1,5 +1,5 @@
 <?php
-	class DBOperation{
+	class DBOperations{
 		private $con;
 
 		function __construct(){
