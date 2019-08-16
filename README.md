@@ -30,4 +30,4 @@ To configure phpmyadmin into your android project, follow these steps:
 ```
 
 ---
-![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "LCO")
+![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
