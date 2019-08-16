@@ -7,5 +7,22 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">#000000</item>
+        <item name="android:textSize">14sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">#000000</item>
+        <item name="colorControlNormal">#000000</item>
+        <item name="colorControlActivated">#00ff00</item>
+        <item name="colorControlHighlight">#00ff00</item>
+    </style>
+
+
+    <style name="UploadInputView">
+        <item name="android:background">#f7f7f7</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
 
 </resources>
