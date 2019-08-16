@@ -2,7 +2,9 @@
 ---
 ## A music player app with android front-end and MySQL backend.
 ---
-> Use **androidX** libraries
+> Use **androidX** libraries wherever possible while adding project dependencies in app level build.gradle
+---
+> PHP used as server scripting language in this project 
 ---
 ```java
 1. git pull upstream master 
@@ -28,4 +30,4 @@ To configure phpmyadmin into your android project, follow these steps:
 ```
 
 ---
-![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "LCO")
+![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
