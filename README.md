@@ -2,7 +2,9 @@
 ---
 ## A music player app with android front-end and MySQL backend.
 ---
-> Use **androidX** libraries
+> Use **androidX** libraries wherever possible while adding project dependencies in app level build.gradle
+---
+> PHP used as server scripting language in this project 
 ---
 ```java
 1. git pull upstream master 
