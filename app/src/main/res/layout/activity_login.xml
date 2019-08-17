@@ -40,14 +40,6 @@
             android:hint="Password"
             android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/emailID"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="15"
-            android:drawableStart="@drawable/ic_email_black_24dp"
-            android:hint="Email" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,12 +48,12 @@
             android:layout_weight="15">
 
             <Button
-                android:id="@+id/register"
+                android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/rec_gradient"
-                android:text="Register"
+                android:text="Login"
                 android:textColor="#ffffff" />
 
         </LinearLayout>
@@ -76,14 +68,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already a user?  " />
+                android:text="Not already a user?  " />
 
             <Button
-                android:id="@+id/signIn"
+                android:id="@+id/signUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rec_gradient"
-                android:text="SIGN IN"
+                android:text="SIGN UP"
                 android:textColor="#ffffff" />
 
         </LinearLayout>

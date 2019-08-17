@@ -3,6 +3,7 @@
     package="com.example.greyvibrant">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_icon_app"
@@ -10,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MySQLActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".MySQLActivity" />
         <activity android:name=".Main2Activity" />
         <activity
             android:name=".SplashActivity"

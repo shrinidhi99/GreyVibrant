@@ -3,6 +3,7 @@ package com.example.greyvibrant;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ import java.util.Map;
 public class MySQLActivity extends AppCompatActivity {
 
     private EditText editTextUsername, editTextEmail, editTextPassword;
-    private Button buttonRegister;
+    private Button buttonRegister, buttonLogin;
     private ProgressBar progressBar;
 
     @Override
@@ -38,6 +39,14 @@ public class MySQLActivity extends AppCompatActivity {
         editTextUsername = findViewById(R.id.userName);
         editTextPassword = findViewById(R.id.password);
         buttonRegister = findViewById(R.id.register);
+        buttonLogin = findViewById(R.id.signIn);
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MySQLActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
