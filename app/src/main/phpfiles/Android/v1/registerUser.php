@@ -10,17 +10,25 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		//operate the data further
 
 		$db = new DBOperations();
-		if($db->createUser(
+		$result = $db->createUser(
 			$_POST['username'],
 			$_POST['password'],
-			$_POST['email'])){
+			$_POST['email']);
+
+		if($result == 1)
+		{
 			$response['error'] = false;
 			$response['message'] = "User registered successfully";
 		}
-		else
+		else if($result == 2)
 		{
 			$response['error'] = true;
-			$response['message'] = "Some error occurred please try again"
+			$response['message'] = "Some error occurred please try again";
+		}
+		else if($result == 0)
+		{
+			$response['error'] = true;
+			$response['message'] = "It seems you are already registered, please choose a different email and username";
 		}
 	}
 	else
