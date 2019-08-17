@@ -80,7 +80,7 @@ public class MySQLActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 //                progressBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), error.getMessage() + " failed", Toast.LENGTH_LONG).show();
             }
         }) {
             @Override

@@ -1,7 +1,7 @@
 <?php
 	class DbConnect{
 		private $con;
-		function_construct(){
+		function __construct(){
 
 		}
 		function connect(){
