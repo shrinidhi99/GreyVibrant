@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransition);
         tv.startAnimation(myanim);
         iv.startAnimation(myanim);
-        final Intent i = new Intent(this, MySQLActivity.class);
+        final Intent i = new Intent(this, LoginActivity.class);
         Thread timer = new Thread() {
             public void run() {
                 try {

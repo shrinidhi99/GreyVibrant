@@ -3,6 +3,7 @@ package com.example.greyvibrant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,7 +18,7 @@ public class Main2Activity extends AppCompatActivity {
     Button playBtnClick;
     SeekBar positionBar;
     SeekBar volumeBar;
-    TextView remainingTimeLabel, elapsedTimeLabel;
+    TextView remainingTimeLabel, elapsedTimeLabel, userLoggedIn;
     MediaPlayer mp;
     int totalTime;
 
@@ -25,7 +26,13 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
         playBtnClick = findViewById(R.id.playBtnClick);
+        userLoggedIn = findViewById(R.id.userLoggedIn);
+        userLoggedIn.setText(SharedPrefManager.getInstance(this).getUsername());
         elapsedTimeLabel = findViewById(R.id.elapsed);
         remainingTimeLabel = findViewById(R.id.remainingTime);
         playBtnClick.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +123,7 @@ public class Main2Activity extends AppCompatActivity {
             String elapsedTime = createTimeLabel(currentPosition);
             elapsedTimeLabel.setText(elapsedTime);
             String remainingTime = createTimeLabel(totalTime - currentPosition);
-            remainingTimeLabel.setText("- "+remainingTime);
+            remainingTimeLabel.setText("- " + remainingTime);
         }
     };
 

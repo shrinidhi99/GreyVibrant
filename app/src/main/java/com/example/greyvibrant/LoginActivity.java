@@ -34,6 +34,11 @@ public class LoginActivity extends AppCompatActivity {
         signUp = findViewById(R.id.signUp);
         editTextUsername = findViewById(R.id.userName);
         editTextPassword = findViewById(R.id.password);
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, Main2Activity.class));
+            return;
+        }
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,8 +68,14 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject obj = new JSONObject(response);
                             if (!obj.getBoolean("error")) {
                                 SharedPrefManager.getInstance(getApplicationContext()).userLogin(obj.getInt("id"), obj.getString("username"), obj.getString("email"));
+                                Intent intent = new Intent(LoginActivity.this, Main2Activity.class);
+                                startActivity(intent);
+                                finish();
                             } else {
                                 Toast.makeText(getApplicationContext(), "User login successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, Main2Activity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

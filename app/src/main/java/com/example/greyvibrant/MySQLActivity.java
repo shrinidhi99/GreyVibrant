@@ -40,6 +40,11 @@ public class MySQLActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.password);
         buttonRegister = findViewById(R.id.register);
         buttonLogin = findViewById(R.id.signIn);
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, Main2Activity.class));
+            return;
+        }
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
