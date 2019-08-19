@@ -17,7 +17,7 @@
 ```
 ---
 ```java
-To configure phpmyadmin into your android project, follow these steps:
+To configure phpmyadmin into your android project, follow these steps: (First time in a device)
 1. sudo apt update
 2. sudo apt-get install phpmyadmin php-mbstring php-gettext -y (choose apache as your server and create a password)
 3. sudo mysql
