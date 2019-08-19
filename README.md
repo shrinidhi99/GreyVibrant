@@ -40,5 +40,11 @@ To setup the environment required for the php files to run on the localhost foll
 6. localhost/phpmyadmin (to run phpadmin for running MySQL database server)
 ```
 ---
+```java
+refer all these links on stackoverflow
+1. https://stackoverflow.com/questions/4779963/how-can-i-access-my-localhost-from-my-android-device?page=1&tab=votes#tab-top
+2. https://stackoverflow.com/questions/23382627/wamp-cannot-access-on-local-network-403-forbidden/23385021#23385021
+3. https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan/16608698#16608698
+```
 ---
 ![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
