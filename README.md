@@ -48,6 +48,10 @@ To install XAMPP in ubuntu follow these steps:
 8. Verify Installation
    http://localhost
    http://localhost/phpmyadmin
+9. Configure the port number of MySQL Database = 3307
+10. To make apache2 server running follow these steps:
+   i) sudo apachectl stop
+   ii) Start apache web server through XAMPP
    
 To uninstall XAMPP
 1. cd /opt/lampp
