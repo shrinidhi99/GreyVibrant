@@ -53,7 +53,7 @@ To uninstall XAMPP
 1. cd /opt/lampp
 2. sudo ./uninstall
 3. sudo rm -r /opt/lampp
----
+```
 ---
 ```java
 To setup the environment required for the php files to run on the localhost follow these steps:
