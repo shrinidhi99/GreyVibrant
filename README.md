@@ -31,6 +31,31 @@ To configure phpmyadmin into your android project, follow these steps: (First ti
 ```
 ---
 ```java
+To install XAMPP in ubuntu follow these steps:
+1. Download the executable files from https://www.apachefriends.org/download.html
+2. Make the installation package executable
+   i) cd /home/[username]/Downloads
+   ii) chmod 755 [package name] (ex: chmod 755 xampp-linux-x64-7.2.10-0-installer.run)
+3. Confirm execute permission
+   ls -l [package name] (ex: ls -l xampp-linux-x64-7.2.10-0-installer.run)
+4. Launch the Setup Wizard
+   sudo ./[package name] (ex: sudo ./xampp-linux-7.2.10-0-installer.run)
+5. Complete the process of installation in the set-up wizard
+6. Launch XAMPP through the Terminal
+   sudo /opt/lampp/lampp start
+7. In order to install Net Tools, run the following command as root:
+   sudo apt install net-tools
+8. Verify Installation
+   http://localhost
+   http://localhost/phpmyadmin
+   
+To uninstall XAMPP
+1. cd /opt/lampp
+2. sudo ./uninstall
+3. sudo rm -r /opt/lampp
+---
+---
+```java
 To setup the environment required for the php files to run on the localhost follow these steps:
 1. sudo apachectl stop (to stop apache server)
 2. sudo /opt/lampp/lampp stop (to stop XAMPP if it is running and not working fine)
