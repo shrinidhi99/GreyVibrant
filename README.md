@@ -66,7 +66,7 @@ To setup the environment required for the php files to run on the localhost foll
 3. sudo /opt/lampp/lampp start (to start XAMPP)
 4. Now if all the three processes are running on XAMPP control panel, you can go ahead with php otherwise repeat these steps.
 5. localhost/<address of php file inside htdocs directory> (to run a php file)
-6. localhost/phpmyadmin (to run phpadmin for running MySQL database server)
+6. localhost/phpmyadmin (to run phpmyadmin for running MySQL database server)
 ```
 ---
 ```java
