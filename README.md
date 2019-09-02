@@ -4,7 +4,11 @@
 ---
 > Use **androidX** libraries wherever possible while adding project dependencies in app level build.gradle
 ---
-> **ER Diagrams** can be found [here](https://www.lucidchart.com/documents/edit/49de7fd6-bd05-4c44-88aa-6464289c7979/0_0). 
+> **ER Diagrams** can be found [here](https://www.lucidchart.com/documents/edit/49de7fd6-bd05-4c44-88aa-6464289c7979/0_0).
+
+> **Database Schema** can be found [here](https://docs.google.com/document/d/1rn6Llg6dbmujGjjBwfU2Wy2GuWKYKwyU6Skg1fHytVU/edit).
+
+> **Project abstract** can be found [here](https://docs.google.com/document/d/1k3d4zBtLIB2msmAUne6-Trskp821sG9PGr3VxfWNqXo/edit).
 ---
 > PHP used as server scripting language in this project. Place the php files in this location --> */opt/lampp/htdocs* 
 ---
