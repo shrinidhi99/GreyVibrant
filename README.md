@@ -83,4 +83,4 @@ refer all these links on stackoverflow
 4. https://stackoverflow.com/questions/21011279/android-volley-checking-internet-state
 ```
 ---
-![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
+![GV Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
