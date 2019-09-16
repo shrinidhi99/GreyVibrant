@@ -74,6 +74,8 @@ refer all these links on stackoverflow
 1. https://stackoverflow.com/questions/4779963/how-can-i-access-my-localhost-from-my-android-device?page=1&tab=votes#tab-top
 2. https://stackoverflow.com/questions/23382627/wamp-cannot-access-on-local-network-403-forbidden/23385021#23385021
 3. https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan/16608698#16608698
+refer this link on connecting backend of android application to MySQL server
+https://www.skysilk.com/blog/2018/how-to-connect-an-android-app-to-a-mysql-database/
 ```
 ---
 ![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
