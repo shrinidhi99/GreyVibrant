@@ -4,6 +4,12 @@
 ---
 > Use **androidX** libraries wherever possible while adding project dependencies in app level build.gradle
 ---
+> **ER Diagrams** can be found [here](https://www.lucidchart.com/documents/edit/49de7fd6-bd05-4c44-88aa-6464289c7979/0_0).
+
+> **Database Schema** can be found [here](https://docs.google.com/document/d/1rn6Llg6dbmujGjjBwfU2Wy2GuWKYKwyU6Skg1fHytVU/edit).
+
+> **Project abstract** can be found [here](https://docs.google.com/document/d/1k3d4zBtLIB2msmAUne6-Trskp821sG9PGr3VxfWNqXo/edit).
+---
 > PHP used as server scripting language in this project. Place the php files in this location --> */opt/lampp/htdocs* 
 ---
 ```java
@@ -66,7 +72,7 @@ To setup the environment required for the php files to run on the localhost foll
 3. sudo /opt/lampp/lampp start (to start XAMPP)
 4. Now if all the three processes are running on XAMPP control panel, you can go ahead with php otherwise repeat these steps.
 5. localhost/<address of php file inside htdocs directory> (to run a php file)
-6. localhost/phpmyadmin (to run phpadmin for running MySQL database server)
+6. localhost/phpmyadmin (to run phpmyadmin for running MySQL database server)
 ```
 ---
 ```java
@@ -74,8 +80,10 @@ refer all these links on stackoverflow
 1. https://stackoverflow.com/questions/4779963/how-can-i-access-my-localhost-from-my-android-device?page=1&tab=votes#tab-top
 2. https://stackoverflow.com/questions/23382627/wamp-cannot-access-on-local-network-403-forbidden/23385021#23385021
 3. https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan/16608698#16608698
+4. https://stackoverflow.com/questions/21011279/android-volley-checking-internet-state
+
 refer this link on connecting backend of android application to MySQL server
 https://www.skysilk.com/blog/2018/how-to-connect-an-android-app-to-a-mysql-database/
 ```
 ---
-![LCO Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
+![GV Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
