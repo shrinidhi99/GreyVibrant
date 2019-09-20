@@ -12,6 +12,18 @@
 ---
 > PHP used as server scripting language in this project. Place the php files in this location --> */opt/lampp/htdocs* 
 ---
+## Tasks to be completed in this project:
+* [x] Data base design
+* [x] ER diagram for the data base design
+* [ ] Implement the queries in MySQL
+* [ ] Write PHP files to perform queries
+* [ ] Connect the mobile application with the MySQL server running at the localhost
+* [ ] Design the front-end of the mobile application
+* [ ] Develop the front-end of the mobile application
+* [ ] Check out the ways to store audio files in database
+* [ ] Test the performance of the application
+* [ ] If some more time remains then fine tune the application in terms of performance, UI and UX
+---
 ```java
 1. git pull upstream master 
 2. git checkout -b <branch_name_for_commit>
