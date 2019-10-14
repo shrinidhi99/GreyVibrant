@@ -1,4 +1,4 @@
-package com.example.greyvibrant;
+package com.example.greyvibrant.old;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.greyvibrant.R;
+
 public class Main2Activity extends AppCompatActivity {
 
     Button playBtnClick;
@@ -28,10 +30,10 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
-            finish();
-            startActivity(new Intent(this, LoginActivity.class));
-        }
+//        if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
+//            finish();
+//            startActivity(new Intent(this, LoginActivity.class));
+//        }
         playBtnClick = findViewById(R.id.playBtnClick);
         userLoggedIn = findViewById(R.id.userLoggedIn);
         userLoggedIn.setText(SharedPrefManager.getInstance(this).getUsername());
@@ -45,7 +47,7 @@ public class Main2Activity extends AppCompatActivity {
         });
         // Media player
         mp = MediaPlayer.create(this, R.raw.song1);
-        mp.setLooping(true);
+        mp.setLooping(false);
         mp.seekTo(0);
         mp.setVolume(0.5f, 0.5f);
         totalTime = mp.getDuration();
@@ -145,6 +147,7 @@ public class Main2Activity extends AppCompatActivity {
         if (!mp.isPlaying()) {
             // stopping
             mp.start();
+
             playBtnClick.setBackgroundDrawable(getApplicationContext().getResources().getDrawable(R.drawable.ic_pause_black_24dp));
         } else {
             // playing
@@ -162,10 +165,17 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menuLogout) {
-            SharedPrefManager.getInstance(this).logout();
-            finish();
-            startActivity(new Intent(this, LoginActivity.class));
+//            SharedPrefManager.getInstance(this).logout();
+//            finish();
+            startActivity(new Intent(this, com.example.greyvibrant.front.LoginActivity.class));
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mp.release();
+        mp = null;
     }
 }

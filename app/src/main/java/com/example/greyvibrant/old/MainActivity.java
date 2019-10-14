@@ -1,4 +1,4 @@
-package com.example.greyvibrant;
+package com.example.greyvibrant.old;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.greyvibrant.R;
 
 public class MainActivity extends AppCompatActivity {
 

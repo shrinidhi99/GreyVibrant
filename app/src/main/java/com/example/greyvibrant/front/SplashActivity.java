@@ -1,4 +1,5 @@
-package com.example.greyvibrant;
+package com.example.greyvibrant.front;
+
 
 
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.greyvibrant.R;
 
 public class SplashActivity extends AppCompatActivity {
     private TextView tv;
@@ -23,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransition);
         tv.startAnimation(myanim);
         iv.startAnimation(myanim);
-        final Intent i = new Intent(this, LoginActivity.class);
+        final Intent i = new Intent(SplashActivity.this, LoginActivity.class);
         Thread timer = new Thread() {
             public void run() {
                 try {

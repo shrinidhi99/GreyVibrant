@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#ffffff"
-    tools:context=".old.MySQLActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,50 +17,71 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:layout_weight="25"
+            android:layout_weight="10"
             android:src="@mipmap/ic_launcher_icon_app_round"
             android:visibility="visible" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:text="User"
+            android:textColor="#000" />
 
         <EditText
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="50dp"
+            android:layout_margin="10dp"
             android:layout_weight="15"
             android:drawableStart="@drawable/ic_person_black_24dp"
             android:hint="Username" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/userPassword"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="10dp"
             android:layout_weight="15"
             android:drawableStart="@drawable/ic_vpn_key_black_24dp"
             android:hint="Password"
             android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/emailID"
+            android:id="@+id/userEmailID"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="10dp"
             android:layout_weight="15"
             android:drawableStart="@drawable/ic_email_black_24dp"
             android:hint="Email" />
+
+        <EditText
+            android:id="@+id/userPhNo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="15"
+            android:drawableStart="@drawable/ic_phone_black_24dp"
+            android:hint="Phone number"
+            android:inputType="phone" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="30dp"
-            android:layout_weight="15">
+            android:layout_weight="10">
 
             <Button
-                android:id="@+id/register"
+                android:id="@+id/userLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/rec_gradient"
-                android:text="Register"
+                android:text="Login"
                 android:textColor="#ffffff" />
 
         </LinearLayout>
@@ -70,21 +89,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="15"
+            android:layout_margin="0dp"
+            android:layout_weight="10"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already a user?  " />
+                android:text="Not a user?  " />
 
             <Button
-                android:id="@+id/signIn"
+                android:id="@+id/userSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rec_gradient"
-                android:text="SIGN IN"
+                android:text="SIGN UP"
                 android:textColor="#ffffff" />
 
         </LinearLayout>
