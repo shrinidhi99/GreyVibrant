@@ -158,17 +158,17 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+//        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menuLogout) {
+//        if (item.getItemId() == R.id.menuLogout) {
 //            SharedPrefManager.getInstance(this).logout();
 //            finish();
             startActivity(new Intent(this, com.example.greyvibrant.front.LoginActivity.class));
-        }
+//        }
         return true;
     }
 

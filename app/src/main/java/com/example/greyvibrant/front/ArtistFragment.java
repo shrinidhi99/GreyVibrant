@@ -1,5 +1,6 @@
 package com.example.greyvibrant.front;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,8 @@ public class ArtistFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Log in", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), HomePageArtist.class);
+                startActivity(intent);
             }
         });
         artistSignUp.setOnClickListener(new View.OnClickListener() {

@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.greyvibrant.R;
-import com.example.greyvibrant.old.Main2Activity;
 
 public class UserFragment extends Fragment {
     @Nullable
@@ -31,7 +30,7 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Log in", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), com.example.greyvibrant.old.Main2Activity.class);
+                Intent intent = new Intent(getActivity(), HomePageUser.class);
                 startActivity(intent);
             }
         });
