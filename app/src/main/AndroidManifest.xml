@@ -11,8 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".front.HomePageArtist"></activity>
-        <activity android:name=".front.HomePageUser" />
+        <activity
+            android:name=".front.HomePageArtist"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name=".front.HomePageUser"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name=".front.LoginActivity" />
         <activity android:name=".old.MySQLActivity" />
         <activity android:name=".old.Main2Activity" />
