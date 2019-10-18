@@ -38,6 +38,8 @@ public class ArtistFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Sign up", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+                startActivity(intent);
             }
         });
         return view;

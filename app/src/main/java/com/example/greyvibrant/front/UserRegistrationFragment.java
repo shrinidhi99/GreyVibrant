@@ -15,11 +15,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.greyvibrant.R;
 
-public class UserFragment extends Fragment {
+public class UserRegistrationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.login_user_fragment, container, false);
+        View view = inflater.inflate(R.layout.registration_user_fragment, container, false);
         Button userLogin = view.findViewById(R.id.userLogin);
         Button userSignUp = view.findViewById(R.id.userSignUp);
         EditText username = view.findViewById(R.id.userName);
@@ -30,7 +30,7 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Log in", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), HomePageUser.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Sign up", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+                Intent intent = new Intent(getActivity(), HomePageUser.class);
                 startActivity(intent);
             }
         });

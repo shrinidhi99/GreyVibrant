@@ -17,7 +17,7 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:layout_weight="10"
+            android:layout_weight="30"
             android:src="@mipmap/ic_launcher_icon_app_round"
             android:visibility="visible" />
 
@@ -28,7 +28,8 @@
             android:layout_weight="10"
             android:gravity="center"
             android:text="Artist"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/artistName"
@@ -48,25 +49,6 @@
             android:drawableStart="@drawable/ic_vpn_key_black_24dp"
             android:hint="Password"
             android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/artistEmailID"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="15"
-            android:drawableStart="@drawable/ic_email_black_24dp"
-            android:hint="Email" />
-
-        <EditText
-            android:id="@+id/artistPhNo"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="15"
-            android:drawableStart="@drawable/ic_phone_black_24dp"
-            android:hint="Phone number"
-            android:inputType="phone" />
 
 
         <LinearLayout

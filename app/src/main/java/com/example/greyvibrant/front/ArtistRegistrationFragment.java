@@ -15,30 +15,30 @@ import androidx.fragment.app.Fragment;
 
 import com.example.greyvibrant.R;
 
-public class UserFragment extends Fragment {
+public class ArtistRegistrationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.login_user_fragment, container, false);
-        Button userLogin = view.findViewById(R.id.userLogin);
-        Button userSignUp = view.findViewById(R.id.userSignUp);
-        EditText username = view.findViewById(R.id.userName);
-        EditText userEmail = view.findViewById(R.id.userEmailID);
-        EditText userPhNo = view.findViewById(R.id.userPhNo);
-        EditText userPassword = view.findViewById(R.id.userPassword);
-        userLogin.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.registration_artist_fragment, container, false);
+        Button artistLogin = view.findViewById(R.id.artistLogin);
+        Button artistSignUp = view.findViewById(R.id.artistSignUp);
+        EditText artistName = view.findViewById(R.id.artistName);
+        EditText artistEmail = view.findViewById(R.id.artistEmailID);
+        EditText artistPhNo = view.findViewById(R.id.artistPhNo);
+        EditText artistPassword = view.findViewById(R.id.artistPassword);
+        artistLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Log in", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), HomePageUser.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
         });
-        userSignUp.setOnClickListener(new View.OnClickListener() {
+        artistSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Sign up", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+                Intent intent = new Intent(getActivity(), HomePageArtist.class);
                 startActivity(intent);
             }
         });
