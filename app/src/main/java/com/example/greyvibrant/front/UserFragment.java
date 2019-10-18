@@ -42,7 +42,7 @@ public class UserFragment extends Fragment {
          userLogin = view.findViewById(R.id.userLogin);
         Button userSignUp = view.findViewById(R.id.userSignUp);
        // EditText username = view.findViewById(R.id.userName);
-        userEmail = view.findViewById(R.id.userEmailID);
+        userEmail = view.findViewById(R.id.userName);
       //  EditText userPhNo = view.findViewById(R.id.userPhNo);
         userPassword = view.findViewById(R.id.userPassword);
         userLogin.setOnClickListener(new View.OnClickListener() {
