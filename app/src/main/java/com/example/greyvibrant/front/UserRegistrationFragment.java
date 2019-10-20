@@ -32,7 +32,7 @@ import java.util.Map;
 public class UserRegistrationFragment extends Fragment {
     EditText userName, userEmail, userPhNo, userPassword, userFullName;
     Button userSignUp;
-    static  String URL_REGIST="https://sabios-97.000webhostapp.com/register_greyvibrant.php";
+    static String URL_REGIST = "https://sabios-97.000webhostapp.com/register_greyvibrant.php";
 
 
     @Nullable
@@ -86,35 +86,30 @@ public class UserRegistrationFragment extends Fragment {
         return view;
     }
 
-    private void Register()
-    {
+    private void Register() {
 
-        final String username=this.userName.getText().toString().trim();
-        final String email=this.userEmail.getText().toString().trim();
-        final String fullname=this.userFullName.getText().toString().trim();
-        final String password=this.userName.getText().toString().trim();
-        final String phNo=this.userPhNo.getText().toString().trim();
-        final String playlistname=this.userName.getText().toString().trim();
-
+        final String username = this.userName.getText().toString().trim();
+        final String email = this.userEmail.getText().toString().trim();
+        final String fullname = this.userFullName.getText().toString().trim();
+        final String password = this.userName.getText().toString().trim();
+        final String phNo = this.userPhNo.getText().toString().trim();
+        final String playlistname = this.userName.getText().toString().trim();
 
 
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_REGIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.i("RESPONSE FROM PHP",response);
+                        Log.i("RESPONSE FROM PHP", response);
                         try {
-                            if(response==null || response.equals(""))
-                                Log.i("RESPONSE","IS NULL");
+                            if (response == null || response.equals(""))
+                                Log.i("RESPONSE", "IS NULL");
 
-                            JSONObject jsonObject=new JSONObject(response);
-
-
+                            JSONObject jsonObject = new JSONObject(response);
 
 
-                            String success=jsonObject.getString("success");
-                            if(success.equals("1"))
-                            {
+                            String success = jsonObject.getString("success");
+                            if (success.equals("1")) {
                                 Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
                                 getActivity().finish();
                                 Intent intent = new Intent(getActivity(), HomePageUser.class);
@@ -134,25 +129,24 @@ public class UserRegistrationFragment extends Fragment {
                         Toast.makeText(getContext(), "Register Error", Toast.LENGTH_SHORT).show();
 
                     }
-                })
-        {
+                }) {
             @Override
-            protected Map<String, String> getParams()  {
-                Map<String,String> params=new HashMap<>();
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
 
-                params.put("fullname",fullname);
-                params.put("phNo",phNo);
-                params.put("username",username);
-                params.put("email",email);
-                params.put("password",password);
-                params.put("playlist_name",playlistname);
-
+                params.put("fullname", fullname);
+                params.put("phNo", phNo);
+                params.put("username", username);
+                params.put("email", email);
+                params.put("password", password);
+                params.put("playlist_name", playlistname);
 
 
                 return params;
             }
         };
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
-    }}
+    }
+}

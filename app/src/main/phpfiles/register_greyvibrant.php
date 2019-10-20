@@ -1,66 +1,41 @@
 <?php
 
-$conn=mysqli_connect("localhost","id11221849_sabios","Sayan@99","id11221849_greyvibrant");
-// if(!$conn)
-// {
-//     echo "Not Connected";
-// }
-// else
-//  {
-//     echo "Connection Successfull";
-//  }
- //$sql1="INSERT INTO friends  VALUES ('Rohit', 'Sanya')";
-    // mysqli_query($conn, $sql1);
+$conn = mysqli_connect("localhost", "id11221849_sabios", "Sayan@99", "id11221849_greyvibrant");
 
-if ($_SERVER['REQUEST_METHOD'] =='POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-   
-    $fullname=$_POST['fullname'];
-      $phNo=$_POST['phNo'];
-    $username=$_POST['username'];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    $playlist_name=$_POST['playlist_name'];
-    
-    
-    
+    $fullname = $_POST['fullname'];
+    $phNo = $_POST['phNo'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $playlist_name = $_POST['playlist_name'];
+
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    
+    $sql = "INSERT INTO user_registration  VALUES (NULL,'$fullname','$phNo','$username','$email','$password','$playlist_name')";
 
+    if (mysqli_query($conn, $sql)) {
 
-  $sql = "INSERT INTO user_registration  VALUES (NULL,'$fullname','$phNo','$username','$email','$password','$playlist_name')";
-    
+        $UIDsql = "SELECT UID FROM user_registration WHERE username = '$username'";
 
-    if ( mysqli_query($conn, $sql) ) {
+        $response = mysqli_query($conn, $UIDsql);
 
-      $UIDsql="SELECT UID FROM user_registration WHERE username = '$username'";
+        $row = mysqli_fetch_object($response);
 
-      $response = mysqli_query($conn, $UIDsql);
+        $sql1 = "INSERT INTO user_login  VALUES ($row->UID,'$username','$password')";
 
-      $row = mysqli_fetch_object($response);
+        if (mysqli_query($conn, $sql1)) {
 
+            $result["success"] = "1";
+            $result["message"] = "success";
 
-          $sql1 = "INSERT INTO user_login  VALUES ($row->UID,'$username','$password')";
+            echo json_encode($result);
+            mysqli_close($conn);
 
-        if(mysqli_query($conn, $sql1))
-        {
-            
-        $result["success"] = "1";
-        $result["message"] = "success";
-        
-        echo json_encode($result);
-        mysqli_close($conn);
-      
         }
 
-
-
-        
-
-       
-
-    }  else {
+    } else {
 
         $result["success"] = "0";
         $result["message"] = "error";

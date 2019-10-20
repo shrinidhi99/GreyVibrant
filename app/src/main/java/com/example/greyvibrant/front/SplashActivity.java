@@ -1,7 +1,6 @@
 package com.example.greyvibrant.front;
 
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
