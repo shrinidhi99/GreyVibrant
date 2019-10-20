@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".front.profilePageArtist">
+
+    <ImageView
+        android:id="@+id/GV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="20"
+        android:src="@mipmap/ic_launcher_icon_app_round" />
+
+    <TextView
+        android:id="@+id/artistName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="20"
+        android:gravity="center"
+        android:text="Artist name : " />
+
+    <TextView
+        android:id="@+id/artistFullName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="20"
+        android:gravity="center"
+        android:text="Full name : " />
+
+    <TextView
+        android:id="@+id/artistEmailID"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="20"
+        android:gravity="center"
+        android:text="Email ID : " />
+
+    <TextView
+        android:id="@+id/artistPhNo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="20"
+        android:gravity="center"
+        android:text="Phone number : " />
+
+</LinearLayout>
