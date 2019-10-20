@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
@@ -31,25 +32,58 @@
             android:textColor="#000"
             android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/userName"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="10dp"
             android:layout_weight="15"
-            android:drawableStart="@drawable/ic_person_black_24dp"
-            android:hint="Username" />
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
+            app:helperTextEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextLabel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.154">
 
-        <EditText
-            android:id="@+id/userPassword"
+            <EditText
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:hint="Username" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="10dp"
             android:layout_weight="15"
-            android:drawableStart="@drawable/ic_vpn_key_black_24dp"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
+            app:helperTextEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextLabel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.154"
+            app:passwordToggleEnabled="true">
 
+            <EditText
+                android:id="@+id/userPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_vpn_key_black_24dp"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
