@@ -1,6 +1,8 @@
 package com.example.greyvibrant.front;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,8 +35,12 @@ import java.util.Map;
 
 public class UserFragment extends Fragment {
     Button userLogin;
-    EditText userEmail, userPassword;
-    static String URL_REGIST = "https://sabios-97.000webhostapp.com/login_greyvibrant.php";
+
+    EditText userEmail,userPassword;
+    SharedPreferences sharedPreferences;
+    static  String URL_REGIST="https://sabios-97.000webhostapp.com/login_greyvibrant.php";
+
+
 
     @Nullable
     @Override
@@ -46,6 +52,14 @@ public class UserFragment extends Fragment {
         userEmail = view.findViewById(R.id.userName);
         //  EditText userPhNo = view.findViewById(R.id.userPhNo);
         userPassword = view.findViewById(R.id.userPassword);
+        sharedPreferences=getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
+
+        if(sharedPreferences.getBoolean("isloggedin",false))
+        {
+            Intent intent = new Intent(getActivity(), HomePageUser.class);
+            startActivity(intent);
+        }
+
         userLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +107,28 @@ public class UserFragment extends Fragment {
 
                             if (success.equals("1")) {
                                 Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
+
+
+                                for(int i=0;i<jsonArray.length();i++)
+                                {
+                                    JSONObject object=jsonArray.getJSONObject(i);
+                                    String username=object.getString("username");
+                                    String email=object.getString("email");
+                                    String phNo=object.getString("phNo");
+                                    String fullname=object.getString("fullname");
+                                    String UID=object.getString("UID");
+                                    sharedPreferences=getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
+                                    sharedPreferences.edit().putString("username",username).apply();
+                                    sharedPreferences.edit().putString("email",email).apply();
+                                    sharedPreferences.edit().putString("phNo",phNo).apply();
+                                    sharedPreferences.edit().putString("fullname",fullname).apply();
+                                    sharedPreferences.edit().putBoolean("isloggedin",true).apply();
+
+                                    Log.i("USER :",username+"  "+email+" "+fullname+" "+phNo+" "+UID);
+                                }
+
                                 Toast.makeText(getContext(), "Log in", Toast.LENGTH_SHORT).show();
+                                getActivity().finish();
                                 Intent intent = new Intent(getActivity(), HomePageUser.class);
                                 startActivity(intent);
 
