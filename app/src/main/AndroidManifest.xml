@@ -12,16 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".front.RegistrationActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name=".front.HomePageArtist"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".front.HomePageUser"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity android:name=".front.LoginActivity" />
-        <activity android:name=".old.MySQLActivity" />
-        <activity android:name=".old.Main2Activity" />
+        <activity
+            android:name=".front.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".old.MySQLActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".old.Main2Activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".front.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,15 +41,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".old.MainActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity
+            android:name=".old.MainActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

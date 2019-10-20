@@ -35,18 +35,22 @@ import java.util.Map;
 
 public class UserFragment extends Fragment {
     Button userLogin;
+
     EditText userEmail,userPassword;
     SharedPreferences sharedPreferences;
     static  String URL_REGIST="https://sabios-97.000webhostapp.com/login_greyvibrant.php";
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_user_fragment, container, false);
-         userLogin = view.findViewById(R.id.userLogin);
+        userLogin = view.findViewById(R.id.userLogin);
         Button userSignUp = view.findViewById(R.id.userSignUp);
-       // EditText username = view.findViewById(R.id.userName);
-        userEmail = view.findViewById(R.id.userEmailID);
-      //  EditText userPhNo = view.findViewById(R.id.userPhNo);
+        // EditText username = view.findViewById(R.id.userName);
+        userEmail = view.findViewById(R.id.userName);
+        //  EditText userPhNo = view.findViewById(R.id.userPhNo);
         userPassword = view.findViewById(R.id.userPassword);
         sharedPreferences=getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 
@@ -59,7 +63,15 @@ public class UserFragment extends Fragment {
         userLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (userEmail.getText().toString().trim().isEmpty()) {
+                    userEmail.setError("Email is empty");
+                    userEmail.requestFocus();
+                    return;
+                } else if (userPassword.getText().toString().trim().isEmpty()) {
+                    userPassword.setError("Password is empty");
+                    userPassword.requestFocus();
+                    return;
+                }
                 Login();
             }
         });
@@ -67,35 +79,35 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Sign up", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+                startActivity(intent);
             }
         });
         return view;
     }
 
 
-    private void Login()
-    {
-        final String emailfinal=userEmail.getText().toString().trim();
-        final String passwordfinal=userPassword.getText().toString().trim();
+    private void Login() {
+        final String emailfinal = userEmail.getText().toString().trim();
+        final String passwordfinal = userPassword.getText().toString().trim();
 
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_REGIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.i("RESPONSE FROM PHP",response);
+                        Log.i("RESPONSE FROM PHP", response);
                         try {
-                            if(response==null || response.equals(""))
-                                Log.i("RESPONSE","IS NULL");
+                            if (response == null || response.equals(""))
+                                Log.i("RESPONSE", "IS NULL");
 
-                            JSONObject jsonObject=new JSONObject(response);
-                            String success=jsonObject.getString("success");
-                            JSONArray jsonArray=jsonObject.getJSONArray("login");
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("login");
 
 
-
-                            if(success.equals("1"))
-                            {
+                            if (success.equals("1")) {
                                 Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
+
 
                                 for(int i=0;i<jsonArray.length();i++)
                                 {
@@ -114,7 +126,9 @@ public class UserFragment extends Fragment {
 
                                     Log.i("USER :",username+"  "+email+" "+fullname+" "+phNo+" "+UID);
                                 }
+
                                 Toast.makeText(getContext(), "Log in", Toast.LENGTH_SHORT).show();
+                                getActivity().finish();
                                 Intent intent = new Intent(getActivity(), HomePageUser.class);
                                 startActivity(intent);
 
@@ -133,19 +147,18 @@ public class UserFragment extends Fragment {
                         Toast.makeText(getContext(), "login2 Error", Toast.LENGTH_SHORT).show();
 
                     }
-                })
-        {
+                }) {
             @Override
-            protected Map<String, String> getParams()  {
-                Map<String,String> params=new HashMap<>();
-                params.put("email",emailfinal);
-                params.put("password",passwordfinal);
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", emailfinal);
+                params.put("password", passwordfinal);
 
 
                 return params;
             }
         };
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
     }

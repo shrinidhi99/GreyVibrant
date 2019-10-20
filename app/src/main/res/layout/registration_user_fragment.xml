@@ -17,27 +17,27 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:layout_weight="30"
+            android:layout_margin="10dp"
+            android:layout_weight="8"
             android:src="@mipmap/ic_launcher_icon_app_round"
             android:visibility="visible" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="20"
+            android:layout_margin="0dp"
+            android:layout_weight="7"
             android:gravity="center"
             android:text="User"
-            android:textColor="#000"
-            android:textSize="20sp" />
+            android:textColor="#000"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_wallet_page_et_amount_enter_input"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="10dp"
-            android:layout_weight="15"
+            android:layout_weight="14"
             android:textColorHint="#000306"
             app:boxStrokeColor="@color/common"
             app:helperTextEnabled="true"
@@ -62,7 +62,32 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="10dp"
-            android:layout_weight="15"
+            android:layout_weight="14"
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
+            app:helperTextEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextLabel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.154">
+
+            <EditText
+                android:id="@+id/userFullName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_account_box_black_24dp"
+                android:hint="Full name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="14"
             android:textColorHint="#000306"
             app:boxStrokeColor="@color/common"
             app:helperTextEnabled="true"
@@ -82,22 +107,73 @@
                 android:drawableStart="@drawable/ic_vpn_key_black_24dp"
                 android:hint="Password"
                 android:inputType="textPassword" />
-
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="14"
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
+            app:helperTextEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextLabel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.154">
+
+            <EditText
+                android:id="@+id/userEmailID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_email_black_24dp"
+                android:hint="Email" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="14"
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
+            app:helperTextEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextLabel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.154">
+
+            <EditText
+                android:id="@+id/userPhNo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_phone_black_24dp"
+                android:hint="Phone number"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:layout_weight="10">
 
             <Button
-                android:id="@+id/userLogin"
+                android:id="@+id/userSignUp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/rec_gradient"
-                android:text="Login"
+                android:text="Sign Up"
                 android:textColor="#ffffff" />
 
         </LinearLayout>
@@ -106,21 +182,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
-            android:layout_weight="10"
+            android:layout_weight="3"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not a user?  " />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Already a user?  " />
 
             <Button
-                android:id="@+id/userSignUp"
+                android:id="@+id/userLogin"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/rec_gradient"
-                android:text="SIGN UP"
+                android:text="Login"
                 android:textColor="#ffffff" />
 
         </LinearLayout>

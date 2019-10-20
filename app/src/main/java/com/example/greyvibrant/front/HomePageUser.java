@@ -26,7 +26,7 @@ public class HomePageUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_user);
-//        sharedPreferences=getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
+        sharedPreferences=getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 //        String fullname=sharedPreferences.getString("fullname","cannot get fullname");
        // Toast.makeText(this, fullname, Toast.LENGTH_SHORT).show();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_user);
@@ -90,9 +90,11 @@ public class HomePageUser extends AppCompatActivity {
     }
 
     public void Logout(MenuItem item) {
+
         sharedPreferences.edit().putBoolean("isloggedin",false).apply();
-        finish();
+
         Intent intent = new Intent(HomePageUser.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 }
