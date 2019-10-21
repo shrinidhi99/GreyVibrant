@@ -21,7 +21,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
-import com.example.greyvibrant.old.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +31,7 @@ import java.util.Map;
 public class UserRegistrationFragment extends Fragment {
     EditText userName, userEmail, userPhNo, userPassword, userFullName;
     Button userSignUp;
-    static String URL_REGIST = "https://sabios-97.000webhostapp.com/register_greyvibrant.php";
+    static String URL_REGIST = "https://sabios-97.000webhostapp.com/user_register.php";
 
 
     @Nullable
@@ -91,7 +90,7 @@ public class UserRegistrationFragment extends Fragment {
         final String username = this.userName.getText().toString().trim();
         final String email = this.userEmail.getText().toString().trim();
         final String fullname = this.userFullName.getText().toString().trim();
-        final String password = this.userName.getText().toString().trim();
+        final String password = this.userPassword.getText().toString().trim();
         final String phNo = this.userPhNo.getText().toString().trim();
         final String playlistname = this.userName.getText().toString().trim();
 

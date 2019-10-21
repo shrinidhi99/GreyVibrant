@@ -2,10 +2,10 @@
 $conn = mysqli_connect("localhost", "id11221849_sabios", "Sayan@99", "id11221849_greyvibrant");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $email = $_POST['email'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM user_registration WHERE email='$email'";
+    $sql = "SELECT * FROM user_login WHERE username='$username'";
 
     $response = mysqli_query($conn, $sql);
 
@@ -18,12 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (password_verify($password, $row['password'])) {
 
-            $index['fullname'] = $row['fullname'];
-            $index['phNo'] = $row['phNo'];
             $index['UID'] = $row['UID'];
             $index['username'] = $row['username'];
-            $index['email'] = $row['email'];
-            $index['playlist_name'] = $row['playlist_name'];
 
             array_push($result['login'], $index);
 

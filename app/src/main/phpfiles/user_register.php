@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
 
         $result["success"] = "0";
-        $result["message"] = "error";
+        $result["message"] = "Either user already exists or check your internet connection";
 
         echo json_encode($result);
         mysqli_close($conn);
