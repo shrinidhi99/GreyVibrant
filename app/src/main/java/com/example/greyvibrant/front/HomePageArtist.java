@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -17,11 +19,13 @@ import com.google.android.material.navigation.NavigationView;
 public class HomePageArtist extends AppCompatActivity {
     private DrawerLayout artist_home_page_dl;
     private ActionBarDrawerToggle abdt;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_artist);
+        sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_artist);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.artist_fragment_container, new AlbumFragment()).commit();
@@ -36,12 +40,7 @@ public class HomePageArtist extends AppCompatActivity {
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                int id = menuItem.getItemId();
-//                if (id == R.id.profile_page) {
-//                    Toast.makeText(HomePageUser.this, "My profile", Toast.LENGTH_SHORT).show();
-//                } else if (id == R.id.logout) {
-//                    Toast.makeText(HomePageUser.this, "Log out", Toast.LENGTH_SHORT).show();
-//                }
+
                 return true;
             }
         });
@@ -80,7 +79,10 @@ public class HomePageArtist extends AppCompatActivity {
     }
 
     public void Logout(MenuItem item) {
+        sharedPreferences.edit().putBoolean("isloggedin", false).apply();
+
         Intent intent = new Intent(HomePageArtist.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 }
