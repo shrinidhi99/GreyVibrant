@@ -65,7 +65,7 @@ public class UploadFragment extends Fragment {
     Uri path;
     private StorageTask<UploadTask.TaskSnapshot> mUploadTask;
     EditText songName, album, genre, language;
-    String songUrl,artistAIDPut;
+    String songUrl, artistAIDPut;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/song.php";
 
 
@@ -83,7 +83,7 @@ public class UploadFragment extends Fragment {
         language = view.findViewById(R.id.language);
         mStorageRef = FirebaseStorage.getInstance().getReference("Music");
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
-        artistAIDPut=sharedPreferences.getString("AID",null);
+        artistAIDPut = sharedPreferences.getString("AID", null);
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Music");
         pickFile.setOnClickListener(new View.OnClickListener() {
@@ -184,7 +184,6 @@ public class UploadFragment extends Fragment {
     private void AddSongData(final String songurl) {
 
 
-
         final String songname = this.songName.getText().toString().trim();
         final String album = this.album.getText().toString().trim();
         final String genre = this.genre.getText().toString().trim();
@@ -206,9 +205,6 @@ public class UploadFragment extends Fragment {
                             String success = jsonObject.getString("success");
                             if (success.equals("1")) {
                                 Toast.makeText(getContext(), "Data Added", Toast.LENGTH_SHORT).show();
-                                getActivity().finish();
-                                Intent intent = new Intent(getActivity(), HomePageUser.class);
-                                startActivity(intent);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -228,7 +224,7 @@ public class UploadFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                Log.i("SONG URL",songurl);
+                Log.i("SONG URL", songurl);
                 params.put("songname", songname);
                 params.put("songurl", songurl);
                 params.put("genre", genre);
