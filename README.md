@@ -15,16 +15,16 @@
 ## Tasks to be completed in this project:
 * [x] Data base design
 * [x] ER diagram for the data base design
-* [ ] Implement the queries in MySQL
-* [ ] Write PHP files to perform queries
-* [ ] Connect the mobile application with the MySQL server running at the localhost
-* [ ] Design the front-end of the mobile application
+* [x] Implement the queries in MySQL
+* [x] Write PHP files to perform queries
+* [x] Connect the mobile application with the MySQL server running at the localhost
+* [x] Design the front-end of the mobile application
 * [ ] Develop the front-end of the mobile application
 * [ ] Check out the ways to store audio files in database
 * [ ] Test the performance of the application
 * [ ] If some more time remains then fine tune the application in terms of performance, UI and UX
 ---
-```java
+```shell script
 1. git pull upstream master 
 2. git checkout -b <branch_name_for_commit>
 3. git add . 
@@ -34,7 +34,7 @@
    If no conflicts then generate a pull request
 ```
 ---
-```java
+```shell script
 To configure phpmyadmin into your android project, follow these steps: (First time in a device)
 1. sudo apt update
 2. sudo apt-get install phpmyadmin php-mbstring php-gettext -y (choose apache as your server and create a password)
@@ -48,7 +48,7 @@ To configure phpmyadmin into your android project, follow these steps: (First ti
 
 ```
 ---
-```java
+```shell script
 To install XAMPP in ubuntu follow these steps:
 1. Download the executable files from https://www.apachefriends.org/download.html
 2. Make the installation package executable
@@ -77,7 +77,7 @@ To uninstall XAMPP
 3. sudo rm -r /opt/lampp
 ```
 ---
-```java
+```shell script
 To setup the environment required for the php files to run on the localhost follow these steps:
 1. sudo apachectl stop (to stop apache server)
 2. sudo /opt/lampp/lampp stop (to stop XAMPP if it is running and not working fine)
@@ -87,7 +87,7 @@ To setup the environment required for the php files to run on the localhost foll
 6. localhost/phpmyadmin (to run phpmyadmin for running MySQL database server)
 ```
 ---
-```java
+```text
 refer all these links on stackoverflow
 1. https://stackoverflow.com/questions/4779963/how-can-i-access-my-localhost-from-my-android-device?page=1&tab=votes#tab-top
 2. https://stackoverflow.com/questions/23382627/wamp-cannot-access-on-local-network-403-forbidden/23385021#23385021
