@@ -15,10 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
 
     $sql = "INSERT INTO song  VALUES (NULL,'$songname','$songurl','$genre','$language','$album')";
+     
+
 
     if (mysqli_query($conn, $sql)) {
 
-        $songsql = "SELECT SID FROM song WHERE songname = '$songname'";
+        $songsql = "SELECT SID FROM song WHERE songurl = '$songurl'";
 
         $response = mysqli_query($conn, $songsql);
 
