@@ -3,7 +3,9 @@ package com.example.greyvibrant.front;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -25,6 +27,12 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,10 +46,17 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class UploadFragment extends Fragment {
     String TAG = "Permission";
     TextView location;
     FloatingActionButton pickFile;
+    SharedPreferences sharedPreferences;
     Intent FileIntent;
     Button uploadFile;
     private StorageReference mStorageRef;
@@ -49,8 +64,10 @@ public class UploadFragment extends Fragment {
     private DatabaseReference mDatabaseRef;
     Uri path;
     private StorageTask<UploadTask.TaskSnapshot> mUploadTask;
-    EditText songName;
-    String songUrl;
+    EditText songName, album, genre, language;
+    String songUrl,artistAIDPut;
+    static String URL_REGIST = "https://sabios-97.000webhostapp.com/song.php";
+
 
     @Nullable
     @Override
@@ -61,7 +78,12 @@ public class UploadFragment extends Fragment {
         uploadFile = view.findViewById(R.id.upload_song);
         mProgressBar = view.findViewById(R.id.progress_bar);
         songName = view.findViewById(R.id.song_name);
+        album = view.findViewById(R.id.song_album);
+        genre = view.findViewById(R.id.genre);
+        language = view.findViewById(R.id.language);
         mStorageRef = FirebaseStorage.getInstance().getReference("Music");
+        sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
+        artistAIDPut=sharedPreferences.getString("AID",null);
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Music");
         pickFile.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +157,7 @@ public class UploadFragment extends Fragment {
                             public void onSuccess(Uri uri) {
                                 songUrl = uri.toString();
                                 // add MySQL code here
+                                AddSongData(songUrl);
 
 
                             }
@@ -156,6 +179,70 @@ public class UploadFragment extends Fragment {
                 Toast.makeText(getContext(), "No file selected", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private void AddSongData(final String songurl) {
+
+
+
+        final String songname = this.songName.getText().toString().trim();
+        final String album = this.album.getText().toString().trim();
+        final String genre = this.genre.getText().toString().trim();
+        final String language = this.language.getText().toString().trim();
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("RESPONSE FROM PHP", response);
+                        try {
+                            if (response == null || response.equals(""))
+                                Log.i("RESPONSE", "IS NULL");
+
+                            JSONObject jsonObject = new JSONObject(response);
+
+
+                            String success = jsonObject.getString("success");
+                            if (success.equals("1")) {
+                                Toast.makeText(getContext(), "Data Added", Toast.LENGTH_SHORT).show();
+                                getActivity().finish();
+                                Intent intent = new Intent(getActivity(), HomePageUser.class);
+                                startActivity(intent);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getContext(), "DB Error", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "DB Error 2", Toast.LENGTH_SHORT).show();
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                Log.i("SONG URL",songurl);
+                params.put("songname", songname);
+                params.put("songurl", songurl);
+                params.put("genre", genre);
+                params.put("language", language);
+                params.put("album", album);
+                params.put("AID", artistAIDPut);
+
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
     }
 
     private boolean isStoragePermissionGranted() {
