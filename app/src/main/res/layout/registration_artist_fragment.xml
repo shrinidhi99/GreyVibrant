@@ -150,7 +150,7 @@
             app:layout_constraintVertical_bias="0.154">
 
             <EditText
-                android:id="@+id/artistPhNo"
+                android:id="@+id/artistphNo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_phone_black_24dp"

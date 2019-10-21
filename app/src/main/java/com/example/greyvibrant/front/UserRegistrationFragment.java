@@ -43,7 +43,7 @@ public class UserRegistrationFragment extends Fragment {
 
         userName = view.findViewById(R.id.userName);
         userEmail = view.findViewById(R.id.userEmailID);
-        userPhNo = view.findViewById(R.id.userPhNo);
+        userPhNo = view.findViewById(R.id.userphNo);
         userPassword = view.findViewById(R.id.userPassword);
         userFullName = view.findViewById(R.id.userFullName);
         userLogin.setOnClickListener(new View.OnClickListener() {

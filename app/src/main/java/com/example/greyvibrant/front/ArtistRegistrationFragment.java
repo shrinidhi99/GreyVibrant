@@ -40,7 +40,7 @@ public class ArtistRegistrationFragment extends Fragment {
         Button artistSignUp = view.findViewById(R.id.artistSignUp);
         artistName = view.findViewById(R.id.artistName);
         artistEmail = view.findViewById(R.id.artistEmailID);
-        artistPhNo = view.findViewById(R.id.artistPhNo);
+        artistPhNo = view.findViewById(R.id.artistphNo);
         artistPassword = view.findViewById(R.id.artistPassword);
         artistFullName = view.findViewById(R.id.artistFullName);
         artistLogin.setOnClickListener(new View.OnClickListener() {
