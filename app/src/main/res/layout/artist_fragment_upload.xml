@@ -83,11 +83,11 @@
             app:hintTextAppearance="@style/TextLabel">
 
             <EditText
-                android:id="@+id/artist_1"
+                android:id="@+id/song_album"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Artist"
+                android:hint="Album"
                 android:textColorLink="#000000" />
 
         </com.google.android.material.textfield.TextInputLayout>
