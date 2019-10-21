@@ -1,7 +1,10 @@
 package com.example.greyvibrant.front;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +16,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ArtistFragment extends Fragment {
     EditText artistName, artistPassword;
+    SharedPreferences sharedPreferences;
+    static String URL_REGIST = "https://sabios-97.000webhostapp.com/artist_login.php";
+
 
     @Nullable
     @Override
@@ -26,6 +45,15 @@ public class ArtistFragment extends Fragment {
         Button artistSignUp = view.findViewById(R.id.artistSignUp);
         artistName = view.findViewById(R.id.artistName);
         artistPassword = view.findViewById(R.id.artistPassword);
+
+        sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
+
+        if (sharedPreferences.getBoolean("isloggedin", false)) {
+            Intent intent = new Intent(getActivity(), HomePageArtist.class);
+            startActivity(intent);
+        }
+
+
         artistLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,9 +82,72 @@ public class ArtistFragment extends Fragment {
     }
 
     private void Login() {
+        final String artistnameFinal = artistName.getText().toString().trim();
+        final String passwordfinal = artistPassword.getText().toString().trim();
 
-        Toast.makeText(getActivity(), "Log in", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getActivity(), HomePageArtist.class);
-        startActivity(intent);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("RESPONSE FROM PHP", response);
+                        try {
+                            if (response == null || response.equals(""))
+                                Log.i("RESPONSE", "IS NULL");
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("login");
+
+
+                            if (success.equals("1")) {
+                                Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
+
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String artistname = object.getString("artistname");
+                                    String AID = object.getString("AID");
+                                    sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
+                                    sharedPreferences.edit().putString("artistname", artistname).apply();
+                                    sharedPreferences.edit().putString("AID", AID).apply();
+                                    sharedPreferences.edit().putBoolean("isloggedin", true).apply();
+
+                                    Log.i("ARTIST :", artistname + "  " + " " + AID);
+                                }
+
+                                Toast.makeText(getContext(), "Log in", Toast.LENGTH_SHORT).show();
+                                getActivity().finish();
+                                Intent intent = new Intent(getActivity(), HomePageArtist.class);
+                                startActivity(intent);
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getContext(), "login Error", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "login2 Error", Toast.LENGTH_SHORT).show();
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("artistname", artistnameFinal);
+                params.put("password", passwordfinal);
+
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
     }
 }

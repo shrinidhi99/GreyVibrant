@@ -78,7 +78,7 @@ public class HomePageUser extends AppCompatActivity {
     }
 
     public void ProfilePage(MenuItem item) {
-        Intent intent = new Intent(HomePageUser.this, LoginActivity.class);
+        Intent intent = new Intent(HomePageUser.this, profilePageUser.class);
         startActivity(intent);
     }
 

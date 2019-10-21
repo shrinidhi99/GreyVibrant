@@ -74,7 +74,7 @@ public class HomePageArtist extends AppCompatActivity {
     }
 
     public void ProfilePage(MenuItem item) {
-        Intent intent = new Intent(HomePageArtist.this, LoginActivity.class);
+        Intent intent = new Intent(HomePageArtist.this, profilePageArtist.class);
         startActivity(intent);
     }
 

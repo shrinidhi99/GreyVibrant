@@ -48,7 +48,7 @@ public class UserFragment extends Fragment {
         Button userSignUp = view.findViewById(R.id.userSignUp);
         // EditText username = view.findViewById(R.id.userName);
         username = view.findViewById(R.id.userName);
-        //  EditText userPhNo = view.findViewById(R.id.userPhNo);
+
         userPassword = view.findViewById(R.id.userPassword);
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 
