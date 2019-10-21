@@ -1,6 +1,7 @@
 package com.example.greyvibrant.front;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -63,6 +64,11 @@ public class HomePageArtist extends AppCompatActivity {
                     return true;
                 }
             };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

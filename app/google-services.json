@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "988615767300",
+    "firebase_url": "https://greyvibrant.firebaseio.com",
+    "project_id": "greyvibrant",
+    "storage_bucket": "greyvibrant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988615767300:android:3aa4d41c5f5a6cdde24c51",
+        "android_client_info": {
+          "package_name": "com.example.greyvibrant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988615767300-8bt2qsdn6bubsl2ofvs2ml6v8e5jukl2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.greyvibrant",
+            "certificate_hash": "237e2a8c7d1158c11caa22343a9500de376b6a82"
+          }
+        },
+        {
+          "client_id": "988615767300-9gpj81ngmtefs6cb8im9hvoc6ht23ijg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5hXimdsmRcmgvflaByyX2uXNnM35u-Ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988615767300-9gpj81ngmtefs6cb8im9hvoc6ht23ijg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
