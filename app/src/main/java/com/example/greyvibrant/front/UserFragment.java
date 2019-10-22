@@ -119,11 +119,13 @@ public class UserFragment extends Fragment {
                                     Log.i("USER :", username + "  " + " " + UID);
                                 }
 
-                                Toast.makeText(getContext(), "Log in", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Logging in...", Toast.LENGTH_SHORT).show();
                                 getActivity().finish();
                                 Intent intent = new Intent(getActivity(), HomePageUser.class);
                                 startActivity(intent);
 
+                            } else {
+                                Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
