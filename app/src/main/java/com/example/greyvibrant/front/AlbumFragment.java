@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AlbumFragment extends Fragment {
+
     SharedPreferences sharedPreferences;
     private RecyclerView mRecyclerView;
     private albumFragmentAdapter mAdapter;

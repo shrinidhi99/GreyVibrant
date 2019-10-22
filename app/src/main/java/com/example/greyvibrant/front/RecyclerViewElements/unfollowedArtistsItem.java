@@ -4,9 +4,10 @@ public class unfollowedArtistsItem {
 
     private String mArtistname;
     private int mAID;
+    private int mImageResource;
 
-    public unfollowedArtistsItem(String artistname, int AID) {
-
+    public unfollowedArtistsItem(int imageResource, String artistname, int AID) {
+        mImageResource = imageResource;
         mArtistname = artistname;
         mAID = AID;
     }
@@ -25,5 +26,13 @@ public class unfollowedArtistsItem {
 
     public void setmAID(int mAID) {
         this.mAID = mAID;
+    }
+
+    public int getmImageResource() {
+        return mImageResource;
+    }
+
+    public void setmImageResource(int mImageResource) {
+        this.mImageResource = mImageResource;
     }
 }

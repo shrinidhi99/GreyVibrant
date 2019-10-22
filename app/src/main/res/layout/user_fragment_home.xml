@@ -7,8 +7,7 @@
     <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="115">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,32 +52,68 @@
                 android:src="@drawable/ic_search_black_24dp" />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="3"
+            android:text="Followed artists"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_followed"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="25" />
+            android:layout_weight="15" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="3"
+            android:text="Unfollowed artists"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_unfollowed"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="25" />
+            android:layout_weight="15" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="3"
+            android:text="Must Listen"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_recommended"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="25" />
+            android:layout_weight="30" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="3"
+            android:text="Have you heard them"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_remaining"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="25" />
+            android:layout_weight="30" />
     </LinearLayout>
 </ScrollView>
