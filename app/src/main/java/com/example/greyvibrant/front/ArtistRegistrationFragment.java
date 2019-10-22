@@ -106,7 +106,7 @@ public class ArtistRegistrationFragment extends Fragment {
                             if (success.equals("1")) {
                                 Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
                                 getActivity().finish();
-                                Intent intent = new Intent(getActivity(), HomePageArtist.class);
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
                                 startActivity(intent);
                             }
                         } catch (JSONException e) {

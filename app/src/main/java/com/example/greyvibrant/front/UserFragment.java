@@ -105,6 +105,7 @@ public class UserFragment extends Fragment {
                             if (success.equals("1")) {
                                 Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
 
+//                                Log.i("JsonArray length b4 loop",String.valueOf(jsonArray.length()));
 
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject object = jsonArray.getJSONObject(i);
