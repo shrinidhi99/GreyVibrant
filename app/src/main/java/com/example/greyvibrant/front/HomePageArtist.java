@@ -91,4 +91,13 @@ public class HomePageArtist extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        sharedPreferences.edit().putBoolean("isloggedin", false).apply();
+        Intent intent = new Intent(HomePageArtist.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +27,15 @@ public class AlbumFragment extends Fragment {
     private albumFragmentAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     ArrayList<myAlbumItem> albumList = new ArrayList<>();
+    EditText searchBar;
+    ImageView searchString;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.artist_fragment_album, container, false);
-//        setHasOptionsMenu(true);
+        searchBar = view.findViewById(R.id.searchBox);
+        searchString = view.findViewById(R.id.search_string);
         albumList.add(new myAlbumItem("No good in goodbye", "The Script", "Pop", "English"));
         albumList.add(new myAlbumItem("Roar", "Katy Perry", "Rock", "English"));
         albumList.add(new myAlbumItem("Champions", "Personal", "Rock", "English"));
@@ -46,29 +53,18 @@ public class AlbumFragment extends Fragment {
         mAdapter = new albumFragmentAdapter(albumList);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        searchString.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search();
+            }
+        });
         return view;
     }
 
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getActivity().getMenuInflater();
-//        inflater.inflate(R.menu.example_menu, menu);
-//        MenuItem searchItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) searchItem.getActionView();
-//        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                mAdapter.getFilter().filter(s);
-//                return false;
-//            }
-//        });
-//        return true;
-//    }
+    private void search() {
+        String string = searchBar.getText().toString().trim();
+        mAdapter.getFilter().filter(string);
+    }
 }

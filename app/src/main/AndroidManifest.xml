@@ -13,22 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".front.profilePageArtist"></activity>
+        <activity android:name=".front.profilePageArtist">
+
+        </activity>
         <activity android:name=".front.profilePageUser" />
         <activity
             android:name=".front.RegistrationActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".front.HomePageArtist"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
         <activity
             android:name=".front.HomePageUser"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".front.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".old.MySQLActivity"
             android:screenOrientation="portrait" />

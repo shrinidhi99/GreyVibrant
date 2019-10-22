@@ -21,14 +21,14 @@ public class albumFragmentAdapter extends RecyclerView.Adapter<albumFragmentAdap
     private List<myAlbumItem> albumListFull;
 
 
-    public static class AlbumViewHolder extends RecyclerView.ViewHolder {
+    static class AlbumViewHolder extends RecyclerView.ViewHolder {
         private TextView mSongname;
         private TextView mAlbum;
         private TextView mGenre;
         private TextView mLanguage;
 
 
-        public AlbumViewHolder(@NonNull View itemView) {
+        AlbumViewHolder(@NonNull View itemView) {
             super(itemView);
             mSongname = itemView.findViewById(R.id.song_name);
             mAlbum = itemView.findViewById(R.id.song_album);
@@ -66,10 +66,10 @@ public class albumFragmentAdapter extends RecyclerView.Adapter<albumFragmentAdap
 
     @Override
     public Filter getFilter() {
-        return exampleFilter;
+        return albumFilter;
     }
 
-    private Filter exampleFilter = new Filter() {
+    private Filter albumFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<myAlbumItem> filteredList = new ArrayList<>();
