@@ -83,3 +83,7 @@ lint/tmp/
 # lint/reports/
 .project/
 .classpath/
+/.project
+/.classpath
+/.settings
+.settings/
