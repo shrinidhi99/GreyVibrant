@@ -1,11 +1,11 @@
 package com.example.greyvibrant.front.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,9 +20,17 @@ import java.util.List;
 public class UnfollowedArtistAdapter extends RecyclerView.Adapter<UnfollowedArtistAdapter.UnfollowedArtistViewHolder> implements Filterable {
     private List<unfollowedArtistsItem> mUnfollowedArtistList;
     private List<unfollowedArtistsItem> unfollowedArtistListFull;
+    public OnItemClickListener mListener;
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
 
-    static class UnfollowedArtistViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
+    class UnfollowedArtistViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mArtistname;
         private int mAID;
@@ -31,7 +39,19 @@ public class UnfollowedArtistAdapter extends RecyclerView.Adapter<UnfollowedArti
         UnfollowedArtistViewHolder(@NonNull View itemView) {
             super(itemView);
             mArtistname = itemView.findViewById(R.id.artist_name_unfollowed);
-//            mImage = itemView.findViewById(R.id.follow_button);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                            unfollowedArtistsItem clickedItem = mUnfollowedArtistList.get(position);
+                            Log.d("onItemClick", clickedItem.getmArtistname());
+                        }
+                    }
+                }
+            });
         }
     }
 

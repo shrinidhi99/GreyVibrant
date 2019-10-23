@@ -1,12 +1,13 @@
 package com.example.greyvibrant.front.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,18 +21,39 @@ import java.util.List;
 public class FollowedArtistAdapter extends RecyclerView.Adapter<FollowedArtistAdapter.FollowedArtistViewHolder> implements Filterable {
     private List<followedArtistsItem> mFollowedArtistList;
     private List<followedArtistsItem> followedArtistListFull;
+    public OnItemClickListener mListener;
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
 
-    static class FollowedArtistViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
+    class FollowedArtistViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mArtistname;
         private int mAID;
-//        private ImageView mImage;
 
         FollowedArtistViewHolder(@NonNull View itemView) {
             super(itemView);
             mArtistname = itemView.findViewById(R.id.artist_name_followed);
-//            mImage = itemView.findViewById(R.id.unfollow_button);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                            followedArtistsItem clickedItem = mFollowedArtistList.get(position);
+//                            Toast.makeText(getContext(), clickedItem.getmArtistname(), Toast.LENGTH_SHORT).show();
+                            Log.d("onItemClick", clickedItem.getmArtistname());
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -52,7 +74,6 @@ public class FollowedArtistAdapter extends RecyclerView.Adapter<FollowedArtistAd
     public void onBindViewHolder(@NonNull FollowedArtistViewHolder holder, int position) {
         followedArtistsItem currentItem = mFollowedArtistList.get(position);
         holder.mArtistname.setText(currentItem.getmArtistname());
-//        holder.mImage.setImageResource(currentItem.getmImageResource());
     }
 
     @Override

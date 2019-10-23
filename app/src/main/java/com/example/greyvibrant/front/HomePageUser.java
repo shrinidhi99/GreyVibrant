@@ -13,10 +13,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.greyvibrant.R;
+import com.example.greyvibrant.front.adapter.FollowedArtistAdapter;
+import com.example.greyvibrant.front.adapter.UnfollowedArtistAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class HomePageUser extends AppCompatActivity {
+public class HomePageUser extends AppCompatActivity implements FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener {
     private DrawerLayout user_home_page_dl;
     private ActionBarDrawerToggle abdt;
     SharedPreferences sharedPreferences;
@@ -89,5 +91,10 @@ public class HomePageUser extends AppCompatActivity {
         Intent intent = new Intent(HomePageUser.this, LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
     }
 }

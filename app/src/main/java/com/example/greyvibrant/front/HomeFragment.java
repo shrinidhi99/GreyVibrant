@@ -1,9 +1,12 @@
 package com.example.greyvibrant.front;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +26,7 @@ import com.example.greyvibrant.front.adapter.UnfollowedArtistAdapter;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener {
     private RecyclerView mRecyclerViewFollowed, mRecyclerViewUnfollowed, mRecyclerViewRecommended, mRecyclerViewRemaining;
     private RecyclerView.LayoutManager mLayoutManager1, mLayoutManager2, mLayoutManager3, mLayoutManager4;
 
@@ -63,13 +66,16 @@ public class HomeFragment extends Fragment {
         followedArtistAdapter = new FollowedArtistAdapter(followedArtistsItemsList);
         mRecyclerViewFollowed.setLayoutManager(mLayoutManager1);
         mRecyclerViewFollowed.setAdapter(followedArtistAdapter);
+        followedArtistAdapter.setOnItemClickListener((FollowedArtistAdapter.OnItemClickListener) getContext());
         followedArtistAdapter.notifyDataSetChanged();
+
 
         mRecyclerViewUnfollowed.setHasFixedSize(true);
         mLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         unfollowedArtistAdapter = new UnfollowedArtistAdapter(unfollowedArtistsItemsList);
         mRecyclerViewUnfollowed.setLayoutManager(mLayoutManager2);
         mRecyclerViewUnfollowed.setAdapter(unfollowedArtistAdapter);
+        unfollowedArtistAdapter.setOnItemClickListener((UnfollowedArtistAdapter.OnItemClickListener) getContext());
         unfollowedArtistAdapter.notifyDataSetChanged();
 
         mRecyclerViewRecommended.setHasFixedSize(true);
@@ -87,5 +93,13 @@ public class HomeFragment extends Fragment {
         remainingSongsAdapter.notifyDataSetChanged();
 
         return view;
+    }
+
+
+    @Override
+    public void onItemClick(int position) {
+        followedArtistsItem clickedItem = followedArtistsItemsList.get(position);
+        Toast.makeText(getContext(), clickedItem.getmArtistname(), Toast.LENGTH_SHORT).show();
+        Log.d("onItemClick", clickedItem.getmArtistname());
     }
 }
