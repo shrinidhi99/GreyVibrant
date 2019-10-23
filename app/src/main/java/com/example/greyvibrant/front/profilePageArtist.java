@@ -35,10 +35,10 @@ public class profilePageArtist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page_artist);
-        artistnametext=(TextView)findViewById(R.id.artistName);
-        emailtext=(TextView)findViewById(R.id.artistEmailID);
-        phNotext=(TextView)findViewById(R.id.artistphNo);
-        fullnametext=(TextView)findViewById(R.id.artistFullName);
+        artistnametext= findViewById(R.id.artistName);
+        emailtext= findViewById(R.id.artistEmailID);
+        phNotext= findViewById(R.id.artistphNo);
+        fullnametext= findViewById(R.id.artistFullName);
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         artistnamePut=sharedPreferences.getString("artistname",null);
         setProfileData();

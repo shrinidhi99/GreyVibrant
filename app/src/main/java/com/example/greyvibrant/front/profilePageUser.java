@@ -35,10 +35,10 @@ SharedPreferences sharedPreferences;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page_user);
-        usernametext=(TextView)findViewById(R.id.userName);
-        emailtext=(TextView)findViewById(R.id.userEmailID);
-        phNotext=(TextView)findViewById(R.id.userphNo);
-        fullnametext=(TextView)findViewById(R.id.userFullName);
+        usernametext= findViewById(R.id.userName);
+        emailtext= findViewById(R.id.userEmailID);
+        phNotext= findViewById(R.id.userphNo);
+        fullnametext= findViewById(R.id.userFullName);
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         usernamePut=sharedPreferences.getString("username",null);
         setProfileData();

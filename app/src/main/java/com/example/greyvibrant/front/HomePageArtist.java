@@ -85,7 +85,7 @@ public class HomePageArtist extends AppCompatActivity {
     }
 
     public void Logout(MenuItem item) {
-        sharedPreferences.edit().putBoolean("isloggedin", false).apply();
+        sharedPreferences.edit().putBoolean("isloggedin_artist", false).apply();
 
         Intent intent = new Intent(HomePageArtist.this, LoginActivity.class);
         startActivity(intent);
@@ -95,7 +95,7 @@ public class HomePageArtist extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        sharedPreferences.edit().putBoolean("isloggedin", false).apply();
+        sharedPreferences.edit().putBoolean("isloggedin_artist", false).apply();
         Intent intent = new Intent(HomePageArtist.this, LoginActivity.class);
         startActivity(intent);
         finish();
