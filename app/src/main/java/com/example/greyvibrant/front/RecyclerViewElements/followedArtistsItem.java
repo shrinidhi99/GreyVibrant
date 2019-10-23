@@ -5,11 +5,13 @@ public class followedArtistsItem {
     private String mArtistname;
     private int mAID;
     private int mImageResource;
+    private int mUID;
 
-    public followedArtistsItem(int imageResource, String artistname, int AID) {
+    public followedArtistsItem(int imageResource, String artistname, int AID, int UID) {
         mImageResource = imageResource;
         mArtistname = artistname;
         mAID = AID;
+        mUID = UID;
     }
 
     public String getmArtistname() {
@@ -34,5 +36,13 @@ public class followedArtistsItem {
 
     public void setmImageResource(int mImageResource) {
         this.mImageResource = mImageResource;
+    }
+
+    public int getmUID() {
+        return mUID;
+    }
+
+    public void setmUID(int mUID) {
+        this.mUID = mUID;
     }
 }
