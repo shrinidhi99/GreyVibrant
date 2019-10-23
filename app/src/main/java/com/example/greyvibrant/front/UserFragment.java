@@ -52,7 +52,7 @@ public class UserFragment extends Fragment {
         userPassword = view.findViewById(R.id.userPassword);
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 
-        if (sharedPreferences.getBoolean("isloggedin", false)) {
+        if (sharedPreferences.getBoolean("isloggedin_user", false)) {
             Intent intent = new Intent(getActivity(), HomePageUser.class);
             startActivity(intent);
         }
@@ -114,7 +114,7 @@ public class UserFragment extends Fragment {
                                     sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
                                     sharedPreferences.edit().putString("username", username).apply();
                                     sharedPreferences.edit().putString("UID", UID).apply();
-                                    sharedPreferences.edit().putBoolean("isloggedin", true).apply();
+                                    sharedPreferences.edit().putBoolean("isloggedin_user", true).apply();
 
                                     Log.i("USER :", username + "  " + " " + UID);
                                 }

@@ -84,8 +84,17 @@ public class HomePageUser extends AppCompatActivity {
 
     public void Logout(MenuItem item) {
 
-        sharedPreferences.edit().putBoolean("isloggedin", false).apply();
+        sharedPreferences.edit().putBoolean("isloggedin_user", false).apply();
 
+        Intent intent = new Intent(HomePageUser.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        sharedPreferences.edit().putBoolean("isloggedin_user", false).apply();
         Intent intent = new Intent(HomePageUser.this, LoginActivity.class);
         startActivity(intent);
         finish();

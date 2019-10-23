@@ -48,7 +48,7 @@ public class ArtistFragment extends Fragment {
 
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 
-        if (sharedPreferences.getBoolean("isloggedin", false)) {
+        if (sharedPreferences.getBoolean("isloggedin_artist", false)) {
             Intent intent = new Intent(getActivity(), HomePageArtist.class);
             startActivity(intent);
         }
@@ -110,7 +110,7 @@ public class ArtistFragment extends Fragment {
                                     sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
                                     sharedPreferences.edit().putString("artistname", artistname).apply();
                                     sharedPreferences.edit().putString("AID", AID).apply();
-                                    sharedPreferences.edit().putBoolean("isloggedin", true).apply();
+                                    sharedPreferences.edit().putBoolean("isloggedin_artist", true).apply();
 
                                     Log.i("ARTIST :", artistname + "  " + " " + AID);
                                 }
