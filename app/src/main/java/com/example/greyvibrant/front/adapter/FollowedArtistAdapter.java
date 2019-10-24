@@ -15,7 +15,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
-import com.example.greyvibrant.front.HomeFragment;
 import com.example.greyvibrant.front.RecyclerViewElements.followedArtistsItem;
 import com.example.greyvibrant.front.RecyclerViewElements.unfollowedArtistsItem;
 
@@ -85,6 +84,7 @@ public class FollowedArtistAdapter extends RecyclerView.Adapter<FollowedArtistAd
                                                     Log.d("Artist insertion", "Success");
                                                     UnfollowedArtistAdapter.mUnfollowedArtistList.add(new unfollowedArtistsItem(R.drawable.ic_done_black_24dp, artistname, AID, UID));
                                                     notifyDataSetChanged();
+
 //                                                    (new UnfollowedArtistAdapter((ArrayList<unfollowedArtistsItem>) UnfollowedArtistAdapter.mUnfollowedArtistList)).notifyDataSetChanged();
 
                                                 }

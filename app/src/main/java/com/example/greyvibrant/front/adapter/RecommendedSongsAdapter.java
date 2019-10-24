@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSongsAdapter.RecommendedSongsViewHolder> implements Filterable {
+
     private List<recommendedSongsItem> mRecommendedSongsList;
     private List<recommendedSongsItem> recommendedSongsListFull;
 

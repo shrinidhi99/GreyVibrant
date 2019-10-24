@@ -83,6 +83,8 @@ public class UnfollowedArtistAdapter extends RecyclerView.Adapter<UnfollowedArti
                                                     Log.d("Artist insertion", "Success");
                                                     FollowedArtistAdapter.mFollowedArtistList.add(new followedArtistsItem(R.drawable.ic_done_black_24dp,artistname,AID,UID));
                                                     notifyDataSetChanged();
+
+
 //                                                    (new FollowedArtistAdapter((ArrayList<followedArtistsItem>) FollowedArtistAdapter.mFollowedArtistList)).notifyDataSetChanged();
 
                                                 }
