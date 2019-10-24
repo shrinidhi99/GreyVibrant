@@ -64,7 +64,8 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
         View view = inflater.inflate(R.layout.user_fragment_home, container, false);
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         UIDPut = sharedPreferences.getString("UID", null);
-
+        unfollowedArtistsItemsList.clear();
+        followedArtistsItemsList.clear();
         mRecyclerViewFollowed = view.findViewById(R.id.recycler_view_followed);
         mRecyclerViewUnfollowed = view.findViewById(R.id.recycler_view_unfollowed);
         mRecyclerViewRecommended = view.findViewById(R.id.recycler_view_recommended);
