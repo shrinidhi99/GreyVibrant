@@ -9,7 +9,13 @@
             android:title="Profile Page">
 
         </item>
+        <item
+            android:id="@+id/song_history"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:onClick="SongsHistory"
+            android:title="Songs History">
 
+        </item>
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_exit_to_app_black_24dp"

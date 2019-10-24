@@ -84,6 +84,11 @@ public class HomePageUser extends AppCompatActivity implements FollowedArtistAda
         startActivity(intent);
     }
 
+    public void SongsHistory(MenuItem item) {
+        Intent intent = new Intent(HomePageUser.this, SongsHistory.class);
+        startActivity(intent);
+    }
+
     public void Logout(MenuItem item) {
 
         sharedPreferences.edit().putBoolean("isloggedin_user", false).apply();
@@ -107,5 +112,7 @@ public class HomePageUser extends AppCompatActivity implements FollowedArtistAda
 
 
     }
+
+
 }
 
