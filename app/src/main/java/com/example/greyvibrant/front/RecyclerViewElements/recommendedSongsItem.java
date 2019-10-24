@@ -7,14 +7,20 @@ public class recommendedSongsItem {
     private String mGenre;
     private String mLanguage;
     private String mArtistname;
+    private String mSongurl;
+    private int mAID;
+    private int mUID;
 
-    public recommendedSongsItem(String songname, String album, String genre, String language, String artistname) {
+    public recommendedSongsItem(String songname, int AID, int UID, String album, String genre, String language, String artistname, String songurl) {
 
         mSongname = songname;
         mAlbum = album;
         mGenre = genre;
         mLanguage = language;
         mArtistname = artistname;
+        mAID = AID;
+        mSongurl = songurl;
+        mUID = UID;
     }
 
     public String getmSongname() {
@@ -55,5 +61,29 @@ public class recommendedSongsItem {
 
     public void setmArtistname(String mArtistname) {
         this.mArtistname = mArtistname;
+    }
+
+    public String getmSongurl() {
+        return mSongurl;
+    }
+
+    public void setmSongurl(String mSongurl) {
+        this.mSongurl = mSongurl;
+    }
+
+    public int getmAID() {
+        return mAID;
+    }
+
+    public void setmAID(int mAID) {
+        this.mAID = mAID;
+    }
+
+    public int getmUID() {
+        return mUID;
+    }
+
+    public void setmUID(int mUID) {
+        this.mUID = mUID;
     }
 }

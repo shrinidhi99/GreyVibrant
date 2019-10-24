@@ -40,7 +40,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener {
-    static String URL_REGIST = "https://sabios-97.000webhostapp.com/artists_retrieval.php";
+    static String URL_REGIST1 = "https://sabios-97.000webhostapp.com/artists_retrieval.php";
+    static String URL_REGIST2 = "https://sabios-97.000webhostapp.com/recommended_songs.php";
 
     private RecyclerView mRecyclerViewFollowed, mRecyclerViewUnfollowed, mRecyclerViewRecommended, mRecyclerViewRemaining;
     private RecyclerView.LayoutManager mLayoutManager1, mLayoutManager2, mLayoutManager3, mLayoutManager4;
@@ -65,6 +66,7 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
         UIDPut = sharedPreferences.getString("UID", null);
         unfollowedArtistsItemsList.clear();
         followedArtistsItemsList.clear();
+        recommendedSongsItemsList.clear();
         mRecyclerViewFollowed = view.findViewById(R.id.recycler_view_followed);
         mRecyclerViewUnfollowed = view.findViewById(R.id.recycler_view_unfollowed);
         mRecyclerViewRecommended = view.findViewById(R.id.recycler_view_recommended);
@@ -72,20 +74,12 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
 
         getFollowedArtists();
 
+        getRecommendedSongs();
 
-        recommendedSongsItemsList.add(new recommendedSongsItem("A", "B", "C", "D", "E"));
-        recommendedSongsItemsList.add(new recommendedSongsItem("F", "G", "H", "I", "J"));
 
         remainingSongsItemsList.add(new remainingSongsItem("AA", "BB", "CC", "DD", "EE"));
         remainingSongsItemsList.add(new remainingSongsItem("FF", "GG", "HH", "II", "JJ"));
 
-
-        mRecyclerViewRecommended.setHasFixedSize(true);
-        mLayoutManager3 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recommendedSongsAdapter = new RecommendedSongsAdapter(recommendedSongsItemsList);
-        mRecyclerViewRecommended.setLayoutManager(mLayoutManager3);
-        mRecyclerViewRecommended.setAdapter(recommendedSongsAdapter);
-        recommendedSongsAdapter.notifyDataSetChanged();
 
         mRecyclerViewRemaining.setHasFixedSize(true);
         mLayoutManager4 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -98,9 +92,87 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
     }
 
 
+    public void getRecommendedSongs() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST2,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("RESPONSE FROM PHP for songs", response);
+                        try {
+                            if (response == null || response.equals(""))
+                                Log.i("RESPONSE", "IS NULL");
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("songdetail");
+
+
+                            if (success.equals("1")) {
+                                Toast.makeText(getContext(), "Recommended Songs", Toast.LENGTH_SHORT).show();
+
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String artistname = object.getString("artistname");
+                                    String AID = object.getString("AID");
+                                    String songname = object.getString("songname");
+                                    String songurl = object.getString("songurl");
+                                    String album = object.getString("album");
+                                    String language = object.getString("language");
+                                    String genre = object.getString("genre");
+                                    String SID = object.getString("SID");
+
+                                    recommendedSongsItemsList.add(new recommendedSongsItem(songname, Integer.parseInt(AID), Integer.parseInt(UIDPut), album, genre, language, artistname, songurl));
+
+                                    Log.i("artist :", artistname + " " + AID + " " + songname + " " + songurl + " " + album + " " + language + " " + genre + " " + SID);
+                                }
+
+                                mRecyclerViewRecommended.setHasFixedSize(true);
+                                mLayoutManager3 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                                recommendedSongsAdapter = new RecommendedSongsAdapter(recommendedSongsItemsList);
+                                mRecyclerViewRecommended.setLayoutManager(mLayoutManager3);
+                                mRecyclerViewRecommended.setAdapter(recommendedSongsAdapter);
+                                recommendedSongsAdapter.notifyDataSetChanged();
+
+
+                                // Toast.makeText(getApplicationContext(), "Log in", Toast.LENGTH_SHORT).show();
+
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getContext(), "RS Error", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Artist Error 2", Toast.LENGTH_SHORT).show();
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("UID", UIDPut);
+
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+    }
+
+
     public void getFollowedArtists() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST1,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
