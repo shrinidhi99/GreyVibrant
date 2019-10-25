@@ -10,8 +10,9 @@ public class recommendedSongsItem {
     private String mSongurl;
     private int mAID;
     private int mUID;
+    private int mSID;
 
-    public recommendedSongsItem(String songname, int AID, int UID, String album, String genre, String language, String artistname, String songurl) {
+    public recommendedSongsItem(String songname, int SID, int AID, int UID, String album, String genre, String language, String artistname, String songurl) {
 
         mSongname = songname;
         mAlbum = album;
@@ -21,6 +22,7 @@ public class recommendedSongsItem {
         mAID = AID;
         mSongurl = songurl;
         mUID = UID;
+        mSID = SID;
     }
 
     public String getmSongname() {
@@ -85,5 +87,13 @@ public class recommendedSongsItem {
 
     public void setmUID(int mUID) {
         this.mUID = mUID;
+    }
+
+    public int getmSID() {
+        return mSID;
+    }
+
+    public void setmSID(int mSID) {
+        this.mSID = mSID;
     }
 }
