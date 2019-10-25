@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener {
+public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener, RecommendedSongsAdapter.OnItemClickListener, RemainingSongsAdapter.OnItemClickListener {
     static String URL_REGIST1 = "https://sabios-97.000webhostapp.com/artists_retrieval.php";
     static String URL_REGIST2 = "https://sabios-97.000webhostapp.com/recommended_songs.php";
     static String URL_REGIST3 = "https://sabios-97.000webhostapp.com/remaining_songs.php";
@@ -124,7 +124,7 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
                                     String genre = object.getString("genre");
                                     String SID = object.getString("SID");
 
-                                    recommendedSongsItemsList.add(new recommendedSongsItem(songname, Integer.parseInt(AID), Integer.parseInt(UIDPut), album, genre, language, artistname, songurl));
+                                    recommendedSongsItemsList.add(new recommendedSongsItem(songname, Integer.parseInt(SID), Integer.parseInt(AID), Integer.parseInt(UIDPut), album, genre, language, artistname, songurl));
 
                                     Log.i("artist :", artistname + " " + AID + " " + songname + " " + songurl + " " + album + " " + language + " " + genre + " " + SID);
                                 }
@@ -134,6 +134,7 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
                                 recommendedSongsAdapter = new RecommendedSongsAdapter(recommendedSongsItemsList);
                                 mRecyclerViewRecommended.setLayoutManager(mLayoutManager3);
                                 mRecyclerViewRecommended.setAdapter(recommendedSongsAdapter);
+                                recommendedSongsAdapter.setOnItemClickListener((RecommendedSongsAdapter.OnItemClickListener) getContext());
                                 recommendedSongsAdapter.notifyDataSetChanged();
 
 
@@ -201,7 +202,7 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
                                     String genre = object.getString("genre");
                                     String SID = object.getString("SID");
 
-                                    remainingSongsItemsList.add(new remainingSongsItem(songname, Integer.parseInt(AID), Integer.parseInt(UIDPut), album, genre, language, artistname, songurl));
+                                    remainingSongsItemsList.add(new remainingSongsItem(songname, Integer.parseInt(SID), Integer.parseInt(AID), Integer.parseInt(UIDPut), album, genre, language, artistname, songurl));
 
                                     Log.i("artist :", artistname + " " + AID + " " + songname + " " + songurl + " " + album + " " + language + " " + genre + " " + SID);
                                 }
@@ -211,6 +212,7 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
                                 remainingSongsAdapter = new RemainingSongsAdapter(remainingSongsItemsList);
                                 mRecyclerViewRemaining.setLayoutManager(mLayoutManager4);
                                 mRecyclerViewRemaining.setAdapter(remainingSongsAdapter);
+                                remainingSongsAdapter.setOnItemClickListener((RemainingSongsAdapter.OnItemClickListener) getContext());
                                 remainingSongsAdapter.notifyDataSetChanged();
 
 
@@ -337,8 +339,6 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
 
     @Override
     public void onItemClick(int position) {
-        followedArtistsItem clickedItem = followedArtistsItemsList.get(position);
-        Toast.makeText(getContext(), clickedItem.getmArtistname(), Toast.LENGTH_SHORT).show();
-        Log.d("onItemClick", clickedItem.getmArtistname());
+
     }
 }
