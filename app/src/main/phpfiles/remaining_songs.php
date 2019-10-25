@@ -8,14 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // get all the songs that are uploaded by those artists
     $sql0 = "SELECT A.AID , A.artistname FROM artist_registration A WHERE A.AID NOT IN (SELECT F.AID FROM follow_artists F WHERE F.UID=$UID)";
     $result = array();
-    $result['songdetail'] = array();
+    $result['songdetail2'] = array();
     $response0 = mysqli_query($conn, $sql0);
 
     while ($row0 = mysqli_fetch_assoc($response0)) {
         $index['AID'] = $row0['AID'];
         $AIDtemp = $row0['AID'];
         $index['artistname'] = $row0['artistname'];
-        $sql1 = "SELECT * FROM song S, song_artists A WHERE A.AID=F.AID and A.AID = $AIDtemp";
+        $sql1 = "SELECT * FROM song S, song_artists A WHERE A.SID=S.SID and A.AID = $AIDtemp";
         $response1 = mysqli_query($conn, $sql1);
 
         while ($row1 = mysqli_fetch_assoc($response1)) {
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $index['language'] = $row1['language'];
             $index['album'] = $row1['album'];
 
-            array_push($result['songdetail'], $index);
+            array_push($result['songdetail2'], $index);
         }
     }
 

@@ -43,6 +43,7 @@ import java.util.Map;
 public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener {
     static String URL_REGIST1 = "https://sabios-97.000webhostapp.com/artists_retrieval.php";
     static String URL_REGIST2 = "https://sabios-97.000webhostapp.com/recommended_songs.php";
+    static String URL_REGIST3 = "https://sabios-97.000webhostapp.com/remaining_songs.php";
 
     private RecyclerView mRecyclerViewFollowed, mRecyclerViewUnfollowed, mRecyclerViewRecommended, mRecyclerViewRemaining;
     private RecyclerView.LayoutManager mLayoutManager1, mLayoutManager2, mLayoutManager3, mLayoutManager4;
@@ -86,17 +87,7 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
 
         getRecommendedSongs();
 
-
-        remainingSongsItemsList.add(new remainingSongsItem("AA", "BB", "CC", "DD", "EE"));
-        remainingSongsItemsList.add(new remainingSongsItem("FF", "GG", "HH", "II", "JJ"));
-
-
-        mRecyclerViewRemaining.setHasFixedSize(true);
-        mLayoutManager4 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        remainingSongsAdapter = new RemainingSongsAdapter(remainingSongsItemsList);
-        mRecyclerViewRemaining.setLayoutManager(mLayoutManager4);
-        mRecyclerViewRemaining.setAdapter(remainingSongsAdapter);
-        remainingSongsAdapter.notifyDataSetChanged();
+        getRemainingSongs();
 
         return view;
     }
@@ -162,6 +153,83 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getContext(), "Artist Error 2", Toast.LENGTH_SHORT).show();
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("UID", UIDPut);
+
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+    }
+
+    public void getRemainingSongs() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST3,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("RESPONSE FROM PHP for remaining songs", response);
+                        try {
+                            if (response == null || response.equals(""))
+                                Log.i("RESPONSE", "IS NULL");
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("songdetail2");
+
+
+                            if (success.equals("1")) {
+                                Toast.makeText(getContext(), "Remaining Songs", Toast.LENGTH_SHORT).show();
+
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String artistname = object.getString("artistname");
+                                    String AID = object.getString("AID");
+                                    String songname = object.getString("songname");
+                                    String songurl = object.getString("songurl");
+                                    String album = object.getString("album");
+                                    String language = object.getString("language");
+                                    String genre = object.getString("genre");
+                                    String SID = object.getString("SID");
+
+                                    remainingSongsItemsList.add(new remainingSongsItem(songname, Integer.parseInt(AID), Integer.parseInt(UIDPut), album, genre, language, artistname, songurl));
+
+                                    Log.i("artist :", artistname + " " + AID + " " + songname + " " + songurl + " " + album + " " + language + " " + genre + " " + SID);
+                                }
+
+                                mRecyclerViewRecommended.setHasFixedSize(true);
+                                mLayoutManager4 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                                remainingSongsAdapter = new RemainingSongsAdapter(remainingSongsItemsList);
+                                mRecyclerViewRemaining.setLayoutManager(mLayoutManager4);
+                                mRecyclerViewRemaining.setAdapter(remainingSongsAdapter);
+                                remainingSongsAdapter.notifyDataSetChanged();
+
+
+                                // Toast.makeText(getApplicationContext(), "Log in", Toast.LENGTH_SHORT).show();
+
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getContext(), "Remaining songs Error", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Artist Error 3", Toast.LENGTH_SHORT).show();
 
                     }
                 }) {
