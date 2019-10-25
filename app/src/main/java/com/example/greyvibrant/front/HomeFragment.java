@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -71,6 +72,15 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
         mRecyclerViewUnfollowed = view.findViewById(R.id.recycler_view_unfollowed);
         mRecyclerViewRecommended = view.findViewById(R.id.recycler_view_recommended);
         mRecyclerViewRemaining = view.findViewById(R.id.recycler_view_remaining);
+        final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.pullToRefresh);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                startActivity(getActivity().getIntent());
+                pullToRefresh.setRefreshing(false);
+            }
+        });
 
         getFollowedArtists();
 
