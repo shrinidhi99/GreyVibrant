@@ -37,6 +37,10 @@ public class RemainingSongsAdapter extends RecyclerView.Adapter<RemainingSongsAd
     private List<remainingSongsItem> remainingSongsListFull;
     public OnItemClickListener mListener;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/listens.php";
+    static String URL_REGIST2 = "https://sabios-97.000webhostapp.com/queue.php";
+    static String URL_REGIST3 = "https://sabios-97.000webhostapp.com/playlist_name.php";
+
+
 
     @Override
     public void onClick(View view) {
@@ -148,10 +152,98 @@ public class RemainingSongsAdapter extends RecyclerView.Adapter<RemainingSongsAd
                         case 1:
                             mListener.onPlayClick(position);
                             Log.d("on item click remaining", "onPlayClick at position: " + position);
+                            final remainingSongsItem clickedItem = mRemainingSongsList.get(position);
+                            Log.i("On item click", "remaining songs");
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST2,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.i("RESPONSE FROM PHP", response);
+                                            try {
+                                                if (response == null || response.equals(""))
+                                                    Log.i("RESPONSE", "IS NULL");
+
+                                                JSONObject jsonObject = new JSONObject(response);
+
+
+                                                String success = jsonObject.getString("success");
+                                                if (success.equals("1")) {
+                                                    Log.i("QUEUE", "SUCCESS");
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                                Log.i("QUEUE", "ERROR");
+
+                                            }
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.i("QUEUE", "ERROR 2");
+
+                                        }
+                                    }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    Map<String, String> params = new HashMap<>();
+
+                                    params.put("UID", String.valueOf(clickedItem.getmUID()));
+                                    params.put("SID", String.valueOf(clickedItem.getmSID()));
+                                    return params;
+                                }
+                            };
+                            RequestQueue requestQueue = Volley.newRequestQueue(itemView.getContext());
+                            requestQueue.add(stringRequest);
                             return true;
                         case 2:
                             mListener.onAddToPlaylistClick(position);
                             Log.d("on item click remaining", "onAddToPlaylistClick at position: " + position);
+                            final remainingSongsItem clickedItem2 = mRemainingSongsList.get(position);
+                            Log.i("On item click", "remaining songs");
+                            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, URL_REGIST3,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.i("RESPONSE FROM PHP", response);
+                                            try {
+                                                if (response == null || response.equals(""))
+                                                    Log.i("RESPONSE", "IS NULL");
+
+                                                JSONObject jsonObject = new JSONObject(response);
+
+
+                                                String success = jsonObject.getString("success");
+                                                if (success.equals("1")) {
+                                                    Log.i("PLAYLIST", "SUCCESS");
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                                Log.i("PLAYLIST", "ERROR");
+
+                                            }
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.i("QUEUE", "ERROR 2");
+
+                                        }
+                                    }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    Map<String, String> params = new HashMap<>();
+
+                                    params.put("UID", String.valueOf(clickedItem2.getmUID()));
+                                    params.put("SID", String.valueOf(clickedItem2.getmSID()));
+                                    return params;
+                                }
+                            };
+                            RequestQueue requestQueue2 = Volley.newRequestQueue(itemView.getContext());
+                            requestQueue2.add(stringRequest2);
                             return true;
                     }
                     final remainingSongsItem clickedItem = mRemainingSongsList.get(position);

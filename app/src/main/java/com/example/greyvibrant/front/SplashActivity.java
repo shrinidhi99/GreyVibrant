@@ -21,10 +21,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         tv = findViewById(R.id.tv);
-        iv = findViewById(R.id.iv);
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransition);
         tv.startAnimation(myanim);
-        iv.startAnimation(myanim);
         final Intent i = new Intent(SplashActivity.this, LoginActivity.class);
         Thread timer = new Thread() {
             public void run() {
