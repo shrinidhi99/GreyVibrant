@@ -1,7 +1,10 @@
 package com.example.greyvibrant.front.adapter;
 
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
@@ -28,22 +31,32 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSongsAdapter.RecommendedSongsViewHolder> implements Filterable {
+public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSongsAdapter.RecommendedSongsViewHolder> implements Filterable, View.OnClickListener {
 
     static List<recommendedSongsItem> mRecommendedSongsList;
     private List<recommendedSongsItem> recommendedSongsListFull;
     public OnItemClickListener mListener;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/listens.php";
 
+    @Override
+    public void onClick(View view) {
+
+    }
+
     public interface OnItemClickListener {
         void onItemClick(int position);
+
+        void onPlayClick(int position);
+
+        void onAddToPlaylistClick(int position);
     }
+
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 
-     class RecommendedSongsViewHolder extends RecyclerView.ViewHolder {
+    class RecommendedSongsViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
         private TextView mSongname;
         private TextView mAlbum;
         private TextView mGenre;
@@ -58,6 +71,7 @@ public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSon
             mGenre = itemView.findViewById(R.id.genre_recommended);
             mLanguage = itemView.findViewById(R.id.language_recommended);
             mArtistname = itemView.findViewById(R.id.song_artist_recommended);
+            itemView.setOnCreateContextMenuListener(this);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -66,7 +80,7 @@ public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSon
                         if (position != RecyclerView.NO_POSITION) {
                             mListener.onItemClick(position);
                             final recommendedSongsItem clickedItem = mRecommendedSongsList.get(position);
-                            Log.i("On item click","recommended songs" );
+                            Log.i("On item click", "recommended songs");
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
                                     new Response.Listener<String>() {
                                         @Override
@@ -81,11 +95,11 @@ public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSon
 
                                                 String success = jsonObject.getString("success");
                                                 if (success.equals("1")) {
-                                                    Log.i("LISTENS","SUCCESS");
+                                                    Log.i("LISTENS", "SUCCESS");
                                                 }
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
-                                                Log.i("LISTENS","ERROR");
+                                                Log.i("LISTENS", "ERROR");
 
                                             }
 
@@ -94,7 +108,7 @@ public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSon
                                     new Response.ErrorListener() {
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
-                                            Log.i("LISTENS","ERROR 2");
+                                            Log.i("LISTENS", "ERROR 2");
 
                                         }
                                     }) {
@@ -116,7 +130,79 @@ public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSon
         }
 
 
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            contextMenu.setHeaderTitle("Select Action");
+            MenuItem addToQueue = contextMenu.add(Menu.NONE, 1, 1, "Play now");
+            MenuItem addToPlaylist = contextMenu.add(Menu.NONE, 2, 2, "Add to playlist");
+            addToQueue.setOnMenuItemClickListener(this);
+            addToPlaylist.setOnMenuItemClickListener(this);
+        }
 
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            if (mListener != null) {
+                final int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+//                    mListener.onItemClick(position);
+                    switch (menuItem.getItemId()) {
+                        case 1:
+                            mListener.onPlayClick(position);
+                            Log.d("on item click recommended", "onPlayClick at position: " + position);
+                            return true;
+                        case 2:
+                            mListener.onAddToPlaylistClick(position);
+                            Log.d("on item click recommended", "onAddToPlaylistClick at position: " + position);
+                            return true;
+                    }
+                    final recommendedSongsItem clickedItem = mRecommendedSongsList.get(position);
+                    Log.i("On item click", "recommended songs normal click");
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Log.i("RESPONSE FROM PHP", response);
+                                    try {
+                                        if (response == null || response.equals(""))
+                                            Log.i("RESPONSE", "IS NULL");
+
+                                        JSONObject jsonObject = new JSONObject(response);
+
+
+                                        String success = jsonObject.getString("success");
+                                        if (success.equals("1")) {
+                                            Log.i("LISTENS", "SUCCESS");
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                        Log.i("LISTENS", "ERROR");
+
+                                    }
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.i("LISTENS", "ERROR 2");
+
+                                }
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<>();
+
+                            params.put("UID", String.valueOf(clickedItem.getmUID()));
+                            params.put("SID", String.valueOf(clickedItem.getmSID()));
+                            return params;
+                        }
+                    };
+                    RequestQueue requestQueue = Volley.newRequestQueue(itemView.getContext());
+                    requestQueue.add(stringRequest);
+                }
+            }
+            return false;
+        }
     }
 
     public RecommendedSongsAdapter(ArrayList<recommendedSongsItem> exampleList) {

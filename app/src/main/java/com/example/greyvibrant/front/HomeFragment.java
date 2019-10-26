@@ -214,11 +214,7 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
                                 mRecyclerViewRemaining.setAdapter(remainingSongsAdapter);
                                 remainingSongsAdapter.setOnItemClickListener((RemainingSongsAdapter.OnItemClickListener) getContext());
                                 remainingSongsAdapter.notifyDataSetChanged();
-
-
                                 // Toast.makeText(getApplicationContext(), "Log in", Toast.LENGTH_SHORT).show();
-
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -341,4 +337,15 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
     public void onItemClick(int position) {
 
     }
+
+    @Override
+    public void onPlayClick(int position) {
+
+    }
+
+    @Override
+    public void onAddToPlaylistClick(int position) {
+
+    }
+
 }
