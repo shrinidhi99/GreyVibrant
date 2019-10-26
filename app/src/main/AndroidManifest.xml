@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MusicPlayerActivity">
+
+        </activity>
         <activity android:name=".front.SongsHistory"></activity>
         <activity android:name=".front.profilePageArtist"></activity>
         <activity android:name=".front.profilePageUser" />
@@ -43,12 +46,14 @@
         <activity
             android:name=".front.SplashActivity"
             android:screenOrientation="portrait"
+
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".old.MainActivity"
