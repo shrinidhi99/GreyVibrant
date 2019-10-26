@@ -115,6 +115,15 @@ public class HomePageUser extends AppCompatActivity implements FollowedArtistAda
 
     }
 
+    @Override
+    public void onPlayClick(int position) {
+
+    }
+
+    @Override
+    public void onAddToPlaylistClick(int position) {
+
+    }
 
 }
 
