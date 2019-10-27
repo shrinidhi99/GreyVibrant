@@ -37,6 +37,7 @@ public class QueueFragment extends Fragment {
         /* song_retrieval */
 
         mRecyclerViewQueue = view.findViewById(R.id.recycler_view_queue);
+        queueList.clear();
         mRecyclerViewQueue.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mQueueAdapter = new QueueFragmentAdapter(queueList);
