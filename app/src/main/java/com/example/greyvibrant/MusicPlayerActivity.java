@@ -20,8 +20,7 @@ import java.util.TimerTask;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MusicPlayerActivity extends AppCompatActivity {
-
-    private MediaPlayer mediaPlayer;
+    private   MediaPlayer mediaPlayer;
     SeekBar scrubSeekBar;
     AudioManager audioManager;
     int currentSongPos;
@@ -74,7 +73,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_music_player);
+        setContentView(R.layout.activity_main);
         playb=findViewById(R.id.playbutton);
         pauseb=findViewById(R.id.pausebutton);
         playnextb=findViewById(R.id.playnext);
@@ -97,12 +96,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 StartNewSong(songurl);
             }
         });
-
-
-
-
-
-
 
 
     }
@@ -179,6 +172,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         scrubSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
                 if(b)
                 {
                     Log.i("Scrub seekbar moved", Integer.toString(i));
@@ -186,6 +180,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     mediaPlayer.seekTo(i);
 
                 }
+
 
             }
 
@@ -206,7 +201,29 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
                 scrubSeekBar.setProgress(mediaPlayer.getCurrentPosition());
 
+
             }
         }, 0, 300);
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                if(currentSongPos<songs.size()-1)
+                {
+                    String songurlnext=songs.get(currentSongPos+1);
+                    currentSongPos+=1;
+                    StartNewSong(songurlnext);
+                }
+                else
+                {
+                    currentSongPos=0;
+                    String songurlnext=songs.get(currentSongPos);
+                    StartNewSong(songurlnext);
+                }
+            }
+
+        });
+
     }
 }
