@@ -35,13 +35,14 @@ public class QueueFragment extends Fragment {
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         UIDput = sharedPreferences.getString("UID", null);
         /* song_retrieval */
+
+        mRecyclerViewQueue = view.findViewById(R.id.recycler_view_queue);
         mRecyclerViewQueue.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mQueueAdapter = new QueueFragmentAdapter(queueList);
         mRecyclerViewQueue.setLayoutManager(mLayoutManager);
         mRecyclerViewQueue.setAdapter(mQueueAdapter);
         mQueueAdapter.notifyDataSetChanged();
-        mRecyclerViewQueue = view.findViewById(R.id.recycler_view_queue);
         return view;
     }
 }

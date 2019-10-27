@@ -35,13 +35,14 @@ public class PlaylistFragment extends Fragment {
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         UIDput = sharedPreferences.getString("UID", null);
         /* song_retrieval */
+
+        mRecyclerViewPlaylist = view.findViewById(R.id.recycler_view_playlist);
         mRecyclerViewPlaylist.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mPlaylistAdapter = new PlaylistFragmentAdapter(playList);
         mRecyclerViewPlaylist.setLayoutManager(mLayoutManager);
         mRecyclerViewPlaylist.setAdapter(mPlaylistAdapter);
         mPlaylistAdapter.notifyDataSetChanged();
-        mRecyclerViewPlaylist = view.findViewById(R.id.recycler_view_playlist);
         return view;
     }
 }
