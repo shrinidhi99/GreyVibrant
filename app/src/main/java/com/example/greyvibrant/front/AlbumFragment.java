@@ -43,7 +43,7 @@ public class AlbumFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     ArrayList<myAlbumItem> albumList = new ArrayList<>();
 
-    EditText searchBar;
+    EditText searchBox;
     ImageView searchString;
 
     String songname, genre, album, language, AIDput;
@@ -55,7 +55,7 @@ public class AlbumFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.artist_fragment_album, container, false);
 
-        searchBar = view.findViewById(R.id.searchBox);
+        searchBox = view.findViewById(R.id.searchBox);
         searchString = view.findViewById(R.id.search_string);
         searchString.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +69,7 @@ public class AlbumFragment extends Fragment {
         //song_retrieval
 
         mRecyclerView = view.findViewById(R.id.recycler_view);
+        albumList.clear();
         Song_Retrieval();
 
         return view;
@@ -144,7 +145,7 @@ public class AlbumFragment extends Fragment {
     }
 
     private void search() {
-        String string = searchBar.getText().toString().trim();
+        String string = searchBox.getText().toString().trim();
         mAdapter.getFilter().filter(string);
     }
 }

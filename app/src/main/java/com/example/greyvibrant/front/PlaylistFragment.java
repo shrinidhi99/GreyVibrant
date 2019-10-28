@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.ImageView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,7 +46,12 @@ public class PlaylistFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     ArrayList<playlistItem> playList = new ArrayList<>();
     String songname, genre, album, language, UIDput;
+
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/playlist_retrieval.php";
+
+    EditText searchBox;
+    ImageView searchString;
+
 
     @Nullable
     @Override
@@ -126,6 +134,15 @@ public class PlaylistFragment extends Fragment {
         requestQueue.add(stringRequest);
 
         mRecyclerViewPlaylist = view.findViewById(R.id.recycler_view_playlist);
+        playList.clear();
+        searchBox = view.findViewById(R.id.searchBox);
+        searchString = view.findViewById(R.id.search_string);
+        searchString.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search();
+            }
+        });
         mRecyclerViewPlaylist.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mPlaylistAdapter = new PlaylistFragmentAdapter(playList);
@@ -133,5 +150,9 @@ public class PlaylistFragment extends Fragment {
         mRecyclerViewPlaylist.setAdapter(mPlaylistAdapter);
         mPlaylistAdapter.notifyDataSetChanged();
         return view;
+    }
+    private void search() {
+        String string = searchBox.getText().toString().trim();
+        mPlaylistAdapter.getFilter().filter(string);
     }
 }
