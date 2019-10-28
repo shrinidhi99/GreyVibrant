@@ -29,6 +29,7 @@ import com.example.greyvibrant.front.RecyclerViewElements.recommendedSongsItem;
 import com.example.greyvibrant.front.RecyclerViewElements.remainingSongsItem;
 import com.example.greyvibrant.front.RecyclerViewElements.unfollowedArtistsItem;
 import com.example.greyvibrant.front.adapter.FollowedArtistAdapter;
+import com.example.greyvibrant.front.adapter.QueueFragmentAdapter;
 import com.example.greyvibrant.front.adapter.RecommendedSongsAdapter;
 import com.example.greyvibrant.front.adapter.RemainingSongsAdapter;
 import com.example.greyvibrant.front.adapter.UnfollowedArtistAdapter;

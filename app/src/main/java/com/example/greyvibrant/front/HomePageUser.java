@@ -14,13 +14,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.greyvibrant.R;
 import com.example.greyvibrant.front.adapter.FollowedArtistAdapter;
+import com.example.greyvibrant.front.adapter.QueueFragmentAdapter;
 import com.example.greyvibrant.front.adapter.RecommendedSongsAdapter;
 import com.example.greyvibrant.front.adapter.RemainingSongsAdapter;
 import com.example.greyvibrant.front.adapter.UnfollowedArtistAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class HomePageUser extends AppCompatActivity implements FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener, RecommendedSongsAdapter.OnItemClickListener, RemainingSongsAdapter.OnItemClickListener {
+public class HomePageUser extends AppCompatActivity implements QueueFragmentAdapter.OnItemClickListener, FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener, RecommendedSongsAdapter.OnItemClickListener, RemainingSongsAdapter.OnItemClickListener {
     private DrawerLayout user_home_page_dl;
     private ActionBarDrawerToggle abdt;
     SharedPreferences sharedPreferences;
