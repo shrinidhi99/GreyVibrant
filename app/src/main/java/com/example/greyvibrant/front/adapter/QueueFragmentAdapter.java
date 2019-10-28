@@ -1,5 +1,6 @@
 package com.example.greyvibrant.front.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greyvibrant.R;
+import com.example.greyvibrant.front.QueueFragment;
 import com.example.greyvibrant.front.RecyclerViewElements.queueItem;
 
 import java.util.ArrayList;
@@ -57,6 +59,11 @@ public class QueueFragmentAdapter extends RecyclerView.Adapter<QueueFragmentAdap
                         if (position != RecyclerView.NO_POSITION) {
                             mListener.onItemClick(position);
                             final queueItem clickedItem = mQueueItemList.get(position);
+                            Log.i("SONG NAME AND POSITION CLICKED",clickedItem.getmSongname()+" "+clickedItem.getmSongurl());
+                            QueueFragment.currentSongPos=position;
+                           // String songurl=clickedItem.getmSongurl();
+                            QueueFragment.StartNewSong(position);
+
                         }
                     }
                 }
