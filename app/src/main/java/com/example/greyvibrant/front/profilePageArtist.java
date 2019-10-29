@@ -1,14 +1,13 @@
 package com.example.greyvibrant.front;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class profilePageArtist extends AppCompatActivity {
-    TextView artistnametext,fullnametext,emailtext,phNotext;
+    TextView artistnametext, fullnametext, emailtext, phNotext;
     String artistnamePut;
     SharedPreferences sharedPreferences;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/artist_profile.php";
@@ -35,18 +34,16 @@ public class profilePageArtist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page_artist);
-        artistnametext= findViewById(R.id.artistName);
-        emailtext= findViewById(R.id.artistEmailID);
-        phNotext= findViewById(R.id.artistphNo);
-        fullnametext= findViewById(R.id.artistFullName);
+        artistnametext = findViewById(R.id.artistName);
+        emailtext = findViewById(R.id.artistEmailID);
+        phNotext = findViewById(R.id.artistphNo);
+        fullnametext = findViewById(R.id.artistFullName);
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
-        artistnamePut=sharedPreferences.getString("artistname",null);
+        artistnamePut = sharedPreferences.getString("artistname", null);
         setProfileData();
     }
 
     private void setProfileData() {
-//        final String artistnameFinal = artistname.getText().toString().trim();
-//        final String passwordfinal = artistPassword.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
                 new Response.Listener<String>() {
@@ -73,17 +70,12 @@ public class profilePageArtist extends AppCompatActivity {
                                     String fullname = object.getString("fullname");
                                     String email = object.getString("email");
                                     String phNo = object.getString("phNo");
-                                    artistnametext.setText("Artist name : "+artistname);
-                                    fullnametext.setText("Full name : "+fullname);
-                                    emailtext.setText("Email ID : "+email);
-                                    phNotext.setText("Phone number : "+phNo);
+                                    artistnametext.setText(artistname);
+                                    fullnametext.setText(fullname);
+                                    emailtext.setText(email);
+                                    phNotext.setText(phNo);
                                     Log.i("artist :", artistname + "  " + " " + UID);
                                 }
-
-
-                                // Toast.makeText(getApplicationContext(), "Log in", Toast.LENGTH_SHORT).show();
-
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -104,7 +96,6 @@ public class profilePageArtist extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("artistname", artistnamePut);
-
 
 
                 return params;

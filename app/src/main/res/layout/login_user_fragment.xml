@@ -12,31 +12,43 @@
         android:orientation="vertical"
         android:weightSum="100">
 
-        <ImageView
-            android:id="@+id/pageImage"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:layout_weight="30"
-            android:src="@mipmap/ic_launcher_icon_app_round"
-            android:visibility="visible" />
+            android:layout_weight="40"
+            android:background="@drawable/gradientbackground"
+            android:orientation="vertical"
+            android:weightSum="40">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="20"
-            android:gravity="center"
-            android:text="User"
-            android:textColor="#000"
-            android:textSize="20sp" />
+            <ImageView
+                android:id="@+id/pageImage"
+                android:layout_width="137dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:layout_weight="30"
+                android:src="@mipmap/ic_launcher_icon_app_round"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:text="User"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="15"
             android:textColorHint="#000306"
             app:boxStrokeColor="@color/common"

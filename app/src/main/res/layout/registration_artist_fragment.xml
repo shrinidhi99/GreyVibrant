@@ -12,25 +12,25 @@
         android:orientation="vertical"
         android:weightSum="100">
 
-        <ImageView
-            android:id="@+id/pageImage"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="10"
-            android:src="@mipmap/ic_launcher_icon_app_round"
-            android:visibility="visible" />
+            android:layout_weight="17"
+            android:background="@drawable/gradientbackground"
+            android:orientation="vertical"
+            android:weightSum="13">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:text="Artist"
-            android:textColor="#000" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Artist"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_wallet_page_et_amount_enter_input"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_person_black_24dp"
-                android:hint="Artist Name" />
+                android:hint="Username" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_account_box_black_24dp"
-                android:hint="Full Name" />
+                android:hint="Full name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -158,11 +158,12 @@
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="10dp"
-            android:layout_weight="7">
+            android:layout_weight="8">
 
             <Button
                 android:id="@+id/artistSignUp"
@@ -177,9 +178,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="0dp"
-            android:layout_weight="7"
+            android:layout_weight="3"
             android:gravity="center"
             android:orientation="horizontal">
 

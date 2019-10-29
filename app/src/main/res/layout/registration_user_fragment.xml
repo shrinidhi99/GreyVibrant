@@ -12,24 +12,22 @@
         android:orientation="vertical"
         android:weightSum="100">
 
-        <ImageView
-            android:id="@+id/pageImage"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="8"
-            android:src="@mipmap/ic_launcher_icon_app_round"
-            android:visibility="visible" />
+            android:layout_weight="17"
+            android:background="@drawable/gradientbackground"
+            android:orientation="vertical"
+            android:weightSum="13">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="0dp"
-            android:layout_weight="7"
-            android:gravity="center"
-            android:text="User"
-            android:textColor="#000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="User"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/user_wallet_page_et_amount_enter_input"
@@ -165,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="10dp"
-            android:layout_weight="10">
+            android:layout_weight="8">
 
             <Button
                 android:id="@+id/userSignUp"

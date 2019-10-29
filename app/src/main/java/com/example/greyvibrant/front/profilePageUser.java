@@ -27,27 +27,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class profilePageUser extends AppCompatActivity {
-TextView usernametext,fullnametext,emailtext,phNotext;
-String usernamePut;
-SharedPreferences sharedPreferences;
+    TextView usernametext, fullnametext, emailtext, phNotext;
+    String usernamePut;
+    SharedPreferences sharedPreferences;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/user_profile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page_user);
-        usernametext= findViewById(R.id.userName);
-        emailtext= findViewById(R.id.userEmailID);
-        phNotext= findViewById(R.id.userphNo);
-        fullnametext= findViewById(R.id.userFullName);
+        usernametext = findViewById(R.id.userName);
+        emailtext = findViewById(R.id.userEmailID);
+        phNotext = findViewById(R.id.userphNo);
+        fullnametext = findViewById(R.id.userFullName);
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
-        usernamePut=sharedPreferences.getString("username",null);
+        usernamePut = sharedPreferences.getString("username", null);
         setProfileData();
     }
 
     private void setProfileData() {
-//        final String usernameFinal = username.getText().toString().trim();
-//        final String passwordfinal = userPassword.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
                 new Response.Listener<String>() {
@@ -74,17 +72,12 @@ SharedPreferences sharedPreferences;
                                     String fullname = object.getString("fullname");
                                     String email = object.getString("email");
                                     String phNo = object.getString("phNo");
-                                    usernametext.setText("Username : "+username);
-                                    fullnametext.setText("Full name : "+fullname);
-                                    emailtext.setText("Email ID : "+email);
-                                    phNotext.setText("Phone number : "+phNo);
+                                    usernametext.setText(username);
+                                    fullnametext.setText(fullname);
+                                    emailtext.setText(email);
+                                    phNotext.setText(phNo);
                                     Log.i("USER :", username + "  " + " " + UID);
                                 }
-
-
-                               // Toast.makeText(getApplicationContext(), "Log in", Toast.LENGTH_SHORT).show();
-
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -105,7 +98,6 @@ SharedPreferences sharedPreferences;
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("username", usernamePut);
-
 
 
                 return params;

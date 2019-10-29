@@ -31,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        login = findViewById(R.id.login);
-        signUp = findViewById(R.id.signUp);
+//        login = findViewById(R.id.login);
+//        signUp = findViewById(R.id.signUp);
         editTextUsername = findViewById(R.id.userName);
         editTextPassword = findViewById(R.id.password);
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
