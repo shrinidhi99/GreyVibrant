@@ -1,17 +1,21 @@
 # GreyVibrant
+
+## A music player app
+### _Front-end: Android_
+### _Backend: MySQL_
 ---
-## A music player app with android front-end and MySQL backend.
----
-> Use **androidX** libraries wherever possible while adding project dependencies in app level build.gradle
----
+> **androidX** libraries have been used as dependencies
+> 
 > **ER Diagrams** can be found [here](https://www.lucidchart.com/documents/edit/49de7fd6-bd05-4c44-88aa-6464289c7979/0_0).
-
+>
 > **Database Schema** can be found [here](https://docs.google.com/document/d/1rn6Llg6dbmujGjjBwfU2Wy2GuWKYKwyU6Skg1fHytVU/edit).
-
+>
 > **Project abstract** can be found [here](https://docs.google.com/document/d/1k3d4zBtLIB2msmAUne6-Trskp821sG9PGr3VxfWNqXo/edit).
----
+>
 > PHP used as server scripting language in this project. Place the php files in this location --> */opt/lampp/htdocs* 
+
 ---
+
 ## Tasks to be completed in this project:
 * [x] Data base design
 * [x] ER diagram for the data base design
@@ -19,10 +23,11 @@
 * [x] Write PHP files to perform queries
 * [x] Connect the mobile application with the MySQL server running at the localhost
 * [x] Design the front-end of the mobile application
-* [ ] Develop the front-end of the mobile application
-* [ ] Check out the ways to store audio files in database
+* [x] Develop the front-end of the mobile application
+* [x] Check out the ways to store audio files in database
+* [ ] UI changes
+* [ ] Adding some non-functional requirements
 * [ ] Test the performance of the application
-* [ ] If some more time remains then fine tune the application in terms of performance, UI and UX
 ---
 ```shell script
 1. git pull upstream master 
@@ -33,7 +38,7 @@
 6. Go to github repository and check whether this branch has any merge conflicts with master branch.
    If no conflicts then generate a pull request
 ```
----
+
 ```shell script
 To configure phpmyadmin into your android project, follow these steps: (First time in a device)
 1. sudo apt update
@@ -47,7 +52,7 @@ To configure phpmyadmin into your android project, follow these steps: (First ti
 9. username would be phpmyadmin and password would be what was set during installation
 
 ```
----
+
 ```shell script
 To install XAMPP in ubuntu follow these steps:
 1. Download the executable files from https://www.apachefriends.org/download.html
@@ -76,7 +81,6 @@ To uninstall XAMPP
 2. sudo ./uninstall
 3. sudo rm -r /opt/lampp
 ```
----
 ```shell script
 To setup the environment required for the php files to run on the localhost follow these steps:
 1. sudo apachectl stop (to stop apache server)
@@ -86,16 +90,3 @@ To setup the environment required for the php files to run on the localhost foll
 5. localhost/<address of php file inside htdocs directory> (to run a php file)
 6. localhost/phpmyadmin (to run phpmyadmin for running MySQL database server)
 ```
----
-```text
-refer all these links on stackoverflow
-1. https://stackoverflow.com/questions/4779963/how-can-i-access-my-localhost-from-my-android-device?page=1&tab=votes#tab-top
-2. https://stackoverflow.com/questions/23382627/wamp-cannot-access-on-local-network-403-forbidden/23385021#23385021
-3. https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan/16608698#16608698
-4. https://stackoverflow.com/questions/21011279/android-volley-checking-internet-state
-
-refer this link on connecting backend of android application to MySQL server
-https://www.skysilk.com/blog/2018/how-to-connect-an-android-app-to-a-mysql-database/
-```
----
-![GV Mascot](https://www.pinclipart.com/picdir/middle/3-31209_jazz-cliparts-border-transparent-background-music-notes-png.png "Grey Vibrant")
