@@ -49,9 +49,7 @@ public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSon
 
     public interface OnItemClickListener {
         void onItemClick(int position);
-
         void onPlayClick(int position);
-
         void onAddToPlaylistClick(int position);
     }
 

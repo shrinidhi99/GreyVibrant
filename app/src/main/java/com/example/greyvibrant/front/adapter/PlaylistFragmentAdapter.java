@@ -1,39 +1,55 @@
 package com.example.greyvibrant.front.adapter;
 
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.greyvibrant.R;
 import com.example.greyvibrant.front.RecyclerViewElements.playlistItem;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragmentAdapter.PlaylistViewHolder> implements Filterable {
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragmentAdapter.PlaylistViewHolder> implements Filterable, View.OnClickListener {
+
     static List<playlistItem> mPlayList;
-
     private List<playlistItem> playListFull;
-    public OnItemClickListener mListener;
-    static String URL_REGIST = "https://sabios-97.000webhostapp.com/queue.php";
+    private OnItemClickListener mListener;
+    static String URL_REGIST = "https://sabios-97.000webhostapp.com/listens.php";
+    static String URL_REGIST2 = "https://sabios-97.000webhostapp.com/queue.php";
+    static String URL_REGIST3 = "https://sabios-97.000webhostapp.com/playlist_name.php";
 
+
+    @Override
+    public void onClick(View view) {
+
+    }
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+
+        void onPlayClick(int position);
+
+        void onDeleteFromPlaylistClick(int position);
     }
+
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 
-    class PlaylistViewHolder extends RecyclerView.ViewHolder {
-
+    class PlaylistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
         private TextView mSongname;
         private String mAlbum;
         private String mGenre;
@@ -49,18 +65,51 @@ public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragme
             super(itemView);
             mSongname = itemView.findViewById(R.id.song_name_playlist);
             mArtistname = itemView.findViewById(R.id.song_artist_playlist);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mListener != null) {
-                        final int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            mListener.onItemClick(position);
-                            final playlistItem clickedItem = mPlayList.get(position);
-                        }
+            itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
+        }
+
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            contextMenu.setHeaderTitle("Select Action");
+            MenuItem addToQueue = contextMenu.add(Menu.NONE, 1, 1, "Play now");
+            MenuItem deleteFromPlaylist = contextMenu.add(Menu.NONE, 2, 2, "Add to playlist");
+            addToQueue.setOnMenuItemClickListener(this);
+            deleteFromPlaylist.setOnMenuItemClickListener(this);
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            if (mListener != null) {
+                final int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+//                    mListener.onItemClick(position);
+                    switch (menuItem.getItemId()) {
+                        case 1:
+                            mListener.onPlayClick(position);
+                            Log.d("on item click remaining", "onPlayClick at position: " + position);
+                            return true;
+                        case 2:
+                            mListener.onDeleteFromPlaylistClick(position);
+                            Log.d("on item click remaining", "onDeleteFromPlaylistClick at position: " + position);
+                            return true;
                     }
+
                 }
-            });
+            }
+            return false;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (mListener != null) {
+                final int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    mListener.onItemClick(position);
+                    final playlistItem clickedItem = mPlayList.get(position);
+                }
+            }
         }
     }
 
@@ -80,8 +129,8 @@ public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragme
     @Override
     public void onBindViewHolder(@NonNull PlaylistViewHolder holder, int position) {
         playlistItem currentItem = mPlayList.get(position);
-        holder.mArtistname.setText(currentItem.getmArtistname());
         holder.mSongname.setText(currentItem.getmSongname());
+        holder.mArtistname.setText(currentItem.getmArtistname());
     }
 
     @Override
@@ -103,7 +152,7 @@ public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragme
             } else {
                 String filterPattern = charSequence.toString().toLowerCase().trim();
                 for (playlistItem item : playListFull) {
-                    if (item.getmArtistname().toLowerCase().contains(filterPattern) || item.getmSongname().toLowerCase().contains(filterPattern)) {
+                    if (item.getmSongname().toLowerCase().contains(filterPattern) || item.getmAlbum().toLowerCase().contains(filterPattern) || item.getmGenre().toLowerCase().contains(filterPattern) || item.getmLanguage().toLowerCase().contains(filterPattern) || item.getmArtistname().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
@@ -120,4 +169,5 @@ public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragme
             notifyDataSetChanged();
         }
     };
+
 }
