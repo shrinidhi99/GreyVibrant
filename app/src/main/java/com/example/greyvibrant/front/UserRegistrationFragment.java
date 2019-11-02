@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,8 @@ import java.util.Map;
 public class UserRegistrationFragment extends Fragment {
     EditText userName, userEmail, userPhNo, userPassword, userFullName;
     Button userSignUp;
+    ProgressBar spinner;
+
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/user_register.php";
 
 
@@ -40,7 +43,7 @@ public class UserRegistrationFragment extends Fragment {
         View view = inflater.inflate(R.layout.registration_user_fragment, container, false);
         Button userLogin = view.findViewById(R.id.userLogin);
         userSignUp = view.findViewById(R.id.userSignUp);
-
+        spinner=view.findViewById(R.id.progressBar);
         userName = view.findViewById(R.id.userName);
         userEmail = view.findViewById(R.id.userEmailID);
         userPhNo = view.findViewById(R.id.userphNo);
@@ -86,7 +89,7 @@ public class UserRegistrationFragment extends Fragment {
     }
 
     private void Register() {
-
+        spinner.setVisibility(View.VISIBLE);
         final String username = this.userName.getText().toString().trim();
         final String email = this.userEmail.getText().toString().trim();
         final String fullname = this.userFullName.getText().toString().trim();
@@ -109,13 +112,16 @@ public class UserRegistrationFragment extends Fragment {
 
                             String success = jsonObject.getString("success");
                             if (success.equals("1")) {
+                                spinner.setVisibility(View.GONE);
                                 Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
                                 getActivity().finish();
-                                Intent intent = new Intent(getActivity(), HomePageUser.class);
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
                                 startActivity(intent);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            spinner.setVisibility(View.GONE);
+
                             Toast.makeText(getContext(), "Register Error", Toast.LENGTH_SHORT).show();
 
                         }
@@ -125,6 +131,8 @@ public class UserRegistrationFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        spinner.setVisibility(View.GONE);
+
                         Toast.makeText(getContext(), "Register Error", Toast.LENGTH_SHORT).show();
 
                     }

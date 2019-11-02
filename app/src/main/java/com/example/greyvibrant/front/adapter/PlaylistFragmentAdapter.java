@@ -11,12 +11,24 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
 import com.example.greyvibrant.front.RecyclerViewElements.playlistItem;
+import com.example.greyvibrant.front.RecyclerViewElements.remainingSongsItem;
 
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -89,6 +101,50 @@ public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragme
                         case 1:
                             mListener.onPlayClick(position);
                             Log.d("on item click remaining", "onPlayClick at position: " + position);
+                            final playlistItem clickedItem = mPlayList.get(position);
+                            Log.i("On item click", "remaining songs");
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST2,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.i("RESPONSE FROM PHP", response);
+                                            try {
+                                                if (response == null || response.equals(""))
+                                                    Log.i("RESPONSE", "IS NULL");
+
+                                                JSONObject jsonObject = new JSONObject(response);
+
+
+                                                String success = jsonObject.getString("success");
+                                                if (success.equals("1")) {
+                                                    Log.i("QUEUE", "SUCCESS");
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                                Log.i("QUEUE", "ERROR");
+
+                                            }
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.i("QUEUE", "ERROR 2");
+
+                                        }
+                                    }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    Map<String, String> params = new HashMap<>();
+
+                                    params.put("UID", String.valueOf(clickedItem.getmUID()));
+                                    params.put("SID", String.valueOf(clickedItem.getmSID()));
+                                    return params;
+                                }
+                            };
+                            RequestQueue requestQueue = Volley.newRequestQueue(itemView.getContext());
+                            requestQueue.add(stringRequest);
                             return true;
                         case 2:
                             mListener.onDeleteFromPlaylistClick(position);
