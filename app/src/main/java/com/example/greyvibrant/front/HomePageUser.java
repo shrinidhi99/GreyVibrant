@@ -145,5 +145,10 @@ public class HomePageUser extends AppCompatActivity implements PlaylistFragmentA
 
     }
 
+    @Override
+    public void onDeleteItemClick(int position) {
+
+    }
+
 }
 

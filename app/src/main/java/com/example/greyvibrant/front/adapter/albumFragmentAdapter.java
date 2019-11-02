@@ -23,16 +23,12 @@ public class albumFragmentAdapter extends RecyclerView.Adapter<albumFragmentAdap
 
     static class AlbumViewHolder extends RecyclerView.ViewHolder {
         private TextView mSongname;
-        private TextView mAlbum;
-        private TextView mGenre;
         private TextView mLanguage;
 
 
         AlbumViewHolder(@NonNull View itemView) {
             super(itemView);
             mSongname = itemView.findViewById(R.id.song_name);
-            mAlbum = itemView.findViewById(R.id.song_album);
-            mGenre = itemView.findViewById(R.id.genre);
             mLanguage = itemView.findViewById(R.id.language);
         }
     }
@@ -54,8 +50,6 @@ public class albumFragmentAdapter extends RecyclerView.Adapter<albumFragmentAdap
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
         myAlbumItem currentItem = mAlbumList.get(position);
         holder.mSongname.setText(currentItem.getmSongname());
-        holder.mAlbum.setText(currentItem.getmAlbum());
-        holder.mGenre.setText(currentItem.getmGenre());
         holder.mLanguage.setText(currentItem.getmLanguage());
     }
 

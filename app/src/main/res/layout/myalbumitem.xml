@@ -2,56 +2,53 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:backgroundTint="#ffe3f2fd"
-    app:cardCornerRadius="4dp">
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+    android:elevation="3dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_margin="0dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
 
-        <TextView
-            android:id="@+id/song_name"
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="3"
+            android:src="@mipmap/ic_launcher_album_card" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="4dp"
-            android:text="Song name : "
-            android:textColor="@android:color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:layout_gravity="center"
+            android:layout_weight="7"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/song_album"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/song_name"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="4dp"
-            android:text="Song album : "
-            android:textSize="15sp" />
+            <TextView
+                android:id="@+id/song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Song name : "
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/genre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/song_album"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="4dp"
-            android:text="Genre : "
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/language"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/genre"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="4dp"
-            android:text="Language : "
-            android:textSize="15sp" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/song_album"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Artist : "
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

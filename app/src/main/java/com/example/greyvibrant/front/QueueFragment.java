@@ -411,4 +411,14 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
     @Override
     public void onItemClick(int position) {
     }
+
+    @Override
+    public void onDescriptionClick(int position) {
+
+    }
+
+    @Override
+    public void onDeleteItemClick(int position) {
+
+    }
 }
