@@ -272,9 +272,6 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
 
 
                             if (success.equals("1")) {
-//                                Toast.makeText(getContext(), "Artists", Toast.LENGTH_SHORT).show();
-
-
                                 for (int i = 0; i < jsonArrayfol.length(); i++) {
                                     JSONObject object = jsonArrayfol.getJSONObject(i);
                                     String artistname = object.getString("artistname");
@@ -351,6 +348,11 @@ public class HomeFragment extends Fragment implements FollowedArtistAdapter.OnIt
     @Override
     public void onAddToPlaylistClick(int position) {
 
+    }
+
+    @Override
+    public void onDescriptionClick(int position) {
+        
     }
 
     private void search() {

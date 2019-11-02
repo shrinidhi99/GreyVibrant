@@ -67,7 +67,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_followed"
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="170dp"
                 android:layout_margin="5dp" />
 
             <TextView
@@ -81,7 +81,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_unfollowed"
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="170dp"
                 android:layout_margin="5dp" />
 
             <TextView
@@ -95,7 +95,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_recommended"
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="190dp"
                 android:layout_margin="5dp" />
 
             <TextView
@@ -109,7 +109,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_remaining"
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="190dp"
                 android:layout_margin="5dp" />
         </LinearLayout>
     </ScrollView>

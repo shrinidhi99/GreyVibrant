@@ -1,5 +1,7 @@
 package com.example.greyvibrant.front.adapter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -41,7 +43,6 @@ public class RemainingSongsAdapter extends RecyclerView.Adapter<RemainingSongsAd
     static String URL_REGIST3 = "https://sabios-97.000webhostapp.com/playlist_name.php";
 
 
-
     @Override
     public void onClick(View view) {
 
@@ -53,6 +54,8 @@ public class RemainingSongsAdapter extends RecyclerView.Adapter<RemainingSongsAd
         void onPlayClick(int position);
 
         void onAddToPlaylistClick(int position);
+
+        void onDescriptionClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -61,18 +64,12 @@ public class RemainingSongsAdapter extends RecyclerView.Adapter<RemainingSongsAd
 
     class RemainingSongsViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
         private TextView mSongname;
-        private TextView mAlbum;
-        private TextView mGenre;
-        private TextView mLanguage;
         private TextView mArtistname;
 
 
         RemainingSongsViewHolder(@NonNull final View itemView) {
             super(itemView);
             mSongname = itemView.findViewById(R.id.song_name_remaining);
-            mAlbum = itemView.findViewById(R.id.song_album_remaining);
-            mGenre = itemView.findViewById(R.id.genre_remaining);
-            mLanguage = itemView.findViewById(R.id.language_remaining);
             mArtistname = itemView.findViewById(R.id.song_artist_remaining);
             itemView.setOnCreateContextMenuListener(this);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -138,8 +135,10 @@ public class RemainingSongsAdapter extends RecyclerView.Adapter<RemainingSongsAd
             contextMenu.setHeaderTitle("Select Action");
             MenuItem addToQueue = contextMenu.add(Menu.NONE, 1, 1, "Play now");
             MenuItem addToPlaylist = contextMenu.add(Menu.NONE, 2, 2, "Add to playlist");
+            MenuItem showDescription = contextMenu.add(Menu.NONE, 3, 3, "More information");
             addToQueue.setOnMenuItemClickListener(this);
             addToPlaylist.setOnMenuItemClickListener(this);
+            showDescription.setOnMenuItemClickListener(this);
         }
 
         @Override
@@ -245,6 +244,26 @@ public class RemainingSongsAdapter extends RecyclerView.Adapter<RemainingSongsAd
                             RequestQueue requestQueue2 = Volley.newRequestQueue(itemView.getContext());
                             requestQueue2.add(stringRequest2);
                             return true;
+                        case 3:
+                            mListener.onDescriptionClick(position);
+                            Log.d("on item click remaining", "onDescriptionClick at position: " + position);
+                            final remainingSongsItem clickedItem3 = mRemainingSongsList.get(position);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+                            builder.setTitle("More Info")
+                                    .setIcon(R.drawable.ic_audiotrack_black_24dp)
+                                    .setMessage("Song name:   " + clickedItem3.getmSongname() + "\n" +
+                                            "Artist name:  " + clickedItem3.getmArtistname() + "\n" +
+                                            "Album:           " + clickedItem3.getmAlbum() + "\n" +
+                                            "Genre:            " + clickedItem3.getmGenre() + "\n" +
+                                            "Language:     " + clickedItem3.getmLanguage())
+                                    .setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        }
+                                    });
+                            builder.show();
+                            return true;
                     }
                     final remainingSongsItem clickedItem = mRemainingSongsList.get(position);
                     Log.i("On item click", "remaining songs");
@@ -313,9 +332,6 @@ public class RemainingSongsAdapter extends RecyclerView.Adapter<RemainingSongsAd
     public void onBindViewHolder(@NonNull RemainingSongsViewHolder holder, int position) {
         remainingSongsItem currentItem = mRemainingSongsList.get(position);
         holder.mSongname.setText(currentItem.getmSongname());
-        holder.mAlbum.setText(currentItem.getmAlbum());
-        holder.mGenre.setText(currentItem.getmGenre());
-        holder.mLanguage.setText(currentItem.getmLanguage());
         holder.mArtistname.setText(currentItem.getmArtistname());
     }
 

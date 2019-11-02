@@ -132,5 +132,10 @@ public class HomePageUser extends AppCompatActivity implements PlaylistFragmentA
 
     }
 
+    @Override
+    public void onDescriptionClick(int position) {
+
+    }
+
 }
 
