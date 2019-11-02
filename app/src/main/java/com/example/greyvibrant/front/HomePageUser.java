@@ -32,7 +32,7 @@ public class HomePageUser extends AppCompatActivity implements PlaylistFragmentA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_user);
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
-
+        QueueFragment.threadSwitch = false;
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_user);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.user_fragment_container, new HomeFragment()).commit();
@@ -96,7 +96,15 @@ public class HomePageUser extends AppCompatActivity implements PlaylistFragmentA
     public void Logout(MenuItem item) {
 
         sharedPreferences.edit().putBoolean("isloggedin_user", false).apply();
+        try {
+            QueueFragment.threadSwitch = true;
+            QueueFragment.mediaPlayer.stop();
+            QueueFragment.mediaPlayer.release();
+            QueueFragment.mediaPlayer = null;
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(HomePageUser.this, LoginActivity.class);
         startActivity(intent);
         finish();
