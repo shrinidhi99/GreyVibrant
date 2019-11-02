@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ import java.util.Map;
 public class ArtistFragment extends Fragment {
     EditText artistName, artistPassword;
     SharedPreferences sharedPreferences;
+    ProgressBar spinner;
+
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/artist_login.php";
     TextView artistForgotPassword;
 
@@ -46,6 +49,7 @@ public class ArtistFragment extends Fragment {
         Button artistSignUp = view.findViewById(R.id.artistSignUp);
         artistName = view.findViewById(R.id.artistName);
         artistPassword = view.findViewById(R.id.artistPassword);
+        spinner = view.findViewById(R.id.progressBar);
         artistForgotPassword = view.findViewById(R.id.artistForgotPassword);
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 
@@ -89,6 +93,7 @@ public class ArtistFragment extends Fragment {
     }
 
     private void Login() {
+        spinner.setVisibility(View.VISIBLE);
         final String artistnameFinal = artistName.getText().toString().trim();
         final String passwordfinal = artistPassword.getText().toString().trim();
 
@@ -107,6 +112,7 @@ public class ArtistFragment extends Fragment {
 
 
                             if (success.equals("1")) {
+                                spinner.setVisibility(View.GONE);
                                 Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
 
 
@@ -130,6 +136,8 @@ public class ArtistFragment extends Fragment {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            spinner.setVisibility(View.GONE);
+
                             Toast.makeText(getContext(), "login Error", Toast.LENGTH_SHORT).show();
 
                         }
@@ -139,6 +147,8 @@ public class ArtistFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        spinner.setVisibility(View.GONE);
+
                         Toast.makeText(getContext(), "login2 Error", Toast.LENGTH_SHORT).show();
 
                     }
