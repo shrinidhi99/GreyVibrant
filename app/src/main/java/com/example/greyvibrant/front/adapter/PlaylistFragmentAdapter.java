@@ -15,8 +15,6 @@ import android.widget.TextView;
 
 import com.example.greyvibrant.R;
 import com.example.greyvibrant.front.RecyclerViewElements.playlistItem;
-import com.example.greyvibrant.front.RecyclerViewElements.recommendedSongsItem;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +71,6 @@ public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragme
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
         }
-
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {

@@ -134,7 +134,7 @@ public class RecommendedSongsAdapter extends RecyclerView.Adapter<RecommendedSon
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             contextMenu.setHeaderTitle("Select Action");
-            MenuItem addToQueue = contextMenu.add(Menu.NONE, 1, 1, "Play now");
+            MenuItem addToQueue = contextMenu.add(Menu.NONE, 1, 1, "Add to queue");
             MenuItem addToPlaylist = contextMenu.add(Menu.NONE, 2, 2, "Add to playlist");
             MenuItem showDescription = contextMenu.add(Menu.NONE, 3, 3, "More information");
             addToQueue.setOnMenuItemClickListener(this);
