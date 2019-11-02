@@ -16,29 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="40"
-            android:background="@drawable/gradientbackground"
+            android:layout_margin="20dp"
             android:orientation="vertical"
             android:weightSum="40">
 
             <ImageView
-                android:id="@+id/pageImage"
-                android:layout_width="137dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:layout_weight="30"
-                android:src="@mipmap/ic_launcher_icon_app_round"
-                android:visibility="visible" />
-
-            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="10dp"
-                android:layout_weight="10"
-                android:gravity="center"
-                android:text="Artist"
-                android:textColor="#fff"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher_artist" />
+
         </LinearLayout>
 
 

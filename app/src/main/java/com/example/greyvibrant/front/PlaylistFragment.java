@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,10 +26,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
-import com.example.greyvibrant.front.RecyclerViewElements.SongsHistoryItem;
 import com.example.greyvibrant.front.RecyclerViewElements.playlistItem;
 import com.example.greyvibrant.front.adapter.PlaylistFragmentAdapter;
-import com.example.greyvibrant.front.adapter.SongsHistoryAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PlaylistFragment extends Fragment {
+public class PlaylistFragment extends Fragment implements PlaylistFragmentAdapter.OnItemClickListener {
 
     SharedPreferences sharedPreferences;
     private RecyclerView mRecyclerViewPlaylist;
@@ -52,6 +51,7 @@ public class PlaylistFragment extends Fragment {
     EditText searchBox;
     ImageView searchString;
 
+    Button clearAll, playAll;
 
     @Nullable
     @Override
@@ -60,7 +60,18 @@ public class PlaylistFragment extends Fragment {
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         UIDput = sharedPreferences.getString("UID", null);
         /* song_retrieval */
-
+        mRecyclerViewPlaylist = view.findViewById(R.id.recycler_view_playlist);
+        playList.clear();
+        searchBox = view.findViewById(R.id.searchBox);
+        clearAll = view.findViewById(R.id.clearAll);
+        playAll = view.findViewById(R.id.playAll);
+        searchString = view.findViewById(R.id.search_string);
+        searchString.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search();
+            }
+        });
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
                 new Response.Listener<String>() {
                     @Override
@@ -89,7 +100,7 @@ public class PlaylistFragment extends Fragment {
                                     String genre = object.getString("genre");
                                     String SID = object.getString("SID");
 
-                                    playList.add(new playlistItem(songname,Integer.parseInt(SID),Integer.parseInt(AID),Integer.parseInt(UIDput),album,genre,language,artistname,songurl));
+                                    playList.add(new playlistItem(songname, Integer.parseInt(SID), Integer.parseInt(AID), Integer.parseInt(UIDput), album, genre, language, artistname, songurl));
 
                                     Log.i("artist :", artistname + " " + AID + " " + songname + " " + songurl + " " + album + " " + language + " " + genre + " " + SID);
                                 }
@@ -99,6 +110,7 @@ public class PlaylistFragment extends Fragment {
                                 mPlaylistAdapter = new PlaylistFragmentAdapter(playList);
                                 mRecyclerViewPlaylist.setLayoutManager(mLayoutManager);
                                 mRecyclerViewPlaylist.setAdapter(mPlaylistAdapter);
+                                mPlaylistAdapter.setOnItemClickListener((PlaylistFragmentAdapter.OnItemClickListener) getContext());
                                 mPlaylistAdapter.notifyDataSetChanged();
 
 
@@ -133,26 +145,27 @@ public class PlaylistFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
-        mRecyclerViewPlaylist = view.findViewById(R.id.recycler_view_playlist);
-        playList.clear();
-        searchBox = view.findViewById(R.id.searchBox);
-        searchString = view.findViewById(R.id.search_string);
-        searchString.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                search();
-            }
-        });
-        mRecyclerViewPlaylist.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getContext());
-        mPlaylistAdapter = new PlaylistFragmentAdapter(playList);
-        mRecyclerViewPlaylist.setLayoutManager(mLayoutManager);
-        mRecyclerViewPlaylist.setAdapter(mPlaylistAdapter);
-        mPlaylistAdapter.notifyDataSetChanged();
+
         return view;
     }
+
     private void search() {
         String string = searchBox.getText().toString().trim();
         mPlaylistAdapter.getFilter().filter(string);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+    }
+
+    @Override
+    public void onPlayClick(int position) {
+
+    }
+
+    @Override
+    public void onDeleteFromPlaylistClick(int position) {
+
     }
 }

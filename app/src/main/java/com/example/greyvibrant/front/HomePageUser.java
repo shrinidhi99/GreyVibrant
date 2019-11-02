@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.greyvibrant.R;
 import com.example.greyvibrant.front.adapter.FollowedArtistAdapter;
+import com.example.greyvibrant.front.adapter.PlaylistFragmentAdapter;
 import com.example.greyvibrant.front.adapter.QueueFragmentAdapter;
 import com.example.greyvibrant.front.adapter.RecommendedSongsAdapter;
 import com.example.greyvibrant.front.adapter.RemainingSongsAdapter;
@@ -21,7 +22,7 @@ import com.example.greyvibrant.front.adapter.UnfollowedArtistAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class HomePageUser extends AppCompatActivity implements QueueFragmentAdapter.OnItemClickListener, FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener, RecommendedSongsAdapter.OnItemClickListener, RemainingSongsAdapter.OnItemClickListener {
+public class HomePageUser extends AppCompatActivity implements PlaylistFragmentAdapter.OnItemClickListener, QueueFragmentAdapter.OnItemClickListener, FollowedArtistAdapter.OnItemClickListener, UnfollowedArtistAdapter.OnItemClickListener, RecommendedSongsAdapter.OnItemClickListener, RemainingSongsAdapter.OnItemClickListener {
     private DrawerLayout user_home_page_dl;
     private ActionBarDrawerToggle abdt;
     SharedPreferences sharedPreferences;
@@ -31,7 +32,7 @@ public class HomePageUser extends AppCompatActivity implements QueueFragmentAdap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_user);
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
-
+        QueueFragment.threadSwitch = false;
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_user);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.user_fragment_container, new HomeFragment()).commit();
@@ -95,7 +96,15 @@ public class HomePageUser extends AppCompatActivity implements QueueFragmentAdap
     public void Logout(MenuItem item) {
 
         sharedPreferences.edit().putBoolean("isloggedin_user", false).apply();
+        try {
+            QueueFragment.threadSwitch = true;
+            QueueFragment.mediaPlayer.stop();
+            QueueFragment.mediaPlayer.release();
+            QueueFragment.mediaPlayer = null;
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(HomePageUser.this, LoginActivity.class);
         startActivity(intent);
         finish();
@@ -118,6 +127,11 @@ public class HomePageUser extends AppCompatActivity implements QueueFragmentAdap
 
     @Override
     public void onPlayClick(int position) {
+
+    }
+
+    @Override
+    public void onDeleteFromPlaylistClick(int position) {
 
     }
 

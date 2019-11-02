@@ -1,158 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fillViewport="true">
+    android:background="#F0F0F0"
+    android:orientation="vertical">
 
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/image_album"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="vertical">
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_queue_music_black_24dp" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrain1"
+        android:layout_width="match_parent"
+        android:layout_height="277dp"
+        android:background="@drawable/bluebackground"
+
+        >
+
 
         <ImageView
-            android:id="@+id/image_album"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_queue_music_black_24dp" />
+            android:id="@+id/pausebutton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/pause"
+            android:onClick="playpause"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.991" />
+
+        <ImageView
+            android:id="@+id/playbutton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/play"
+
+            android:onClick="playpause"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.991" />
+
+        <ImageView
+            android:id="@+id/playprev"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:onClick="playPrev"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.991" />
+
+        <ImageView
+            android:id="@+id/playnext"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/next"
+
+            android:onClick="playNext"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.991" />
+
+        <SeekBar
+            android:id="@+id/scrubSeekBar"
+            android:layout_width="395dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="52dp"
+            android:progressDrawable="@drawable/custom_progress"
+            android:thumb="@drawable/recred"
+            app:layout_constraintBottom_toBottomOf="@+id/constrain1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/songText"
+            android:layout_width="235dp"
+            android:layout_height="187dp"
+            android:background="@drawable/discbackground"
+            android:paddingTop="10dp"
+            android:text="Music Player"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.09" />
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constrain1"
-            android:layout_width="match_parent"
-            android:layout_height="277dp"
-            android:background="@drawable/bluebackground"
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="48dp"
+            android:layout_height="29dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.741" />
 
-            >
-
-
-            <ImageView
-                android:id="@+id/pausebutton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/pause"
-                android:onClick="playpause"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.991" />
-
-            <ImageView
-                android:id="@+id/playbutton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/play"
-
-                android:onClick="playpause"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.991" />
-
-            <ImageView
-                android:id="@+id/playprev"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/back"
-                android:onClick="playPrev"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.15"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.991" />
-
-            <ImageView
-                android:id="@+id/playnext"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/next"
-
-                android:onClick="playNext"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.87"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.991" />
-
-            <SeekBar
-                android:id="@+id/scrubSeekBar"
-                android:layout_width="395dp"
-                android:layout_height="12dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="52dp"
-                android:progressDrawable="@drawable/custom_progress"
-                android:thumb="@drawable/recred"
-                app:layout_constraintBottom_toBottomOf="@+id/constrain1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/songText"
-                android:layout_width="235dp"
-                android:layout_height="187dp"
-                android:background="@drawable/discbackground"
-                android:paddingTop="10dp"
-                android:text="Music Player"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.09" />
-
-            <TextView
-                android:id="@+id/timer"
-                android:layout_width="48dp"
-                android:layout_height="29dp"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.044"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.741" />
-
-            <TextView
-                android:id="@+id/timer2"
-                android:layout_width="48dp"
-                android:layout_height="29dp"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.955"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.741" />
+        <TextView
+            android:id="@+id/timer2"
+            android:layout_width="48dp"
+            android:layout_height="29dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.741" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_queue"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="5" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_queue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp" />
 
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>
