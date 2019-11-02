@@ -87,6 +87,8 @@ public class HomePageArtist extends AppCompatActivity implements albumFragmentAd
 
     public void Logout(MenuItem item) {
         sharedPreferences.edit().putBoolean("isloggedin_artist", false).apply();
+        sharedPreferences.edit().putString("artistname", "").apply();
+        sharedPreferences.edit().putString("AID", "").apply();
 
         Intent intent = new Intent(HomePageArtist.this, LoginActivity.class);
         startActivity(intent);

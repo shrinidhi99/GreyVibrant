@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,8 @@ import java.util.Map;
 public class ArtistRegistrationFragment extends Fragment {
     EditText artistName, artistEmail, artistPhNo, artistPassword, artistFullName;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/artist_register.php";
+
+    ProgressBar spinner;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Nullable
@@ -44,6 +47,8 @@ public class ArtistRegistrationFragment extends Fragment {
         artistPhNo = view.findViewById(R.id.artistphNo);
         artistPassword = view.findViewById(R.id.artistPassword);
         artistFullName = view.findViewById(R.id.artistFullName);
+        spinner = view.findViewById(R.id.progressBar);
+
         artistLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +88,7 @@ public class ArtistRegistrationFragment extends Fragment {
     }
 
     private void Register() {
-
+        spinner.setVisibility(View.VISIBLE);
         final String artistname = this.artistName.getText().toString().trim();
         final String email = this.artistEmail.getText().toString().trim();
         final String fullname = this.artistFullName.getText().toString().trim();
@@ -105,6 +110,7 @@ public class ArtistRegistrationFragment extends Fragment {
 
                             String success = jsonObject.getString("success");
                             if (success.equals("1")) {
+                                spinner.setVisibility(View.GONE);
                                 Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
                                 getActivity().finish();
                                 Intent intent = new Intent(getActivity(), LoginActivity.class);
@@ -112,6 +118,8 @@ public class ArtistRegistrationFragment extends Fragment {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            spinner.setVisibility(View.GONE);
+
                             Toast.makeText(getContext(), "Register Error", Toast.LENGTH_SHORT).show();
 
                         }
@@ -121,6 +129,8 @@ public class ArtistRegistrationFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        spinner.setVisibility(View.GONE);
+
                         Toast.makeText(getContext(), "Register Error", Toast.LENGTH_SHORT).show();
 
                     }

@@ -96,6 +96,8 @@ public class HomePageUser extends AppCompatActivity implements PlaylistFragmentA
     public void Logout(MenuItem item) {
 
         sharedPreferences.edit().putBoolean("isloggedin_user", false).apply();
+        sharedPreferences.edit().putString("username", "").apply();
+        sharedPreferences.edit().putString("UID", "").apply();
         try {
             QueueFragment.threadSwitch = true;
             QueueFragment.mediaPlayer.stop();
