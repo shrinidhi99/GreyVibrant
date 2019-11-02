@@ -32,7 +32,7 @@ public class UserRegistrationFragment extends Fragment {
     EditText userName, userEmail, userPhNo, userPassword, userFullName;
     Button userSignUp;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/user_register.php";
-
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Nullable
     @Override
@@ -69,12 +69,12 @@ public class UserRegistrationFragment extends Fragment {
                     userPassword.setError("Password is empty");
                     userPassword.requestFocus();
                     return;
-                } else if (userEmail.getText().toString().trim().isEmpty()) {
-                    userEmail.setError("Email is empty");
+                } else if (userEmail.getText().toString().trim().isEmpty() || !userEmail.getText().toString().trim().matches(emailPattern)) {
+                    userEmail.setError("Email is invalid");
                     userEmail.requestFocus();
                     return;
-                } else if (userPhNo.getText().toString().trim().isEmpty()) {
-                    userPhNo.setError("Phone number is empty");
+                } else if (userPhNo.getText().toString().trim().isEmpty() || userPhNo.getText().toString().trim().length() < 10) {
+                    userPhNo.setError("Phone number is invalid");
                     userPhNo.requestFocus();
                     return;
                 }
@@ -132,20 +132,16 @@ public class UserRegistrationFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-
                 params.put("fullname", fullname);
                 params.put("phNo", phNo);
                 params.put("username", username);
                 params.put("email", email);
                 params.put("password", password);
                 params.put("playlist_name", playlistname);
-
-
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
-
     }
 }

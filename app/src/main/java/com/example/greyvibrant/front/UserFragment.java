@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,7 +39,7 @@ public class UserFragment extends Fragment {
     EditText username, userPassword;
     SharedPreferences sharedPreferences;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/user_login.php";
-
+    TextView userForgotPassword;
 
     @Nullable
     @Override
@@ -48,7 +49,7 @@ public class UserFragment extends Fragment {
         Button userSignUp = view.findViewById(R.id.userSignUp);
         // EditText username = view.findViewById(R.id.userName);
         username = view.findViewById(R.id.userName);
-
+        userForgotPassword = view.findViewById(R.id.userForgotPassword);
         userPassword = view.findViewById(R.id.userPassword);
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 
@@ -78,6 +79,12 @@ public class UserFragment extends Fragment {
                 Toast.makeText(getActivity(), "Sign up", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), RegistrationActivity.class);
                 startActivity(intent);
+            }
+        });
+        userForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
         return view;

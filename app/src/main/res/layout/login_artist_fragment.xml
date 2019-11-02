@@ -15,8 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="40"
             android:layout_margin="20dp"
+            android:layout_weight="40"
             android:orientation="vertical"
             android:weightSum="40">
 
@@ -87,7 +87,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="30dp"
+            android:layout_margin="25dp"
             android:layout_weight="10">
 
             <Button
@@ -100,6 +100,13 @@
                 android:textColor="#ffffff" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/artistForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Forgot password?" />
 
         <LinearLayout
             android:layout_width="match_parent"
