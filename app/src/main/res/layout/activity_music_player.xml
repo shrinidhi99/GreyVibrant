@@ -74,19 +74,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.909" />
 
-        <ImageView
-            android:id="@+id/playprev"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/prev"
-            android:onClick="playPrev"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.153"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.85" />
 
         <ImageView
             android:id="@+id/playnext"

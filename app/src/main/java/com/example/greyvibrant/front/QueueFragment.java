@@ -5,22 +5,17 @@ import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,11 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.greyvibrant.MusicPlayerActivity;
 import com.example.greyvibrant.R;
-import com.example.greyvibrant.front.RecyclerViewElements.playlistItem;
 import com.example.greyvibrant.front.RecyclerViewElements.queueItem;
-import com.example.greyvibrant.front.adapter.PlaylistFragmentAdapter;
 import com.example.greyvibrant.front.adapter.QueueFragmentAdapter;
 
 import org.json.JSONArray;
@@ -46,6 +38,12 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import static android.content.Context.AUDIO_SERVICE;
 
 public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnItemClickListener {
@@ -53,7 +51,10 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
     private RecyclerView mRecyclerViewQueue;
     private QueueFragmentAdapter mQueueAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-   public static View view;
+
+
+
+    public static View view;
 
 
     public static ArrayList<queueItem> queueList = new ArrayList<>();
@@ -63,7 +64,7 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
 
     public static MediaPlayer mediaPlayer;
    public static SeekBar scrubSeekBar;
-   public static TextView songText;
+   public static TextView songText,remTime,tottime;
     AudioManager audioManager;
    public static int currentSongPos;
     String url;
@@ -157,7 +158,7 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 Log.i("SONG STATE","SONG READY TO PLAY");
-                songText.setText(queueList.get(pos).getmSongname()+"\n"+queueList.get(pos).getmArtistname()+"\n"+queueList.get(pos).getmAlbum());
+                songText.setText(queueList.get(pos).getmSongname()+"\n\n\n\n"+queueList.get(pos).getmArtistname()+"\n"+queueList.get(pos).getmAlbum());
                 mediaPlayer.start();
                 isplaying = true;
                 pauseb.setVisibility(View.VISIBLE);
@@ -172,6 +173,7 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
         scrubSeekBar = (SeekBar) view.findViewById(R.id.scrubSeekBar);
 
         scrubSeekBar.setMax(mediaPlayer.getDuration());
+
 
         scrubSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -201,8 +203,38 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+
                  try {
+
                      scrubSeekBar.setProgress(mediaPlayer.getCurrentPosition());
+                     try
+                     {
+                         Runnable runnable=new Runnable() {
+                             @Override
+                             public void run() {
+                                 int s=mediaPlayer.getDuration()/1000;
+                                 String minst=String.valueOf(s/60);
+                                 String secst=String.valueOf(s%60);
+                                 tottime.setText(minst+":"+secst);
+
+                                 int ss=mediaPlayer.getCurrentPosition()/1000;
+                                 String mins=String.valueOf(ss/60);
+                                 String secs=String.valueOf(ss%60);
+                                 if(mins.equals("0"))
+                                     remTime.setText(secs);
+                                 else
+                                 remTime.setText(mins+":"+secs);
+                             }
+                         };
+                         Handler mHandler = new Handler(Looper.getMainLooper());
+                         mHandler.post(runnable);
+
+                     }
+                     catch (Exception e)
+                     {
+                         e.printStackTrace();
+                     }
+
 
                  }
                  catch (Exception e)
@@ -210,6 +242,34 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
                      e.printStackTrace();
                      try {
                          scrubSeekBar.setProgress(mediaPlayer.getCurrentPosition());
+                         try
+                         {
+                             Runnable runnable=new Runnable() {
+                                 @Override
+                                 public void run() {
+                                     int s=mediaPlayer.getDuration()/1000;
+                                     String minst=String.valueOf(s/60);
+                                     String secst=String.valueOf(s%60);
+                                     tottime.setText(minst+":"+secst);
+
+                                     int ss=mediaPlayer.getCurrentPosition()/1000;
+                                     String mins=String.valueOf(ss/60);
+                                     String secs=String.valueOf(ss%60);
+                                     if(mins.equals("0"))
+                                         remTime.setText(secs);
+                                     else
+                                         remTime.setText(mins+":"+secs);
+                                 }
+                             };
+                             Handler mHandler = new Handler(Looper.getMainLooper());
+                             mHandler.post(runnable);
+
+                         }
+                         catch (Exception er)
+                         {
+                             er.printStackTrace();
+                         }
+
                      }
                      catch (Exception er)
                      {
@@ -254,6 +314,8 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
             playnextb=view.findViewById(R.id.playnext);
             playprevb=view.findViewById(R.id.playprev);
             songText=view.findViewById(R.id.songText);
+            remTime=view.findViewById(R.id.timer);
+            tottime=view.findViewById(R.id.timer2);
             queueList.clear();
             audioManager = (AudioManager) getActivity().getSystemService(AUDIO_SERVICE);
             playb.setOnClickListener(new View.OnClickListener() {
@@ -327,7 +389,6 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
                                 mQueueAdapter.notifyDataSetChanged();
 
 
-                                // Toast.makeText(getApplicationContext(), "Log in", Toast.LENGTH_SHORT).show();
 
 
                             }
