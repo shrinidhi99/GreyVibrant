@@ -168,4 +168,9 @@ public class PlaylistFragment extends Fragment implements PlaylistFragmentAdapte
     public void onDeleteFromPlaylistClick(int position) {
 
     }
+
+    @Override
+    public void onDescriptionClick(int position) {
+
+    }
 }

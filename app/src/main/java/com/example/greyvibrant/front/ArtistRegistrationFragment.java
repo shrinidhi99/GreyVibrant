@@ -32,7 +32,9 @@ import java.util.Map;
 public class ArtistRegistrationFragment extends Fragment {
     EditText artistName, artistEmail, artistPhNo, artistPassword, artistFullName;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/artist_register.php";
+
     ProgressBar spinner;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Nullable
     @Override
@@ -45,7 +47,7 @@ public class ArtistRegistrationFragment extends Fragment {
         artistPhNo = view.findViewById(R.id.artistphNo);
         artistPassword = view.findViewById(R.id.artistPassword);
         artistFullName = view.findViewById(R.id.artistFullName);
-        spinner=view.findViewById(R.id.progressBar);
+        spinner = view.findViewById(R.id.progressBar);
 
         artistLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,8 +72,8 @@ public class ArtistRegistrationFragment extends Fragment {
                     artistPassword.setError("Password is empty");
                     artistPassword.requestFocus();
                     return;
-                } else if (artistEmail.getText().toString().trim().isEmpty()) {
-                    artistEmail.setError("Email is empty");
+                } else if (artistEmail.getText().toString().trim().isEmpty() && !artistEmail.getText().toString().trim().matches(emailPattern)) {
+                    artistEmail.setError("Email is invalid");
                     artistEmail.requestFocus();
                     return;
                 } else if (artistPhNo.getText().toString().trim().isEmpty()) {

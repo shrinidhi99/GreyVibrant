@@ -24,18 +24,12 @@ public class SongsHistoryAdapter extends RecyclerView.Adapter<SongsHistoryAdapte
     static class SongsHistoryViewHolder extends RecyclerView.ViewHolder {
         private TextView mSongname;
         private TextView mArtistname;
-        private TextView mAlbum;
-        private TextView mGenre;
-        private TextView mLanguage;
 
 
         SongsHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
             mSongname = itemView.findViewById(R.id.song_name_songs_history);
             mArtistname = itemView.findViewById(R.id.song_artist_songs_history);
-            mAlbum = itemView.findViewById(R.id.song_album_songs_history);
-            mGenre = itemView.findViewById(R.id.genre_songs_history);
-            mLanguage = itemView.findViewById(R.id.language_songs_history);
         }
     }
 
@@ -57,9 +51,6 @@ public class SongsHistoryAdapter extends RecyclerView.Adapter<SongsHistoryAdapte
         SongsHistoryItem currentItem = mSongsHistoryList.get(position);
         holder.mSongname.setText(currentItem.getmSongname());
         holder.mArtistname.setText(currentItem.getmArtistname());
-        holder.mAlbum.setText(currentItem.getmAlbum());
-        holder.mGenre.setText(currentItem.getmGenre());
-        holder.mLanguage.setText(currentItem.getmLanguage());
     }
 
     @Override

@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.ProgressBar;
-import android.widget.Spinner;
+
+import android.widget.TextView;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,18 +44,18 @@ public class UserFragment extends Fragment {
     SharedPreferences sharedPreferences;
     ProgressBar spinner;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/user_login.php";
-
+    TextView userForgotPassword;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         view = inflater.inflate(R.layout.login_user_fragment, container, false);
+        view = inflater.inflate(R.layout.login_user_fragment, container, false);
         userLogin = view.findViewById(R.id.userLogin);
         Button userSignUp = view.findViewById(R.id.userSignUp);
         // EditText username = view.findViewById(R.id.userName);
-        spinner=view.findViewById(R.id.progressBar);
+        spinner = view.findViewById(R.id.progressBar);
         username = view.findViewById(R.id.userName);
-
+        userForgotPassword = view.findViewById(R.id.userForgotPassword);
         userPassword = view.findViewById(R.id.userPassword);
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 
@@ -82,6 +85,12 @@ public class UserFragment extends Fragment {
                 Toast.makeText(getActivity(), "Sign up", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), RegistrationActivity.class);
                 startActivity(intent);
+            }
+        });
+        userForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
         return view;

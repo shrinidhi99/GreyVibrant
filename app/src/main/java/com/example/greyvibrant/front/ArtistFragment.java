@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,7 +39,7 @@ public class ArtistFragment extends Fragment {
     ProgressBar spinner;
 
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/artist_login.php";
-
+    TextView artistForgotPassword;
 
     @Nullable
     @Override
@@ -48,7 +49,8 @@ public class ArtistFragment extends Fragment {
         Button artistSignUp = view.findViewById(R.id.artistSignUp);
         artistName = view.findViewById(R.id.artistName);
         artistPassword = view.findViewById(R.id.artistPassword);
-        spinner=view.findViewById(R.id.progressBar);
+        spinner = view.findViewById(R.id.progressBar);
+        artistForgotPassword = view.findViewById(R.id.artistForgotPassword);
         sharedPreferences = getContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
 
         if (sharedPreferences.getBoolean("isloggedin_artist", false)) {
@@ -79,6 +81,12 @@ public class ArtistFragment extends Fragment {
                 Toast.makeText(getActivity(), "Sign up", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), RegistrationActivity.class);
                 startActivity(intent);
+            }
+        });
+        artistForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
         return view;
