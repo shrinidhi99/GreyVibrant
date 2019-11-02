@@ -41,14 +41,6 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/song_album"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:text="Artist : "
-                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

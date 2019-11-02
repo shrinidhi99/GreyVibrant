@@ -31,7 +31,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SongsHistory extends AppCompatActivity {
+public class SongsHistory extends AppCompatActivity implements SongsHistoryAdapter.OnItemClickListener {
 
     SharedPreferences sharedPreferences;
     private RecyclerView mRecyclerViewSongsHistory;
@@ -140,11 +140,32 @@ public class SongsHistory extends AppCompatActivity {
         mAdapter = new SongsHistoryAdapter(songsHistoryList);
         mRecyclerViewSongsHistory.setLayoutManager(mLayoutManager);
         mRecyclerViewSongsHistory.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(this);
         mAdapter.notifyDataSetChanged();
     }
 
     private void search() {
         String string = searchBar.getText().toString().trim();
         mAdapter.getFilter().filter(string);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+    }
+
+    @Override
+    public void onPlayClick(int position) {
+
+    }
+
+    @Override
+    public void onDeleteFromHistoryClick(int position) {
+
+    }
+
+    @Override
+    public void onDescriptionClick(int position) {
+
     }
 }

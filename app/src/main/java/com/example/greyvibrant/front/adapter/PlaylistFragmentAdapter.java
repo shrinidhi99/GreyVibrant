@@ -23,8 +23,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
 import com.example.greyvibrant.front.RecyclerViewElements.playlistItem;
 
-
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -87,7 +85,6 @@ public class PlaylistFragmentAdapter extends RecyclerView.Adapter<PlaylistFragme
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
         }
-
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {

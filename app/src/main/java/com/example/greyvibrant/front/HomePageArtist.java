@@ -14,10 +14,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.greyvibrant.R;
+import com.example.greyvibrant.front.adapter.albumFragmentAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class HomePageArtist extends AppCompatActivity {
+public class HomePageArtist extends AppCompatActivity implements albumFragmentAdapter.OnItemClickListener {
     private DrawerLayout artist_home_page_dl;
     private ActionBarDrawerToggle abdt;
     SharedPreferences sharedPreferences;
@@ -101,5 +102,20 @@ public class HomePageArtist extends AppCompatActivity {
         Intent intent = new Intent(HomePageArtist.this, LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+    }
+
+    @Override
+    public void onDeleteFromAlbumClick(int position) {
+
+    }
+
+    @Override
+    public void onDescriptionClick(int position) {
+
     }
 }

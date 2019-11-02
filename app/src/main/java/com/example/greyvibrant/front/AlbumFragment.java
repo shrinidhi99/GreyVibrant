@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AlbumFragment extends Fragment {
+public class AlbumFragment extends Fragment implements albumFragmentAdapter.OnItemClickListener {
 
     SharedPreferences sharedPreferences;
     private RecyclerView mRecyclerView;
@@ -112,6 +112,7 @@ public class AlbumFragment extends Fragment {
                                 mAdapter = new albumFragmentAdapter(albumList);
                                 mRecyclerView.setLayoutManager(mLayoutManager);
                                 mRecyclerView.setAdapter(mAdapter);
+                                mAdapter.setOnItemClickListener((albumFragmentAdapter.OnItemClickListener) getContext());
                                 mAdapter.notifyDataSetChanged();
 
                             }
@@ -147,5 +148,20 @@ public class AlbumFragment extends Fragment {
     private void search() {
         String string = searchBox.getText().toString().trim();
         mAdapter.getFilter().filter(string);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+    }
+
+    @Override
+    public void onDeleteFromAlbumClick(int position) {
+
+    }
+
+    @Override
+    public void onDescriptionClick(int position) {
+
     }
 }
