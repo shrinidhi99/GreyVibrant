@@ -63,8 +63,6 @@ public class PlaylistFragment extends Fragment implements PlaylistFragmentAdapte
         mRecyclerViewPlaylist = view.findViewById(R.id.recycler_view_playlist);
         playList.clear();
         searchBox = view.findViewById(R.id.searchBox);
-        clearAll = view.findViewById(R.id.clearAll);
-        playAll = view.findViewById(R.id.playAll);
         searchString = view.findViewById(R.id.search_string);
         searchString.setOnClickListener(new View.OnClickListener() {
             @Override
