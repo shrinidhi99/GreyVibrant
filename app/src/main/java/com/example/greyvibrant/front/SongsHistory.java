@@ -1,6 +1,8 @@
 package com.example.greyvibrant.front;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,6 +51,7 @@ public class SongsHistory extends AppCompatActivity implements SongsHistoryAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs_history);
+        mRecyclerViewSongsHistory = findViewById(R.id.recycler_view_songs_history);
         searchBar = findViewById(R.id.searchBox);
         searchString = findViewById(R.id.search_string);
         searchString.setOnClickListener(new View.OnClickListener() {
@@ -97,14 +100,12 @@ public class SongsHistory extends AppCompatActivity implements SongsHistoryAdapt
 
                                 mRecyclerViewSongsHistory.setHasFixedSize(true);
                                 mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                                mAdapter = new SongsHistoryAdapter(songsHistoryList);
+                                mAdapter = new SongsHistoryAdapter(SongsHistory.this, songsHistoryList);
                                 mRecyclerViewSongsHistory.setLayoutManager(mLayoutManager);
                                 mRecyclerViewSongsHistory.setAdapter(mAdapter);
+                                mAdapter.setOnItemClickListener(SongsHistory.this);
                                 mAdapter.notifyDataSetChanged();
-
-
                                 // Toast.makeText(getApplicationContext(), "Log in", Toast.LENGTH_SHORT).show();
-
 
                             }
                         } catch (JSONException e) {
@@ -134,14 +135,6 @@ public class SongsHistory extends AppCompatActivity implements SongsHistoryAdapt
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-        mRecyclerViewSongsHistory = findViewById(R.id.recycler_view_songs_history);
-        mRecyclerViewSongsHistory.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new SongsHistoryAdapter(songsHistoryList);
-        mRecyclerViewSongsHistory.setLayoutManager(mLayoutManager);
-        mRecyclerViewSongsHistory.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(this);
-        mAdapter.notifyDataSetChanged();
     }
 
     private void search() {
@@ -149,23 +142,44 @@ public class SongsHistory extends AppCompatActivity implements SongsHistoryAdapt
         mAdapter.getFilter().filter(string);
     }
 
+
     @Override
     public void onItemClick(int position) {
-
+        Log.d("itemClick", "normal one");
+        Toast.makeText(SongsHistory.this, "onItemClick", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onPlayClick(int position) {
-
+        Log.d("itemClick", "normal one");
+//        Toast.makeText(SongsHistory.this, "onItemClick", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDeleteFromHistoryClick(int position) {
-
+        Log.d("itemClick", "delete one");
+//        Toast.makeText(SongsHistory.this, "onItemClick", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDescriptionClick(int position) {
+        Log.d("itemClick", "description one");
+//        Toast.makeText(SongsHistory.this, "onItemClick", Toast.LENGTH_SHORT).show();
+        final SongsHistoryItem clickedItem3 = songsHistoryList.get(position);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("More Info")
+                .setIcon(R.drawable.ic_audiotrack_black_24dp)
+                .setMessage("Song name:   " + clickedItem3.getmSongname() + "\n" +
+                        "Artist name:   " + clickedItem3.getmArtistname() + "\n" +
+                        "Album:           " + clickedItem3.getmAlbum() + "\n" +
+                        "Genre:            " + clickedItem3.getmGenre() + "\n" +
+                        "Language:     " + clickedItem3.getmLanguage())
+                .setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                    }
+                });
+        builder.show();
     }
 }

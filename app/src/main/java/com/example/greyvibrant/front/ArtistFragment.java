@@ -25,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
+import com.example.greyvibrant.front.dialog.ArtistDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +34,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ArtistFragment extends Fragment {
+public class ArtistFragment extends Fragment implements ArtistDialog.ArtistDialogListener {
     EditText artistName, artistPassword;
     SharedPreferences sharedPreferences;
     ProgressBar spinner;
@@ -87,6 +88,12 @@ public class ArtistFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+        artistForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
             }
         });
         return view;
@@ -165,6 +172,15 @@ public class ArtistFragment extends Fragment {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+
+    }
+    private void openDialog() {
+        ArtistDialog artistDialog = new ArtistDialog();
+        artistDialog.show(getActivity().getSupportFragmentManager(), "Forgot password");
+    }
+
+    @Override
+    public void applyTexts(String artistname, String email, String password) {
 
     }
 }
