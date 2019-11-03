@@ -78,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="125"
+                        android:text="0"
                         android:textColor="@color/startblue"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="1205"
+                        android:text="0"
                         android:textColor="@color/startblue"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -130,7 +130,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="360"
+                        android:text="0"
                         android:textColor="@color/startblue"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="20dp"
-                android:text="abc xyz"
+                android:text="--"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -187,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="20dp"
-                android:text="+91 1234567890"
+                android:text="--"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -209,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="20dp"
-                android:text="abc@email.com"
+                android:text="--"
                 android:textStyle="bold" />
         </LinearLayout>
 

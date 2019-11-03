@@ -76,8 +76,8 @@ public class ArtistRegistrationFragment extends Fragment {
                     artistEmail.setError("Email is invalid");
                     artistEmail.requestFocus();
                     return;
-                } else if (artistPhNo.getText().toString().trim().isEmpty()) {
-                    artistPhNo.setError("Phone number is empty");
+                } else if (artistPhNo.getText().toString().trim().isEmpty() || artistPhNo.getText().toString().trim().length() != 10) {
+                    artistPhNo.setError("Phone number is invalid");
                     artistPhNo.requestFocus();
                     return;
                 }

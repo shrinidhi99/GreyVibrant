@@ -76,7 +76,7 @@ public class UserRegistrationFragment extends Fragment {
                     userEmail.setError("Email is invalid");
                     userEmail.requestFocus();
                     return;
-                } else if (userPhNo.getText().toString().trim().isEmpty() || userPhNo.getText().toString().trim().length() < 10) {
+                } else if (userPhNo.getText().toString().trim().isEmpty() || userPhNo.getText().toString().trim().length() != 10) {
                     userPhNo.setError("Phone number is invalid");
                     userPhNo.requestFocus();
                     return;

@@ -1,12 +1,11 @@
 <?php
 $conn = mysqli_connect("localhost", "id11221849_sabios", "Sayan@99", "id11221849_greyvibrant");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $UID = $_POST['UID'];
-    $sql1 = "SELECT * FROM song S ,listens L WHERE L.UID=$UID AND S.SID=L.SID";
+    $sql1 = "SELECT * FROM song S ,queue Q WHERE S.SID=Q.SID AND Q.UID=$UID";
     $response1 = mysqli_query($conn, $sql1);
     $result = array();
-    $result['songhistory'] = array();
+    $result['songdetail'] = array();
     while ($row1 = mysqli_fetch_assoc($response1)) {
         $index['SID'] = $row1['SID'];
         $SIDtemp = $row1['SID'];
@@ -20,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $row2 = mysqli_fetch_assoc($response2);
         $index['artistname'] = $row2['artistname'];
         $index['AID'] = $row2['AID'];
-        array_push($result['songhistory'], $index);
+        array_push($result['songdetail'], $index);
     }
     if (mysqli_num_rows($response1) > 0) {
         $result['success'] = "1";
