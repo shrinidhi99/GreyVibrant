@@ -4,26 +4,17 @@ $conn = mysqli_connect("localhost", "id11221849_sabios", "Sayan@99", "id11221849
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    
     $UID = $_POST['UID'];
-   
-
-    
 
     $sql = "DELETE FROM user_registration WHERE UID='$UID'";
 
     if (mysqli_query($conn, $sql)) {
 
-      
+        $result["success"] = "1";
+        $result["message"] = "success";
 
-            $result["success"] = "1";
-            $result["message"] = "success";
-
-            echo json_encode($result);
-            mysqli_close($conn);
-
-        
-
+        echo json_encode($result);
+        mysqli_close($conn);
     } else {
 
         $result["success"] = "0";
