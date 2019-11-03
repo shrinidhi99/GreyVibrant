@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class profilePageArtist extends AppCompatActivity {
-    TextView artistnametext, fullnametext, emailtext, phNotext;
+    TextView artistnametext, fullnametext, emailtext, phNotext,folcount,upcount;
     String artistnamePut;
     String AID;
     Button deleteArtist;
@@ -45,6 +45,9 @@ public class profilePageArtist extends AppCompatActivity {
         phNotext = findViewById(R.id.artistphNo);
         fullnametext = findViewById(R.id.artistFullName);
         deleteArtist=findViewById(R.id.deleteArtist);
+        folcount=findViewById(R.id.followcount);
+        upcount=findViewById(R.id.uploadcount);
+
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         artistnamePut = sharedPreferences.getString("artistname", null);
         setProfileData();
@@ -130,6 +133,10 @@ public class profilePageArtist extends AppCompatActivity {
                                     String fullname = object.getString("fullname");
                                     String email = object.getString("email");
                                     String phNo = object.getString("phNo");
+                                    String followcount=object.getString("followcount");
+                                    String uploadcount=object.getString("uploadcount");
+                                    folcount.setText(followcount);
+                                    upcount.setText(uploadcount);
                                     artistnametext.setText(artistname);
                                     fullnametext.setText(fullname);
                                     emailtext.setText(email);
