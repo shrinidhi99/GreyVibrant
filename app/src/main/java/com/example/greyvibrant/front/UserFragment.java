@@ -28,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
+import com.example.greyvibrant.front.dialog.UserDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class UserFragment extends Fragment {
+public class UserFragment extends Fragment implements UserDialog.UserDialogListener {
     Button userLogin;
     View view;
     EditText username, userPassword;
@@ -45,6 +46,7 @@ public class UserFragment extends Fragment {
     ProgressBar spinner;
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/user_login.php";
     TextView userForgotPassword;
+    String newPassword, emailVerify, usernameVerify;
 
     @Nullable
     @Override
@@ -90,7 +92,7 @@ public class UserFragment extends Fragment {
         userForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openDialog();
             }
         });
         return view;
@@ -175,6 +177,16 @@ public class UserFragment extends Fragment {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+
+    }
+
+    private void openDialog() {
+        UserDialog userDialog = new UserDialog();
+        userDialog.show(getActivity().getSupportFragmentManager(), "Forgot password");
+    }
+
+    @Override
+    public void applyTexts(String username, String email, String password) {
 
     }
 }
