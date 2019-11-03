@@ -4,7 +4,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $SID = $_POST['SID'];
     $UID = $_POST['UID'];
     $sql = "INSERT INTO queue VALUES ('$UID','$SID')";
-    if (mysqli_query($conn, $sql)) {
+    $sql1 = "INSERT INTO listens VALUES ('$SID','$UID')";
+    if (mysqli_query($conn, $sql) && mysqli_query($conn, $sql1)) {
         $result["success"] = "1";
         $result["message"] = "success";
         echo json_encode($result);
