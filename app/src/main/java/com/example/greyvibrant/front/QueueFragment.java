@@ -193,7 +193,7 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                if (threadSwitch)
+                if (threadSwitch || mediaPlayer==null)
                     return;
                 try {
 
@@ -202,16 +202,23 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
                         Runnable runnable = new Runnable() {
                             @Override
                             public void run() {
-                                int s = mediaPlayer.getDuration() / 1000;
-                                String minst = String.valueOf(s / 60);
-                                String secst = String.valueOf(s % 60);
-                                tottime.setText(minst + ":" + secst);
+                                try{
+                                    int s = mediaPlayer.getDuration() / 1000;
+                                    String minst = String.valueOf(s / 60);
+                                    String secst = String.valueOf(s % 60);
+                                    tottime.setText(minst + ":" + secst);
 
-                                int ss = mediaPlayer.getCurrentPosition() / 1000;
-                                String mins = String.valueOf(ss / 60);
-                                String secs = String.valueOf(ss % 60);
+                                    int ss = mediaPlayer.getCurrentPosition() / 1000;
+                                    String mins = String.valueOf(ss / 60);
+                                    String secs = String.valueOf(ss % 60);
 
-                                remTime.setText(mins + ":" + secs);
+                                    remTime.setText(mins + ":" + secs);
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+
                             }
                         };
                         Handler mHandler = new Handler(Looper.getMainLooper());
@@ -230,16 +237,22 @@ public class QueueFragment extends Fragment implements QueueFragmentAdapter.OnIt
                             Runnable runnable = new Runnable() {
                                 @Override
                                 public void run() {
-                                    int s = mediaPlayer.getDuration() / 1000;
-                                    String minst = String.valueOf(s / 60);
-                                    String secst = String.valueOf(s % 60);
-                                    tottime.setText(minst + ":" + secst);
+                                    try{
+                                        int s = mediaPlayer.getDuration() / 1000;
+                                        String minst = String.valueOf(s / 60);
+                                        String secst = String.valueOf(s % 60);
+                                        tottime.setText(minst + ":" + secst);
 
-                                    int ss = mediaPlayer.getCurrentPosition() / 1000;
-                                    String mins = String.valueOf(ss / 60);
-                                    String secs = String.valueOf(ss % 60);
+                                        int ss = mediaPlayer.getCurrentPosition() / 1000;
+                                        String mins = String.valueOf(ss / 60);
+                                        String secs = String.valueOf(ss % 60);
 
-                                    remTime.setText(mins + ":" + secs);
+                                        remTime.setText(mins + ":" + secs);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        e.printStackTrace();
+                                    }
                                 }
                             };
                             Handler mHandler = new Handler(Looper.getMainLooper());
