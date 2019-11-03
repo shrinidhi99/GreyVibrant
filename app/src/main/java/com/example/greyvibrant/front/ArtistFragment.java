@@ -45,6 +45,8 @@ public class ArtistFragment extends Fragment {
     private EditText editTextPassword;
 
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/artist_login.php";
+    static String URL_REGIST1 = "https://sabios-97.000webhostapp.com/passwordreset_artist.php";
+
     TextView artistForgotPassword;
 
     @Nullable
@@ -198,10 +200,77 @@ public class ArtistFragment extends Fragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String username = editTextArtistname.getText().toString().trim();
-                        String email = editTextEmail.getText().toString().trim();
-                        String password = editTextPassword.getText().toString().trim();
-                        Toast.makeText(getContext(), username + email + password, Toast.LENGTH_SHORT).show();
+                       final String artistname = editTextArtistname.getText().toString().trim();
+                        final String email = editTextEmail.getText().toString().trim();
+                        final String password = editTextPassword.getText().toString().trim();
+                        if(!artistname.isEmpty() && !email.isEmpty() && !password.isEmpty())
+                        {
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST1,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.i("RESPONSE FROM PHP", response);
+                                            try {
+                                                if (response == null || response.equals(""))
+                                                    Log.i("RESPONSE", "IS NULL");
+
+                                                JSONObject jsonObject = new JSONObject(response);
+
+
+                                                String success = jsonObject.getString("success");
+                                                if (success.equals("1")) {
+
+                                                    Toast.makeText(getContext(), "Reset Success", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                                else if(success.equals("0"))
+                                                {
+                                                    Toast.makeText(getContext(), "Reset Failed", Toast.LENGTH_SHORT).show();
+
+                                                }
+
+                                                else
+                                                {
+                                                    Toast.makeText(getContext(), "Artist Already Registered", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+
+
+                                                Toast.makeText(getContext(), "Reset Error", Toast.LENGTH_SHORT).show();
+
+                                            }
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+
+
+                                            Toast.makeText(getContext(), "Reset Error", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    Map<String, String> params = new HashMap<>();
+
+                                    params.put("artistname", artistname);
+                                    params.put("email", email);
+                                    params.put("password", password);
+
+                                    return params;
+                                }
+                            };
+                            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                            requestQueue.add(stringRequest);
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(), "Enter all the fields", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
         builder.show();

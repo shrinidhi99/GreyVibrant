@@ -1,6 +1,7 @@
 package com.example.greyvibrant.front.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,14 +11,27 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.greyvibrant.R;
 import com.example.greyvibrant.front.RecyclerViewElements.SongsHistoryItem;
+import com.example.greyvibrant.front.RecyclerViewElements.playlistItem;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class SongsHistoryAdapter extends RecyclerView.Adapter<SongsHistoryAdapter.SongsHistoryViewHolder> implements Filterable {
@@ -25,6 +39,10 @@ public class SongsHistoryAdapter extends RecyclerView.Adapter<SongsHistoryAdapte
     static List<SongsHistoryItem> mSongsHistoryList;
     private List<SongsHistoryItem> songsHistoryListFull;
     private OnItemClickListener mListener;
+    static String URL_REGIST2 = "https://sabios-97.000webhostapp.com/queue.php";
+    static String URL_REGIST4 = "https://sabios-97.000webhostapp.com/songhistory_delete.php";
+
+
 
     public SongsHistoryAdapter(Context context, List<SongsHistoryItem> exampleList) {
         mContext = context;
@@ -88,13 +106,116 @@ public class SongsHistoryAdapter extends RecyclerView.Adapter<SongsHistoryAdapte
             if (mListener != null) {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
+                    final SongsHistoryItem clickedItem = mSongsHistoryList.get(position);
 
                     switch (item.getItemId()) {
                         case 1:
                             mListener.onPlayClick(position);
+
+                            Log.i("On item click", "remaining songs");
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST2,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.i("RESPONSE FROM PHP", response);
+                                            try {
+                                                if (response == null || response.equals(""))
+                                                    Log.i("RESPONSE", "IS NULL");
+
+                                                JSONObject jsonObject = new JSONObject(response);
+
+
+                                                String success = jsonObject.getString("success");
+                                                if (success.equals("1")) {
+                                                    Log.i("QUEUE", "SUCCESS");
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                                Log.i("QUEUE", "ERROR");
+
+                                            }
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.i("QUEUE", "ERROR 2");
+
+                                        }
+                                    }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    Map<String, String> params = new HashMap<>();
+
+                                    params.put("UID", String.valueOf(clickedItem.getmUID()));
+                                    params.put("SID", String.valueOf(clickedItem.getmSID()));
+                                    return params;
+                                }
+                            };
+                            RequestQueue requestQueue = Volley.newRequestQueue(itemView.getContext());
+                            requestQueue.add(stringRequest);
                             return true;
                         case 2:
                             mListener.onDeleteFromHistoryClick(position);
+
+                            final String SIDfinal = String.valueOf(clickedItem.getmSID());
+
+                            StringRequest stringRequest1 = new StringRequest(Request.Method.POST, URL_REGIST4,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.i("RESPONSE FROM PHP", response);
+                                            try {
+                                                if (response == null || response.equals(""))
+                                                    Log.i("RESPONSE", "IS NULL");
+
+                                                JSONObject jsonObject = new JSONObject(response);
+                                                String success = jsonObject.getString("success");
+
+
+                                                if (success.equals("1")) {
+
+
+                                                    Toast.makeText(itemView.getContext(), "Deletion Success", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+                                                } else {
+
+                                                    Toast.makeText(itemView.getContext(), "Deletion Failed", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+
+                                                Toast.makeText(itemView.getContext(), "Deletion Error", Toast.LENGTH_SHORT).show();
+
+                                            }
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Toast.makeText(itemView.getContext(), "Deletion2 Error", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    Map<String, String> params = new HashMap<>();
+                                    params.put("SID", SIDfinal);
+
+
+
+                                    return params;
+                                }
+                            };
+                            RequestQueue requestQueue1 = Volley.newRequestQueue(itemView.getContext());
+                            requestQueue1.add(stringRequest1);
+
                             return true;
                         case 3:
                             mListener.onDescriptionClick(position);
