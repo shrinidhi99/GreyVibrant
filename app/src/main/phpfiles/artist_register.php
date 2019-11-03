@@ -1,41 +1,45 @@
 <?php
+
 $conn = mysqli_connect("localhost", "id11221849_sabios", "Sayan@99", "id11221849_greyvibrant");
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    $fullname = $_POST['fullname'];
+    $phNo = $_POST['phNo'];
     $artistname = $_POST['artistname'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM artist_login WHERE artistname='$artistname'";
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $response = mysqli_query($conn, $sql);
+    $sql = "INSERT INTO artist_registration VALUES (NULL, '$artistname', '$fullname', '$email', '$password', '$phNo')";
 
-    $result = array();
-    $result['login'] = array();
+    if (mysqli_query($conn, $sql)) {
 
-    if (mysqli_num_rows($response) === 1) {
+        $AIDsql = "SELECT AID FROM artist_registration WHERE artistname = '$artistname'";
 
-        $row = mysqli_fetch_assoc($response);
+        $response = mysqli_query($conn, $AIDsql);
 
-        if (password_verify($password, $row['password'])) {
+        $row = mysqli_fetch_object($response);
 
-            $index['AID'] = $row['AID'];
-            $index['artistname'] = $row['artistname'];
+        $sql1 = "INSERT INTO artist_login VALUES ($row->AID,'$artistname','$password')";
 
-            array_push($result['login'], $index);
+        if (mysqli_query($conn, $sql1)) {
 
-            $result['success'] = "1";
-            $result['message'] = "success";
+            $result["success"] = "1";
+            $result["message"] = "success";
+
             echo json_encode($result);
-
             mysqli_close($conn);
-        } else {
 
-            $result['success'] = "0";
-            $result['message'] = "error";
-            echo json_encode($result);
-
-            mysqli_close($conn);
         }
+
+    } else {
+
+        $result["success"] = "0";
+        $result["message"] = "Either user already exists or check your internet connection";
+
+        echo json_encode($result);
+        mysqli_close($conn);
     }
 }
-?>

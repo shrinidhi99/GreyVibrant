@@ -122,7 +122,7 @@ public class UserRegistrationFragment extends Fragment {
                             e.printStackTrace();
                             spinner.setVisibility(View.GONE);
 
-                            Toast.makeText(getContext(), "Register Error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "User Already Exists", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -133,7 +133,7 @@ public class UserRegistrationFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         spinner.setVisibility(View.GONE);
 
-                        Toast.makeText(getContext(), "Register Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "User Already Exists", Toast.LENGTH_SHORT).show();
 
                     }
                 }) {
