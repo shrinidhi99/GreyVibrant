@@ -9,7 +9,6 @@
 *  [Shrinidhi Anil Varna](https://github.com/shrinidhi99)
 *  [Sayan Biswas](https://github.com/Sabios-97)
 
----
 
 ## Languages used:
 * Java
