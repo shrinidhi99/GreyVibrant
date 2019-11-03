@@ -1,6 +1,7 @@
 package com.example.greyvibrant.front;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -38,7 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class UserFragment extends Fragment implements UserDialog.UserDialogListener {
+public class UserFragment extends Fragment {
     Button userLogin;
     View view;
     EditText username, userPassword;
@@ -47,6 +49,9 @@ public class UserFragment extends Fragment implements UserDialog.UserDialogListe
     static String URL_REGIST = "https://sabios-97.000webhostapp.com/user_login.php";
     TextView userForgotPassword;
     String newPassword, emailVerify, usernameVerify;
+    private EditText editTextUsername;
+    private EditText editTextEmail;
+    private EditText editTextPassword;
 
     @Nullable
     @Override
@@ -181,12 +186,29 @@ public class UserFragment extends Fragment implements UserDialog.UserDialogListe
     }
 
     private void openDialog() {
-        UserDialog userDialog = new UserDialog();
-        userDialog.show(getActivity().getSupportFragmentManager(), "Forgot password");
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.layout_dialog, null);
+        editTextUsername = view.findViewById(R.id.verify_username);
+        editTextEmail = view.findViewById(R.id.verify_email);
+        editTextPassword = view.findViewById(R.id.new_password);
+        builder.setView(view)
+                .setTitle("Forgot Password")
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String username = editTextUsername.getText().toString().trim();
+                        String email = editTextEmail.getText().toString().trim();
+                        String password = editTextPassword.getText().toString().trim();
+                    }
+                });
+        builder.show();
     }
 
-    @Override
-    public void applyTexts(String username, String email, String password) {
-
-    }
 }
