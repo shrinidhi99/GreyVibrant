@@ -16,7 +16,10 @@
         <activity android:name=".MusicPlayerActivity">
 
         </activity>
-        <activity android:name=".front.SongsHistory"></activity>
+        <activity
+            android:name=".front.SongsHistory"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".front.profilePageArtist"></activity>
         <activity android:name=".front.profilePageUser"></activity>
         <activity
