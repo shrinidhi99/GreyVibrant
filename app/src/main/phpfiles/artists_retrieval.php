@@ -35,7 +35,7 @@
 
 
 
-        if (mysqli_num_rows($response1) > 1 || mysqli_num_rows($response2) > 1) {
+        if (mysqli_num_rows($response1) > 0 || mysqli_num_rows($response2) > 0) {
 
 
             $result['success'] = "1";
