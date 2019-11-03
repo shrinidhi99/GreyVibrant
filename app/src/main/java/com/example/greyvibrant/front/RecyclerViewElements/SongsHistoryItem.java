@@ -6,14 +6,43 @@ public class SongsHistoryItem {
     private String mGenre;
     private String mLanguage;
     private String mArtistname;
+    private int mAID;
+    private int mSID;
+    private int mUID;
 
-    public SongsHistoryItem(String songname, String artistname, String album, String genre, String language) {
-
+    public SongsHistoryItem(String songname, String artistname, String album, String genre, String language, int SID, int AID, int UID) {
+        mUID = UID;
+        mSID = SID;
+        mAID = AID;
         mSongname = songname;
         mArtistname = artistname;
         mAlbum = album;
         mGenre = genre;
         mLanguage = language;
+    }
+
+    public int getmUID() {
+        return mUID;
+    }
+
+    public void setmUID(int mUID) {
+        this.mUID = mUID;
+    }
+
+    public int getmAID() {
+        return mAID;
+    }
+
+    public void setmAID(int mAID) {
+        this.mAID = mAID;
+    }
+
+    public int getmSID() {
+        return mSID;
+    }
+
+    public void setmSID(int mSID) {
+        this.mSID = mSID;
     }
 
     public String getmSongname() {

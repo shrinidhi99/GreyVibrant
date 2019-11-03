@@ -93,7 +93,7 @@ public class SongsHistory extends AppCompatActivity implements SongsHistoryAdapt
                                     String genre = object.getString("genre");
                                     String SID = object.getString("SID");
 
-                                    songsHistoryList.add(new SongsHistoryItem(songname, album, genre, language, artistname));
+                                    songsHistoryList.add(new SongsHistoryItem(songname, album, genre, language, artistname, Integer.parseInt(SID), Integer.parseInt(AID), Integer.parseInt(UIDput)));
 
                                     Log.i("artist :", artistname + " " + AID + " " + songname + " " + songurl + " " + album + " " + language + " " + genre + " " + SID);
                                 }
