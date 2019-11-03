@@ -100,9 +100,8 @@ public class HomePageUser extends AppCompatActivity implements PlaylistFragmentA
         sharedPreferences.edit().putString("UID", "").apply();
         try {
             QueueFragment.threadSwitch = true;
-            QueueFragment.mediaPlayer.stop();
             QueueFragment.mediaPlayer.release();
-            QueueFragment.mediaPlayer = null;
+            QueueFragment.mediaPlayer=null;
 
         } catch (Exception e) {
             e.printStackTrace();
