@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class profilePageUser extends AppCompatActivity {
-    TextView usernametext, fullnametext, emailtext, phNotext;
+    TextView usernametext, fullnametext, emailtext, phNotext,listen,follow,playlist;
     String usernamePut;
     Button deleteUser;
     String UID;
@@ -47,6 +47,9 @@ public class profilePageUser extends AppCompatActivity {
         phNotext = findViewById(R.id.userphNo);
         fullnametext = findViewById(R.id.userFullName);
         deleteUser=findViewById(R.id.deleteUser);
+        listen=findViewById(R.id.listens);
+        playlist=findViewById(R.id.playlist);
+        follow=findViewById(R.id.following);
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.greyvibrant.front", Context.MODE_PRIVATE);
         usernamePut = sharedPreferences.getString("username", null);
         setProfileData();
@@ -136,6 +139,12 @@ public class profilePageUser extends AppCompatActivity {
                                     String fullname = object.getString("fullname");
                                     String email = object.getString("email");
                                     String phNo = object.getString("phNo");
+                                    String playlistt=object.getString("playlistcount");
+                                    String followt=object.getString("followcount");
+                                    String listent=object.getString("listencount");
+                                    playlist.setText(playlistt);
+                                    follow.setText(followt);
+                                    listen.setText(listent);
                                     usernametext.setText(username);
                                     fullnametext.setText(fullname);
                                     emailtext.setText(email);

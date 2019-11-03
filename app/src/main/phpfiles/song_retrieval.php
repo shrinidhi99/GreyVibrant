@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     $result = array();
     $result['album'] = array();
 
-    if ( mysqli_num_rows($response) > 1 ) {
+    if ( mysqli_num_rows($response) > 0 ) {
 
         while($row = mysqli_fetch_assoc($response))
         {
