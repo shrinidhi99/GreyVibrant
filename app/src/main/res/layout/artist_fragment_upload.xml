@@ -4,7 +4,7 @@
     android:id="@+id/song_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundDefault"
+    android:background="#ffffff"
     android:fillViewport="true">
 
     <LinearLayout
@@ -23,7 +23,7 @@
                 android:id="@+id/file_image"
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
-                android:src="@mipmap/ic_launcher_upload_round" />
+                android:src="@mipmap/ic_launcher_upload_music" />
 
             <TextView
                 android:id="@+id/songUri"
@@ -43,7 +43,7 @@
                 android:layout_margin="15.0dp"
                 android:clickable="true"
                 android:tint="@android:color/white"
-                app:backgroundTint="#ffff5722"
+                app:backgroundTint="#2196F3"
                 app:fabSize="normal"
                 app:layout_anchor="@+id/file_image"
                 app:rippleColor="@android:color/white"
@@ -58,6 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="1dp"
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
             app:helperTextEnabled="true"
             app:hintEnabled="true"
             app:hintTextAppearance="@style/TextLabel">
@@ -80,6 +82,8 @@
             android:padding="1dp"
             app:helperTextEnabled="true"
             app:hintEnabled="true"
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
             app:hintTextAppearance="@style/TextLabel">
 
             <EditText
@@ -101,6 +105,8 @@
             android:padding="1dp"
             app:helperTextEnabled="true"
             app:hintEnabled="true"
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
             app:hintTextAppearance="@style/TextLabel">
 
             <EditText
@@ -112,6 +118,7 @@
                 android:textColorLink="#000000" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -120,6 +127,8 @@
             android:padding="1dp"
             app:helperTextEnabled="true"
             app:hintEnabled="true"
+            android:textColorHint="#000306"
+            app:boxStrokeColor="@color/common"
             app:hintTextAppearance="@style/TextLabel">
 
             <EditText

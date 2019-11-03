@@ -206,6 +206,7 @@ public class UserFragment extends Fragment {
                         String username = editTextUsername.getText().toString().trim();
                         String email = editTextEmail.getText().toString().trim();
                         String password = editTextPassword.getText().toString().trim();
+                        Toast.makeText(getContext(), username + email + password, Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.show();
