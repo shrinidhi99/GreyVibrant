@@ -1,0 +1,39 @@
+Sayan
+used phpmyadmin as MySQL server
+- artist_login.php
+- artist_profile.php
+- 22 more php files
+- queue fragment
+- added volley part in all the recycler view adapters (database operations)
+- music player creation and integration
+- shared preferences
+- logout
+- login
+- password reset db operations
+- profile page backend
+- establishing MySQL db connection with the app
+- created tables in database and established relational view structure.
+- 50 % of the db schema
+- ER-Diagram
+
+Shrinidhi
+
+- artist_register.php
+- remaining_songs.php
+- 8 recycler view adapters
+- 2 alert dialog
+- 8 recycler view item classes
+- album fragment
+- upload fragment
+- login fragments
+- registration fragments
+- profile pages
+- playlist fragment
+- password reset front end
+- song history front end
+- more information about songs
+- search functionality
+- getting the url for an upload
+- storing songs in a storage bucket
+- 50 % of database schema
+- ER-Diagram
