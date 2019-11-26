@@ -1,0 +1,220 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.greyvibrant"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="25"
+8-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:5:5-67
+11-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:6:5-80
+12-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:6:22-77
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:7:5-81
+13-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:7:22-78
+14
+15    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+16    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->[com.google.firebase:firebase-database:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/7c1b7712293eca3efa95a3298abb9169/firebase-database-19.2.0/AndroidManifest.xml:25:5-79
+17-->[com.google.firebase:firebase-database:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/7c1b7712293eca3efa95a3298abb9169/firebase-database-19.2.0/AndroidManifest.xml:25:22-76
+18
+19    <application
+19-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:9:5-64:19
+20        android:allowBackup="true"
+20-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:10:9-35
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/478b79604eaaf934858ce3739dce1708/core-1.1.0/AndroidManifest.xml:24:18-86
+22        android:debuggable="true"
+23        android:icon="@mipmap/ic_launcher_icon_app"
+23-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:11:9-52
+24        android:label="@string/app_name"
+24-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:12:9-41
+25        android:roundIcon="@mipmap/ic_launcher_icon_app_round"
+25-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:13:9-63
+26        android:supportsRtl="true"
+26-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:14:9-35
+27        android:theme="@style/AppTheme" >
+27-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:15:9-40
+28        <activity android:name="com.example.greyvibrant.MusicPlayerActivity" >
+28-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:16:9-18:20
+28-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:16:19-54
+29        </activity>
+30        <activity
+30-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:19:9-22:54
+31            android:name="com.example.greyvibrant.front.SongsHistory"
+31-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:20:13-47
+32            android:screenOrientation="portrait"
+32-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:21:13-49
+33            android:windowSoftInputMode="adjustPan" />
+33-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:22:13-52
+34        <activity android:name="com.example.greyvibrant.front.profilePageArtist" />
+34-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:23:9-70
+34-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:23:19-58
+35        <activity android:name="com.example.greyvibrant.front.profilePageUser" />
+35-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:24:9-68
+35-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:24:19-56
+36        <activity
+36-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:25:9-28:55
+37            android:name="com.example.greyvibrant.front.RegistrationActivity"
+37-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:26:13-55
+38            android:screenOrientation="portrait"
+38-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:27:13-49
+39            android:windowSoftInputMode="adjustPan" />
+39-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:28:13-52
+40        <activity
+40-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:29:9-33:55
+41            android:name="com.example.greyvibrant.front.HomePageArtist"
+41-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:30:13-49
+42            android:screenOrientation="portrait"
+42-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:31:13-49
+43            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+43-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:32:13-71
+44            android:windowSoftInputMode="adjustPan" />
+44-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:33:13-52
+45        <activity
+45-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:34:9-38:55
+46            android:name="com.example.greyvibrant.front.HomePageUser"
+46-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:35:13-47
+47            android:screenOrientation="portrait"
+47-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:36:13-49
+48            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+48-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:37:13-71
+49            android:windowSoftInputMode="adjustPan" />
+49-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:38:13-52
+50        <activity
+50-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:39:9-42:55
+51            android:name="com.example.greyvibrant.front.LoginActivity"
+51-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:40:13-48
+52            android:screenOrientation="portrait"
+52-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:41:13-49
+53            android:windowSoftInputMode="adjustPan" />
+53-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:42:13-52
+54        <activity
+54-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:43:9-45:52
+55            android:name="com.example.greyvibrant.old.MySQLActivity"
+55-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:44:13-46
+56            android:screenOrientation="portrait" />
+56-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:45:13-49
+57        <activity
+57-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:46:9-48:52
+58            android:name="com.example.greyvibrant.old.Main2Activity"
+58-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:47:13-46
+59            android:screenOrientation="portrait" />
+59-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:48:13-49
+60        <activity
+60-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:49:9-60:20
+61            android:name="com.example.greyvibrant.front.SplashActivity"
+61-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:50:13-49
+62            android:screenOrientation="portrait"
+62-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:51:13-49
+63            android:theme="@style/Theme.AppCompat.NoActionBar" >
+63-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:53:13-63
+64            <intent-filter>
+64-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:54:13-58:29
+65                <action android:name="android.intent.action.MAIN" />
+65-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:55:17-69
+65-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:55:25-66
+66
+67                <category android:name="android.intent.category.LAUNCHER" />
+67-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:57:17-77
+67-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:57:27-74
+68            </intent-filter>
+69        </activity>
+70        <activity
+70-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:61:9-63:52
+71            android:name="com.example.greyvibrant.old.MainActivity"
+71-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:62:13-45
+72            android:screenOrientation="portrait" />
+72-->/home/shrinidhi/Desktop/sem5/GreyVibrant/app/src/main/AndroidManifest.xml:63:13-49
+73
+74        <service
+74-->[com.google.firebase:firebase-database:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/7c1b7712293eca3efa95a3298abb9169/firebase-database-19.2.0/AndroidManifest.xml:29:9-35:19
+75            android:name="com.google.firebase.components.ComponentDiscoveryService"
+75-->[com.google.firebase:firebase-database:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/7c1b7712293eca3efa95a3298abb9169/firebase-database-19.2.0/AndroidManifest.xml:30:13-84
+76            android:directBootAware="true"
+76-->[com.google.firebase:firebase-common:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/f2f464e7b3c96930b35ca6d6132a388c/firebase-common-19.2.0/AndroidManifest.xml:15:13-43
+77            android:exported="false" >
+77-->[com.google.firebase:firebase-database:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/7c1b7712293eca3efa95a3298abb9169/firebase-database-19.2.0/AndroidManifest.xml:31:13-37
+78            <meta-data
+78-->[com.google.firebase:firebase-database:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/7c1b7712293eca3efa95a3298abb9169/firebase-database-19.2.0/AndroidManifest.xml:32:13-34:85
+79                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+79-->[com.google.firebase:firebase-database:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/7c1b7712293eca3efa95a3298abb9169/firebase-database-19.2.0/AndroidManifest.xml:33:17-109
+80                android:value="com.google.firebase.components.ComponentRegistrar" />
+80-->[com.google.firebase:firebase-database:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/7c1b7712293eca3efa95a3298abb9169/firebase-database-19.2.0/AndroidManifest.xml:34:17-82
+81            <meta-data
+81-->[com.google.firebase:firebase-storage:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/44b784fabca10d2710bcf5b818712cb5/firebase-storage-19.1.0/AndroidManifest.xml:33:13-35:85
+82                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+82-->[com.google.firebase:firebase-storage:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/44b784fabca10d2710bcf5b818712cb5/firebase-storage-19.1.0/AndroidManifest.xml:34:17-107
+83                android:value="com.google.firebase.components.ComponentRegistrar" />
+83-->[com.google.firebase:firebase-storage:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/44b784fabca10d2710bcf5b818712cb5/firebase-storage-19.1.0/AndroidManifest.xml:35:17-82
+84            <meta-data
+84-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:36:13-38:85
+85                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+85-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:37:17-109
+86                android:value="com.google.firebase.components.ComponentRegistrar" />
+86-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:38:17-82
+87        </service>
+88
+89        <activity
+89-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:24:9-31:50
+90            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+90-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:25:13-85
+91            android:excludeFromRecents="true"
+91-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:26:13-46
+92            android:exported="true"
+92-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:27:13-36
+93            android:launchMode="singleTask"
+93-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:28:13-44
+94            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+94-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:29:13-102
+95            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+95-->[com.google.firebase:firebase-auth:19.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/8aa3d6d048249cc1598139976559bd04/firebase-auth-19.1.0/AndroidManifest.xml:30:13-72
+96
+97        <provider
+97-->[com.google.firebase:firebase-common:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/f2f464e7b3c96930b35ca6d6132a388c/firebase-common-19.2.0/AndroidManifest.xml:19:9-23:39
+98            android:name="com.google.firebase.provider.FirebaseInitProvider"
+98-->[com.google.firebase:firebase-common:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/f2f464e7b3c96930b35ca6d6132a388c/firebase-common-19.2.0/AndroidManifest.xml:20:13-77
+99            android:authorities="com.example.greyvibrant.firebaseinitprovider"
+99-->[com.google.firebase:firebase-common:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/f2f464e7b3c96930b35ca6d6132a388c/firebase-common-19.2.0/AndroidManifest.xml:21:13-72
+100            android:exported="false"
+100-->[com.google.firebase:firebase-common:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/f2f464e7b3c96930b35ca6d6132a388c/firebase-common-19.2.0/AndroidManifest.xml:22:13-37
+101            android:initOrder="100" />
+101-->[com.google.firebase:firebase-common:19.2.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/f2f464e7b3c96930b35ca6d6132a388c/firebase-common-19.2.0/AndroidManifest.xml:23:13-36
+102
+103        <activity
+103-->[com.google.android.gms:play-services-base:17.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/5361484794665ae726e7094cda0f326e/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+104            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+104-->[com.google.android.gms:play-services-base:17.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/5361484794665ae726e7094cda0f326e/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+105            android:exported="false"
+105-->[com.google.android.gms:play-services-base:17.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/5361484794665ae726e7094cda0f326e/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+106            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+106-->[com.google.android.gms:play-services-base:17.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/5361484794665ae726e7094cda0f326e/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+107
+108        <meta-data
+108-->[com.google.android.gms:play-services-basement:17.0.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/65c42987141405aba4c2d60ec9875d9e/play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+109            android:name="com.google.android.gms.version"
+109-->[com.google.android.gms:play-services-basement:17.0.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/65c42987141405aba4c2d60ec9875d9e/play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+110            android:value="@integer/google_play_services_version" />
+110-->[com.google.android.gms:play-services-basement:17.0.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/65c42987141405aba4c2d60ec9875d9e/play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+111
+112        <provider
+112-->[androidx.lifecycle:lifecycle-process:2.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/30585dfb4796ccf6c9f3a08fe0973e85/lifecycle-process-2.1.0/AndroidManifest.xml:23:9-27:43
+113            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+113-->[androidx.lifecycle:lifecycle-process:2.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/30585dfb4796ccf6c9f3a08fe0973e85/lifecycle-process-2.1.0/AndroidManifest.xml:24:13-79
+114            android:authorities="com.example.greyvibrant.lifecycle-process"
+114-->[androidx.lifecycle:lifecycle-process:2.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/30585dfb4796ccf6c9f3a08fe0973e85/lifecycle-process-2.1.0/AndroidManifest.xml:25:13-69
+115            android:exported="false"
+115-->[androidx.lifecycle:lifecycle-process:2.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/30585dfb4796ccf6c9f3a08fe0973e85/lifecycle-process-2.1.0/AndroidManifest.xml:26:13-37
+116            android:multiprocess="true" />
+116-->[androidx.lifecycle:lifecycle-process:2.1.0] /home/shrinidhi/.gradle/caches/transforms-2/files-2.1/30585dfb4796ccf6c9f3a08fe0973e85/lifecycle-process-2.1.0/AndroidManifest.xml:27:13-40
+117    </application>
+118
+119</manifest>
