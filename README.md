@@ -19,9 +19,6 @@ A music streaming android application.
 
 ### Contributors
 
-*  [Shrinidhi Anil Varna](https://github.com/shrinidhi99)
-*  [Sayan Biswas](https://github.com/Sabios-97)
-
 | [![Shrinidhi Anil Varna](https://avatars1.githubusercontent.com/u/32514046?s=460&u=df682293524053c34ccf75b31ccdfef03660c078&v=4 "Shrinidhi Anil Varna")](https://github.com/shrinidhi99)  | [![Sayan Biswas](https://avatars2.githubusercontent.com/u/42597814?s=460&u=1615e36c83c121cb9f89aaf2c1e22087a982eabf&v=4 "Sayan Biswas")](https://github.com/Sabios-97) |
 |:---:|:---:|
 | Shrinidhi Anil Varna | Sayan Biswas |
